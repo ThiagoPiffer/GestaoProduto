@@ -32,16 +32,15 @@ namespace GestaoProduto.Web
                 );
 
             #region Injeção de dependencia
+                builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
+                builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
+                builder.Services.AddScoped<ArmazenadorFornecedor>();
+                builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+                builder.Services.AddScoped<ArmazenadorProduto>();
+                builder.Services.AddScoped<IFornecedorServico, FornecedorServico>();
+                builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
 
-            builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
-            builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
-            builder.Services.AddScoped<ArmazenadorFornecedor>();
-            builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
-            builder.Services.AddScoped<ArmazenadorProduto>();
-            builder.Services.AddScoped<IFornecedorServico, FornecedorServico>();
-            builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
-
-            builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+                builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             #endregion
 
             var app = builder.Build();

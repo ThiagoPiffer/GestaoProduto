@@ -15,9 +15,9 @@ namespace GestaoProduto.Dados.Repositorios
             return fornecedores.Any() ? fornecedores.First() : null;
         }
 
-        public bool ContemDuplicidadeCNPJ(string cnpj)
+        public bool ContemDuplicidadeCNPJ(FornecedorDto fornecedorDto)
         {
-            var quantidade = Context.Set<Fornecedor>().Where(a => a.Ativo && a.CNPJ == cnpj).Count();
+            var quantidade = Context.Set<Fornecedor>().ToList().Where(a => a.Ativo && a.CNPJ == fornecedorDto.CNPJ && a.Id != fornecedorDto.Id).Count();
             return quantidade > 1 ? true : false;
         }
 

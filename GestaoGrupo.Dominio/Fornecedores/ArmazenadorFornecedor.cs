@@ -33,12 +33,17 @@ namespace GestaoProduto.Dominio.Fornecedores
         }
 
         public void Editar(FornecedorDto fornecedorDto)
-        { 
+        {
+            ValidadorDeRegra.Novo()
+                .Quando(_fornecedorRepositorio.ContemDuplicidadeCNPJ(fornecedorDto), ChaveTextos.CNPJJaCadastrado)
+                .DispararExcecaoSeExistir();
+
             if (fornecedorDto.Id != 0)
             {
                 var fornecedor = _fornecedorRepositorio.ObterPorId(fornecedorDto.Id);
                 fornecedor.AlterarDescricao(fornecedorDto.Descricao);
                 fornecedor.AlterarCNPJ(fornecedorDto.CNPJ);
+                fornecedor.AlterarAtivo(fornecedorDto.Ativo);
             }            
         }
 
