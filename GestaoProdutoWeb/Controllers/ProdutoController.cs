@@ -39,6 +39,12 @@ namespace GestaoProduto.Web.Controllers
             return Ok(await _produtoServico.Get(id));
         }
 
+        [HttpGet("BuscaPorTermo/{termo}")]
+        public async Task<IActionResult> BuscaPorTermo(string termo)
+        {
+            return Ok(await _produtoServico.BuscaPorTermo(termo));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] ProdutoDto produtoDto)
         {

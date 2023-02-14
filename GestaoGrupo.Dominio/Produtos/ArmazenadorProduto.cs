@@ -70,5 +70,9 @@ namespace GestaoProduto.Dominio.Produtos
                 produto.AlterarAtivo(false);
             }
         }
+
+        public List<Produto> BuscaPorTermo(string termo) {
+            return _produtoRepositorio.BuscaPorTermo(termo);
+        }
     }
 }

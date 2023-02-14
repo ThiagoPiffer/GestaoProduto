@@ -10,6 +10,7 @@ namespace GestaoProduto.Servico.ProdutoServico
     {
         Task<List<ProdutoDto>> Get();
         Task<ProdutoDto> Get(int id);
+        Task<List<ProdutoDto>> BuscaPorTermo(string termo);
         Task<string> Add(ProdutoDto produtoDto);
         Task<ProdutoDto> Update(ProdutoDto produtoDto, int id);
         Task<string> Delete(int id);
@@ -46,7 +47,22 @@ namespace GestaoProduto.Servico.ProdutoServico
 
             return produtoDto;
         }
-        
+
+        public async Task<List<ProdutoDto>> BuscaPorTermo(string termo)
+        {
+            List<Produto> produto = _armazenadorProduto.BuscaPorTermo(termo);
+            List<ProdutoDto> listaProdutoDto = new List<ProdutoDto>();
+            foreach (var item in produto)
+            {
+                var produtoDto = _mapper.Map<ProdutoDto>(item);
+                listaProdutoDto.Add(produtoDto);
+            }
+            
+            
+
+            return listaProdutoDto;
+        }
+
         public async Task<string> Add(ProdutoDto produtoDto)
         {
             try

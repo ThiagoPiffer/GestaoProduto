@@ -15,6 +15,12 @@ namespace GestaoProduto.Dados.Repositorios
             var quantidade = Context.Set<Produto>().Where(a => a.Ativo && a.Descricao == produtoDto.Descricao && a.Id != produtoDto.Id).Count();
             return quantidade > 0 ? true : false;
         }
+
+        public List<Produto> BuscaPorTermo(string termo)
+        {
+            var produtos = Context.Set<Produto>().Where(a => a.Ativo && a.Descricao.Contains(termo)).ToList();
+            return produtos;
+        }
     }
 }
 

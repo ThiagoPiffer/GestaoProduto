@@ -8,8 +8,8 @@ namespace GestaoProduto.Dados.Mapeamento
         public ProdutoProfile()
         {
             CreateMap<Produto, ProdutoDto>()
-                .ForMember(p => p.Id, map => map.MapFrom(s => s.Id))
-                .ForMember(p => p.Ativo, map => map.MapFrom(s => s.Ativo))
+                //.ForMember(p => p.Id, map => map.MapFrom(s => s.Id))
+                //.ForMember(p => p.Ativo, map => map.MapFrom(s => s.Ativo))
                 .ReverseMap();
         }
     }
