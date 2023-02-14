@@ -1,5 +1,4 @@
-﻿using System;
-using GestaoProduto.Dominio._Base;
+﻿using GestaoProduto.Dominio._Base;
 using Xunit;
 
 namespace GestaoProduto.Teste._Util

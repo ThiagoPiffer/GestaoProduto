@@ -1,13 +1,8 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Fornecedores;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GestaoProduto.Dominio.Produtos
-{  
+{
     public class ArmazenadorProduto
     {
         private readonly IProdutoRepositorio _produtoRepositorio;        

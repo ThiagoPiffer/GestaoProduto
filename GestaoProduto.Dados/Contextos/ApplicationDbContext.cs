@@ -1,7 +1,6 @@
 ﻿using GestaoProduto.Dominio.Produtos;
 using GestaoProduto.Dominio.Fornecedores;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace GestaoProduto.Dados.Contextos
 {

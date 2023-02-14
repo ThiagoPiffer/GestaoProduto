@@ -1,17 +1,10 @@
 ﻿using Bogus;
-using Bogus.DataSets;
 using Bogus.Extensions.Brazil;
 using ExpectedObjects;
 using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Fornecedores;
 using GestaoProduto.Teste._Util;
-using GestaoProduto.Dominio.Produtos;
 using GestaoProduto.Teste._Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Moq;
 

@@ -1,18 +1,10 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Fornecedores;
 using GestaoProduto.Dominio.Produtos;
 using GestaoProduto.Teste._Builders;
-using GestaoProduto.Teste._Util;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
-using AutoMapper;
 
 namespace GestaoProduto.Teste.Produtos
 {

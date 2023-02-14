@@ -1,14 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Produtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace GestaoProduto.Dominio.Fornecedores
-{  
+{
     public class ArmazenadorFornecedor
     {
         private readonly IFornecedorRepositorio _fornecedorRepositorio;        

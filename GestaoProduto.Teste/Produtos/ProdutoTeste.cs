@@ -3,14 +3,8 @@ using GestaoProduto.Teste._Builders;
 using GestaoProduto.Dominio.Produtos;
 using ExpectedObjects;
 using GestaoProduto.Teste._Util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using GestaoProduto.Dominio._Base;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 
 namespace GestaoProduto.Teste.Produtos
 {

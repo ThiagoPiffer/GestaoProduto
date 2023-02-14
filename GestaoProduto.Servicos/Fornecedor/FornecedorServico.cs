@@ -1,9 +1,6 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Dominio.Fornecedores;
+﻿using GestaoProduto.Dominio.Fornecedores;
 using GestaoProduto.Dominio._Base;
 using AutoMapper;
-//using GestaoProduto.Dominio._Base;
-//using GestaoProduto.Dominio.Fornecedores;
 
 
 namespace GestaoProduto.Servico.FornecedorServico

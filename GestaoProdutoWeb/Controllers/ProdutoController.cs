@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Produtos;
 using GestaoProduto.Dominio._Base;
-using GestaoProduto.Web.Util;
 using GestaoProduto.Servico.ProdutoServico;
 using AutoMapper;
-using System.Net;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using GestaoProduto.Dominio.Fornecedores;
 
 namespace GestaoProduto.Web.Controllers
 {
