@@ -1,0 +1,17 @@
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dados.deps.json
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dados.dll
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dados.pdb
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.csproj.AssemblyReference.cache
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.AssemblyInfoInputs.cache
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.AssemblyInfo.cs
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.csproj.CoreCompileInputs.cache
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.dll
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\refint\GestaoProduto.Dados.dll
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.pdb
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\ref\GestaoProduto.Dados.dll
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dados.runtimeconfig.json
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dominio.dll
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net6.0\GestaoProduto.Dominio.pdb
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.csproj.CopyComplete
+C:\Users\Thiago\source\repos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net6.0\GestaoProduto.Dados.genruntimeconfig.cache
