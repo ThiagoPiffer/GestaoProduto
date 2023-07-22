@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using GestaoProduto.Dominio.Fornecedores;
-using GestaoProduto.Dominio.Produtos;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Repositorio;
 using GestaoProduto.Teste._Builders;
 using Moq;
 using Xunit;

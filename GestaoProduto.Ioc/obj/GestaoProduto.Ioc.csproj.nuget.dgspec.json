@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj": {}
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+    "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
         "projectName": "GestaoProduto.Dominio",
-        "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
         "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\obj\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Google.Apis.Core": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.13, )"
@@ -77,18 +85,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj",
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj",
         "projectName": "GestaoProduto.Dados",
-        "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj",
         "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\obj\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -105,8 +113,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
-                "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+              "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
               }
             }
           }
@@ -166,18 +174,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj": {
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
         "projectName": "GestaoProduto.Ioc",
-        "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
         "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\obj\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -194,11 +202,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
-                "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+              "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
               },
-              "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
-                "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"
+              "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"
+              },
+              "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj"
               }
             }
           }
@@ -250,7 +261,72 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
+        "projectName": "GestaoProduto.Servico",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
+        "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

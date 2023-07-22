@@ -26,7 +26,7 @@ namespace GestaoProduto.Dados.Repositorios
             return query.Any() ? query.First() : null;
         }
 
-        public virtual List<TEntidade> Consultar()
+        public virtual List<TEntidade> ObterLista()
         {
             var entidades = Context.Set<TEntidade>().ToList().Where(l => l.Ativo).ToList();
             return entidades.Any() ? entidades : new List<TEntidade>();

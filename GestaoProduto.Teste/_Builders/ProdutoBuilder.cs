@@ -1,6 +1,5 @@
 ﻿using Bogus;
-using GestaoProduto.Dominio.Produtos;
-using GestaoProduto.Dominio.Fornecedores;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Teste._Builders
 {

@@ -1,14 +1,10 @@
 using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dados.Repositorios;
 using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Fornecedores;
-using GestaoProduto.Dominio.Produtos;
-using GestaoProduto.Ioc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Hosting;
-using GestaoProduto.Servico.FornecedorServico;
-using GestaoProduto.Servico.ProdutoServico;
+using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Repositorio;
 
 namespace GestaoProduto.Web
 {
@@ -32,15 +28,17 @@ namespace GestaoProduto.Web
                 );
 
             #region Injeção de dependencia
-                builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
-                builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
-                builder.Services.AddScoped<ArmazenadorFornecedor>();
-                builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
-                builder.Services.AddScoped<ArmazenadorProduto>();
-                builder.Services.AddScoped<IFornecedorServico, FornecedorServico>();
-                builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
+            builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
+            builder.Services.AddScoped<IFornecedorServico, FornecedorServico>();
+            builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
+            builder.Services.AddScoped<ArmazenadorFornecedor>();
+            builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
+            builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            builder.Services.AddScoped<ArmazenadorProduto>();
+            builder.Services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();
+            builder.Services.AddScoped<IObjetoCustomizadoRepositorio, ObjetoCustomizadoRepositorio>();
 
-                builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             #endregion
 
             var app = builder.Build();
@@ -61,6 +59,11 @@ namespace GestaoProduto.Web
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

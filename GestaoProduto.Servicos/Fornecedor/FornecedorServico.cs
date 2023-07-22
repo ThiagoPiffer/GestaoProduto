@@ -1,20 +1,9 @@
-﻿using GestaoProduto.Dominio.Fornecedores;
-using GestaoProduto.Dominio._Base;
+﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
+using GestaoProduto.Dominio.Entity;
 
-
-namespace GestaoProduto.Servico.FornecedorServico
+namespace GestaoProduto.Servico
 {
-    public interface IFornecedorServico
-    {
-        Task<List<FornecedorDto>> Get();
-        Task<FornecedorDto> Get(int id);
-        Task<FornecedorDto> Add(FornecedorDto fornecedorDto);
-        Task<FornecedorDto> Update(FornecedorDto fornecedorDto, int id);
-        Task<string> Delete(int id);
-
-    }
-
     public class FornecedorServico : IFornecedorServico
     {
         private readonly IRepositorio<Fornecedor> _repositorio;
@@ -32,7 +21,7 @@ namespace GestaoProduto.Servico.FornecedorServico
 
         public async Task<List<FornecedorDto>> Get()
         {
-            var listaFornecedores = _repositorio.Consultar();
+            var listaFornecedores = _repositorio.ObterLista();
             var listaFornecedoresDto = _mapper.Map<List<FornecedorDto>>(listaFornecedores);
 
             return listaFornecedoresDto;

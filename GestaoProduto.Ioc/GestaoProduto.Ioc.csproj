@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
     <ProjectReference Include="..\GestaoProduto.Dados\GestaoProduto.Dados.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Servicos\GestaoProduto.Servico.csproj" />
   </ItemGroup>
 
 </Project>

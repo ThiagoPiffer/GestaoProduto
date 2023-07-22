@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "NTD7W58axRlJHEAKTUyic9jJg3PfRieJKGTL1R6U+0M=",
-  "Source": "GestaoProduto.Web",
-  "BasePath": "_content/GestaoProduto.Web",
+  "Hash": "3FGXlN0yPBxiddybUPGS56Cerpu0LPwoZ3YT2C5g1jc=",
+  "Source": "GestaoProduto.API",
+  "BasePath": "_content/GestaoProduto.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

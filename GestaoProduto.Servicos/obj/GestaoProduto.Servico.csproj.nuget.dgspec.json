@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {}
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+    "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
         "projectName": "GestaoProduto.Dominio",
-        "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
         "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\obj\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Google.Apis.Core": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.13, )"
@@ -77,18 +85,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {
+    "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
+        "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
         "projectName": "GestaoProduto.Servico",
-        "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
+        "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj",
         "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Servicos\\obj\\",
+        "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -105,8 +113,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
-                "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+              "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
               }
             }
           }
@@ -142,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

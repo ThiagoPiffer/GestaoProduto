@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "HIM5apvps0DCRTJ384VtrIdhH04QhGPheAJpBROx16E+bNIoWLjApa/PBZny4dlqldef6y8y9GyQWvWAwoO8Rg==",
+  "dgSpecHash": "AlZjqTspSi7hZClsHm67V811y267MNG5TZmr4KY6n5cYZXjhLGA0ob2AC3CtI+M+DC1sQyKSlOc6uitVKD0RMA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
+  "projectFilePath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Thiago\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
@@ -33,6 +35,7 @@
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

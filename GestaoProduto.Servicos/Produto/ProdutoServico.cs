@@ -1,22 +1,9 @@
-﻿using GestaoProduto.Dominio.Produtos;
-using GestaoProduto.Dominio._Base;
+﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
-using System;
+using GestaoProduto.Dominio.Entity;
 
-
-namespace GestaoProduto.Servico.ProdutoServico
+namespace GestaoProduto.Servico
 {
-    public interface IProdutoServico
-    {
-        Task<List<ProdutoDto>> Get();
-        Task<ProdutoDto> Get(int id);
-        Task<List<ProdutoDto>> BuscaPorTermo(string termo);
-        Task<string> Add(ProdutoDto produtoDto);
-        Task<ProdutoDto> Update(ProdutoDto produtoDto, int id);
-        Task<string> Delete(int id);
-
-    }
-
     public class ProdutoServico : IProdutoServico
     {
         private readonly IRepositorio<Produto> _repositorio;
@@ -34,7 +21,7 @@ namespace GestaoProduto.Servico.ProdutoServico
 
         public async Task<List<ProdutoDto>> Get()
         {
-            var listaProdutos = _repositorio.Consultar();
+            var listaProdutos = _repositorio.ObterLista();
             var listaProdutosDto = _mapper.Map<List<ProdutoDto>>(listaProdutos);
 
             return listaProdutosDto;

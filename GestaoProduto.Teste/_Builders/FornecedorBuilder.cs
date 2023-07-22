@@ -1,6 +1,6 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using GestaoProduto.Dominio.Fornecedores;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Teste._Builders
 {

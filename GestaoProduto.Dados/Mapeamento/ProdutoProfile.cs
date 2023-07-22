@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using GestaoProduto.Dominio.Produtos;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Dados.Mapeamento
 {

@@ -4,7 +4,9 @@ using GestaoProduto.Dados.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using GestaoProduto.Dominio.Fornecedores;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Repositorio;
 
 namespace GestaoProduto.Ioc
 {
@@ -23,6 +25,8 @@ namespace GestaoProduto.Ioc
             services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
             services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
             services.AddScoped<ArmazenadorFornecedor>();
+
+            services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();                                                          
             #endregion
 
         }

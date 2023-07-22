@@ -1,5 +1,6 @@
 ﻿using GestaoProduto.Dados.Contextos;
-using GestaoProduto.Dominio.Fornecedores;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Repositorio;
 
 namespace GestaoProduto.Dados.Repositorios
 {

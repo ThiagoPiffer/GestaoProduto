@@ -31,6 +31,22 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "Google.Apis.Core/1.60.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Google.Apis.Core.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Hosting/2.2.7": {
         "type": "package",
         "dependencies": {
@@ -787,6 +803,19 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
@@ -1121,6 +1150,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Google.Apis.Core": "1.60.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
           "Microsoft.EntityFrameworkCore": "6.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.13"
         },
@@ -1129,6 +1160,20 @@
         },
         "runtime": {
           "bin/placeholder/GestaoProduto.Dominio.dll": {}
+        }
+      },
+      "GestaoProduto.Servico/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "GestaoProduto.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GestaoProduto.Servico.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GestaoProduto.Servico.dll": {}
         }
       }
     }
@@ -1161,6 +1206,28 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "Google.Apis.Core/1.60.0": {
+      "sha512": "NOkjqMQblYEZXt2OEgshWayveYW11Pi+Uz0I30Kzl9BvL4TZLJzMqtiu1EdV8XkyyjGuAUgANdi4BOqRDlbVEw==",
+      "type": "package",
+      "path": "google.apis.core/1.60.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "NuGetIcon.png",
+        "google.apis.core.1.60.0.nupkg.sha512",
+        "google.apis.core.nuspec",
+        "lib/net45/Google.Apis.Core.dll",
+        "lib/net45/Google.Apis.Core.pdb",
+        "lib/net45/Google.Apis.Core.xml",
+        "lib/netstandard1.3/Google.Apis.Core.dll",
+        "lib/netstandard1.3/Google.Apis.Core.pdb",
+        "lib/netstandard1.3/Google.Apis.Core.xml",
+        "lib/netstandard2.0/Google.Apis.Core.dll",
+        "lib/netstandard2.0/Google.Apis.Core.pdb",
+        "lib/netstandard2.0/Google.Apis.Core.xml"
       ]
     },
     "Microsoft.AspNetCore.Hosting/2.2.7": {
@@ -2081,6 +2148,36 @@
         "version.txt"
       ]
     },
+    "Newtonsoft.Json/13.0.2": {
+      "sha512": "R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.2.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "System.Buffers/4.5.0": {
       "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
       "type": "package",
@@ -2643,12 +2740,18 @@
       "type": "project",
       "path": "../GestaoGrupo.Dominio/GestaoProduto.Dominio.csproj",
       "msbuildProject": "../GestaoGrupo.Dominio/GestaoProduto.Dominio.csproj"
+    },
+    "GestaoProduto.Servico/1.0.0": {
+      "type": "project",
+      "path": "../GestaoProduto.Servicos/GestaoProduto.Servico.csproj",
+      "msbuildProject": "../GestaoProduto.Servicos/GestaoProduto.Servico.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "GestaoProduto.Dados >= 1.0.0",
       "GestaoProduto.Dominio >= 1.0.0",
+      "GestaoProduto.Servico >= 1.0.0",
       "Microsoft.AspNetCore.Hosting >= 2.2.7",
       "Microsoft.EntityFrameworkCore.Analyzers >= 6.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.13",
@@ -2662,11 +2765,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
+      "projectUniqueName": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
       "projectName": "GestaoProduto.Ioc",
-      "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
+      "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
       "packagesPath": "C:\\Users\\Thiago\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\obj\\",
+      "outputPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Thiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2683,11 +2786,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
-              "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+            "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
+              "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
             },
-            "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
-              "projectPath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"
+            "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
+              "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"
+            },
+            "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj": {
+              "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Servicos\\GestaoProduto.Servico.csproj"
             }
           }
         }
@@ -2739,7 +2845,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "u7UzC9MIGuix9/9vc/oXmCWGNeBOVduf4ESMwpvq81D8INQ5PxsUP29zwM0zs2qqy+XW5kQII1pIIZYExUI+xg==",
+  "dgSpecHash": "pFCXTXq3+cNbqCvMp8bnAY4StSUihS3tSu9xyzv6W3ySHYWs5B//lfC2cK8q/7vc+GTe6l+0F0dSjEN0/Jlt5g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Thiago\\source\\repos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
+  "projectFilePath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Ioc\\GestaoProduto.Ioc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thiago\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.hosting\\2.2.7\\microsoft.aspnetcore.hosting.2.2.7.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
@@ -49,6 +50,7 @@
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Dominio.Fornecedores;
-using GestaoProduto.Servico.FornecedorServico;
-
+using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Web.Controllers
 {

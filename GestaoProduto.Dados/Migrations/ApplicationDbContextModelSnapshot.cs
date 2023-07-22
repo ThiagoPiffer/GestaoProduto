@@ -46,6 +46,41 @@ namespace GestaoProduto.Dados.Migrations
                     b.ToTable("Fornecedores");
                 });
 
+            modelBuilder.Entity("GestaoProduto.Dominio.ObjetoCustomizado.ObjetoCustomizado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Anotacao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Arquivo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DataCadastro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ObjetosCustomizados");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Produtos.Produto", b =>
                 {
                     b.Property<int>("Id")

@@ -1,6 +1,5 @@
-﻿using GestaoProduto.Dominio.Produtos;
-using GestaoProduto.Dominio.Fornecedores;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Dados.Contextos
 {
@@ -13,6 +12,7 @@ namespace GestaoProduto.Dados.Contextos
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<ObjetoCustomizado> ObjetosCustomizados { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

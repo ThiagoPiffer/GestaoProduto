@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Dominio.Produtos;
 using GestaoProduto.Dominio._Base;
-using GestaoProduto.Servico.ProdutoServico;
+using GestaoProduto.Servico;
 using AutoMapper;
+using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoController : ControllerBase
-    {
-        private readonly IRepositorio<Produto> _repositorio;
+    {        
         private readonly ArmazenadorProduto _armazenadorProduto;
         private readonly IMapper _mapper;
         private readonly IProdutoServico _produtoServico;
@@ -19,8 +18,7 @@ namespace GestaoProduto.Web.Controllers
                                     ArmazenadorProduto armazenadorProduto,
                                     IProdutoServico produtoServico,
                                     IMapper mapper)
-        {
-            _repositorio = repositorio;
+        {            
             _armazenadorProduto = armazenadorProduto;
             _mapper = mapper;
             _produtoServico = produtoServico;

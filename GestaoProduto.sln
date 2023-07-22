@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProduto.Ioc", "Gestao
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProduto.Dados", "GestaoProduto.Dados\GestaoProduto.Dados.csproj", "{FE893738-F584-44DF-B38B-1C6E8C985AC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProduto.Web", "GestaoProdutoWeb\GestaoProduto.Web.csproj", "{5DA52A1C-C339-4841-8D7B-2DB331EDAC5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProduto.API", "GestaoProdutoWeb\GestaoProduto.API.csproj", "{5DA52A1C-C339-4841-8D7B-2DB331EDAC5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestaoProduto.Servico", "GestaoProduto.Servicos\GestaoProduto.Servico.csproj", "{312739F4-F5EC-4371-A974-0A911D40A95A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestaoProduto.Servico", "GestaoProduto.Servicos\GestaoProduto.Servico.csproj", "{312739F4-F5EC-4371-A974-0A911D40A95A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

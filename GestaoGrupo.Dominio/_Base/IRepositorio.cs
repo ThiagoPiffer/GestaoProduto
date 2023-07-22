@@ -5,7 +5,7 @@ namespace GestaoProduto.Dominio._Base
     public interface IRepositorio<TEntidade>
     {
         TEntidade ObterPorId(int id);
-        List<TEntidade> Consultar();
+        List<TEntidade> ObterLista();
         void Adicionar(TEntidade entity);
     }
 }
