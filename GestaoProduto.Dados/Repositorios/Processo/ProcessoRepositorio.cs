@@ -4,7 +4,7 @@ using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
 
 namespace GestaoProduto.Dados.Repositorios
-{    
+{
     public class ProcessoRepositorio : RepositorioBase<Processo>, IProcessoRepositorio
     {
         public ProcessoRepositorio(ApplicationDbContext context) : base(context)
@@ -20,8 +20,18 @@ namespace GestaoProduto.Dados.Repositorios
 
         public void Armazenar(Processo processo)
         {
-            var obj = Context.Set<Processo>().Where(o => o.Id == processo.Id).First();
-            Context.Add(obj);
+            Context.Add(processo);
+        }
+
+        public void Update(Processo processo)
+        {
+            Context.Update(processo);
+        }
+
+        public void Delete(int id) 
+        {
+            var processo = this.ObterPorId(id);
+            Context.Remove(processo);
         }
 
     }

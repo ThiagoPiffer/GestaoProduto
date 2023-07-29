@@ -7,5 +7,8 @@ namespace GestaoProduto.Dominio.Repositorio
     {
         List<Processo> BuscaPorTermo(string termo);
         void Armazenar(Processo processo);
+        void Update(Processo processo);
+
+        void Delete(int id);
     }
 }

@@ -2,40 +2,39 @@
 
 namespace GestaoProduto.Dominio.Entity
 {
-    public class Processo : Entidade
+    public class ProcessoDto 
     {
-        public Processo() { }
-
-        //public int Id { get; set; }
-        public string Numero { get; set; }
-        public string Descricao { get; set; }
+        public int Id { get; set; }
+        public string Numero { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
         public DateTime DataCadastro { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataPrevista { get; set; }
         public DateTime DataFinal { get; set; }        
-        public Double ValorCausa { get; set; }
+        public int ValorCausa { get; set; }
+        public Boolean Ativo { get; set; }
 
 
 
         // incluir pessoas: Uma breve descrição do caso e dos problemas legais envolvidos.
         // incluir advogados: envolvidos Os advogados que estão representando as partes no processo.
         //incluir Fases do processo: 
-            /*
-                string[] fasesDoProcesso = {
-                "Fase de Consulta/Análise do Caso",
-                "Fase de Pré-Processual (ou Pré-Contenciosa)",
-                "Protocolo da Petição Inicial",
-                "Citação e Intimação",
-                "Contestação",
-                "Fase de Instrução",
-                "Audiências",
-                "Alegações Finais",
-                "Sentença",
-                "Recursos",
-                "Execução de Sentença",
-                "Arquivamento"
-            };
-            */
+        /*
+            string[] fasesDoProcesso = {
+            "Fase de Consulta/Análise do Caso",
+            "Fase de Pré-Processual (ou Pré-Contenciosa)",
+            "Protocolo da Petição Inicial",
+            "Citação e Intimação",
+            "Contestação",
+            "Fase de Instrução",
+            "Audiências",
+            "Alegações Finais",
+            "Sentença",
+            "Recursos",
+            "Execução de Sentença",
+            "Arquivamento"
+        };
+        */
 
         // incluir Andamentos: Um registro do andamento do processo, com datas e descrições das movimentações.
         // incluir Decisões: Registro das decisões tomadas durante o processo.

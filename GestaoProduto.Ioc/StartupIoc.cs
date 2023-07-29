@@ -26,7 +26,9 @@ namespace GestaoProduto.Ioc
             services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
             services.AddScoped<ArmazenadorFornecedor>();
 
-            services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();                                                          
+            services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();
+
+            services.AddScoped<IProcessoServico, ProcessoServico>();
             #endregion
 
         }

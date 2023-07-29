@@ -2,26 +2,30 @@
 using AutoMapper;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
+using System.Diagnostics;
 
 namespace GestaoProduto.Servico
 {
     public class ProcessoServico : IProcessoServico
     {
         private readonly IRepositorio<Processo> _repositorio;
-        private readonly IProcessoRepositorio _processoRepositorio;        
+        private readonly IProcessoRepositorio _processoRepositorio;
+        private readonly IMapper _mapper;
 
         public ProcessoServico(IRepositorio<Processo> repositorio,
-                                        IProcessoRepositorio processoRepositorio)
+                                        IProcessoRepositorio processoRepositorio,
+                                        IMapper mapper)
         {
             _repositorio = repositorio;
-            _processoRepositorio = processoRepositorio;            
+            _processoRepositorio = processoRepositorio;
+            _mapper = mapper;
         }
 
         public async Task<List<Processo>> Get()
         {
             var listaProcessos = _repositorio.ObterLista();
-
-            return null;
+            var x = _mapper.Map<List<Processo>>(listaProcessos);
+            return listaProcessos;
         }
 
         public async Task<Processo> Get(int id)
@@ -38,12 +42,14 @@ namespace GestaoProduto.Servico
             return processos;
         }
 
-        public async Task<string> Add(Processo processo)
+        public async Task<string> Add(ProcessoDto processoDto)
         {
             try
             {
+                var processo = _mapper.Map<Processo>(processoDto);
                 _processoRepositorio.Armazenar(processo);
-                return "Processo Salvo";
+
+                return "OK";
             }
             catch (ExcecaoDeDominio ex)
             {
@@ -51,11 +57,13 @@ namespace GestaoProduto.Servico
             }
         }
 
-        public async Task<Processo> Update(Processo processo, int id)
+        public async Task<Processo> Update(ProcessoDto processoDto)
         {
             try
             {
-                //_processoRepositorio.Editar(processo);
+                var processo = _mapper.Map<Processo>(processoDto);
+                _processoRepositorio.Update(processo);
+
                 return processo;
             }
             catch (ExcecaoDeDominio ex)
@@ -67,8 +75,7 @@ namespace GestaoProduto.Servico
         {
             try
             {
-                var processo = _repositorio.ObterPorId(id);
-                //_processoRepositorio.Deletar(processo);
+                _processoRepositorio.Delete(id);
 
                 return "Excluído com sucesso";
             }

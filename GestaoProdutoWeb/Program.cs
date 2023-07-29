@@ -29,14 +29,20 @@ namespace GestaoProduto.Web
 
             #region Injeção de dependencia
             builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
+
             builder.Services.AddScoped<IFornecedorServico, FornecedorServico>();
             builder.Services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
             builder.Services.AddScoped<ArmazenadorFornecedor>();
+
             builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
             builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             builder.Services.AddScoped<ArmazenadorProduto>();
+
             builder.Services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();
             builder.Services.AddScoped<IObjetoCustomizadoRepositorio, ObjetoCustomizadoRepositorio>();
+
+            builder.Services.AddScoped<IProcessoServico, ProcessoServico>();
+            builder.Services.AddScoped<IProcessoRepositorio, ProcessoRepositorio>();
 
             builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             #endregion
