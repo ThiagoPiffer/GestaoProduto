@@ -2,6 +2,7 @@
 using AutoMapper;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Servico;
 
 
 namespace GestaoProduto.Servico
@@ -23,7 +24,7 @@ namespace GestaoProduto.Servico
 
         public async Task<List<ObjetoCustomizadoDTO>> Get()
         {
-            var listaObjetosCustomizados = _repositorio.ObterLista();
+            var listaObjetosCustomizados = _repositorio.ObterListaAsync();
             //var listaObjetosCustomizadosDto = _mapper.Map<List<ObjetoCustomizadoDTO>>(listaObjetosCustomizados);
 
             //return listaObjetosCustomizadosDto;
@@ -32,7 +33,7 @@ namespace GestaoProduto.Servico
 
         public async Task<ObjetoCustomizadoDTO> Get(int id)
         {
-            var produto = _repositorio.ObterPorId(id);
+            var produto = _repositorio.ObterPorIdAsync(id);
             var produtoDto = _mapper.Map<ObjetoCustomizadoDTO>(produto);
 
             return produtoDto;
@@ -82,7 +83,7 @@ namespace GestaoProduto.Servico
         {
             try
             {
-                var produto = _repositorio.ObterPorId(id);
+                var produto = _repositorio.ObterPorIdAsync(id);
                 var produtoDto = _mapper.Map<ObjetoCustomizadoDTO>(produto);
                 //_armazenadorObjetoCustomizado.Deletar(produtoDto);
 

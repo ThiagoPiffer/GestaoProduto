@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using GestaoProduto.Servico;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Servico;
+
 
 namespace GestaoProduto.Web
 {
@@ -43,6 +45,12 @@ namespace GestaoProduto.Web
 
             builder.Services.AddScoped<IProcessoServico, ProcessoServico>();
             builder.Services.AddScoped<IProcessoRepositorio, ProcessoRepositorio>();
+
+            builder.Services.AddScoped<IGrupoProcessoServico, GrupoProcessoServico>();
+            builder.Services.AddScoped<IGrupoProcessoRepositorio, GrupoProcessoRepositorio>();
+
+
+
 
             builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
             #endregion

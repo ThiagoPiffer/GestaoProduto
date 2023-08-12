@@ -14,6 +14,8 @@ namespace GestaoProduto.Dados.Contextos
         public DbSet<Fornecedor> Fornecedores { get; set; }
         public DbSet<ObjetoCustomizado> ObjetosCustomizados { get; set; }
         public DbSet<Processo> Processos { get; set; }
+        public DbSet<GrupoProcesso> GrupoProcessos { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,7 +25,17 @@ namespace GestaoProduto.Dados.Contextos
                 {
                     property.SetColumnType("datetime");
                 }
+
+                if (property.ClrType == typeof(DateTime?))
+                {
+                    property.SetColumnType("datetime");
+                }
             }
+
+            modelBuilder.Entity<Processo>()
+            .HasOne(p => p.GrupoProcesso)
+            .WithMany()
+            .HasForeignKey(p => p.GrupoProcessoId);
 
             base.OnModelCreating(modelBuilder);
         }

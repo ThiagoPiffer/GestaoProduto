@@ -58,3 +58,5 @@ H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net6.0\GestaoProduto.
 H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net6.0\refint\GestaoProduto.Servico.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net6.0\GestaoProduto.Servico.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net6.0\ref\GestaoProduto.Servico.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net6.0\GestaoProduto.Dados.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net6.0\GestaoProduto.Dados.pdb

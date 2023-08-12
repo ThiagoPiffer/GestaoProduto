@@ -2,7 +2,8 @@
 using AutoMapper;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
-using System.Diagnostics;
+using GestaoProduto.Dominio.Servico;
+using GestaoProduto.Dominio.Model;
 
 namespace GestaoProduto.Servico
 {
@@ -21,48 +22,32 @@ namespace GestaoProduto.Servico
             _mapper = mapper;
         }
 
-        public async Task<List<Processo>> Get()
+        public async Task<List<Processo>> Listar()
         {
-            var listaProcessos = _repositorio.ObterLista();
+            var listaProcessos = await _repositorio.ObterListaAsync();
             var x = _mapper.Map<List<Processo>>(listaProcessos);
             return listaProcessos;
         }
 
-        public async Task<Processo> Get(int id)
+        public async Task<Processo> ObterPorId(int id)
         {
-            var processo = _repositorio.ObterPorId(id);
+            var processo = await _repositorio.ObterPorIdAsync(id);
             
-
             return processo;
         }
 
         public async Task<List<Processo>> BuscaPorTermo(string termo)
         {
-            List<Processo> processos = _processoRepositorio.BuscaPorTermo(termo);            
+            List<Processo> processos = await _processoRepositorio.BuscaPorTermo(termo);            
             return processos;
         }
 
-        public async Task<string> Add(ProcessoDto processoDto)
+        public async Task<Processo> Adicionar(ProcessoModel processoDto)
         {
             try
             {
-                var processo = _mapper.Map<Processo>(processoDto);
-                _processoRepositorio.Armazenar(processo);
-
-                return "OK";
-            }
-            catch (ExcecaoDeDominio ex)
-            {
-                throw new Exception(ex.MensagensDeErro.First());
-            }
-        }
-
-        public async Task<Processo> Update(ProcessoDto processoDto)
-        {
-            try
-            {
-                var processo = _mapper.Map<Processo>(processoDto);
-                _processoRepositorio.Update(processo);
+                var processo = _mapper.Map<Processo>(processoDto);                
+                await _processoRepositorio.AdicionarAsync(processo);
 
                 return processo;
             }
@@ -71,11 +56,43 @@ namespace GestaoProduto.Servico
                 throw new Exception(ex.MensagensDeErro.First());
             }
         }
+
+        public async Task<Processo> Editar(ProcessoModel processoDto)
+        {
+            try
+            {
+                var processo = _mapper.Map<Processo>(processoDto);
+                await _processoRepositorio.EditarAsync(processo);
+
+                return processo;
+            }
+            catch (ExcecaoDeDominio ex)
+            {
+                throw new Exception(ex.MensagensDeErro.First());
+            }
+        }
+
+        public async Task<Processo> EditarDto(ProcessoDto processoDto)
+        {
+            try
+            {
+                var processo = _mapper.Map<Processo>(processoDto);
+                await _processoRepositorio.EditarAsync(processo);
+
+                return processo;
+            }
+            catch (ExcecaoDeDominio ex)
+            {
+                throw new Exception(ex.MensagensDeErro.First());
+            }
+        }
+
         public async Task<string> Delete(int id)
         {
             try
             {
-                _processoRepositorio.Delete(id);
+                var obj = await _repositorio.ObterPorIdAsync(id);
+                await _repositorio.ExcluirAsync(obj);
 
                 return "Excluído com sucesso";
             }

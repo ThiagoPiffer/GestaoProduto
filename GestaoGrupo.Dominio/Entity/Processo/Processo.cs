@@ -8,18 +8,21 @@ namespace GestaoProduto.Dominio.Entity
 
         //public int Id { get; set; }
         public string Numero { get; set; }
-        public string Descricao { get; set; }
-        public DateTime DataCadastro { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataPrevista { get; set; }
-        public DateTime DataFinal { get; set; }        
-        public Double ValorCausa { get; set; }
+        public string? Descricao { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataInicio { get; set; }
+        public DateTime? DataPrevista { get; set; }
+        public DateTime? DataFinal { get; set; }
+        [DecimalPrecision(16, 2)]
+        public Double? ValorCausa { get; set; }
+        public int GrupoProcessoId { get; set; }
+        public GrupoProcesso GrupoProcesso { get; set; }
 
 
 
         // incluir pessoas: Uma breve descrição do caso e dos problemas legais envolvidos.
         // incluir advogados: envolvidos Os advogados que estão representando as partes no processo.
-        //incluir Fases do processo: 
+        // incluir Fases do processo: 
             /*
                 string[] fasesDoProcesso = {
                 "Fase de Consulta/Análise do Caso",

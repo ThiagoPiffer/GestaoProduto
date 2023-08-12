@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio._Base;
-using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Servico;
 using AutoMapper;
 using GestaoProduto.Dominio.Entity;
 

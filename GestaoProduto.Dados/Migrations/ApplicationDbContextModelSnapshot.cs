@@ -46,6 +46,29 @@ namespace GestaoProduto.Dados.Migrations
                     b.ToTable("Fornecedores");
                 });
 
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.GrupoProcesso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Posicao")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GrupoProcessos");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Entity.ObjetoCustomizado", b =>
                 {
                     b.Property<int>("Id")
@@ -92,30 +115,34 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("DataCadastro")
+                    b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("DataFinal")
+                    b.Property<DateTime?>("DataFinal")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("DataInicio")
+                    b.Property<DateTime?>("DataInicio")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("DataPrevista")
+                    b.Property<DateTime?>("DataPrevista")
                         .HasColumnType("datetime");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GrupoProcessoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Numero")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("ValorCausa")
+                    b.Property<double?>("ValorCausa")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GrupoProcessoId");
 
                     b.ToTable("Processos");
                 });
@@ -149,6 +176,17 @@ namespace GestaoProduto.Dados.Migrations
                     b.HasIndex("FornecedorId");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.Processo", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity.GrupoProcesso", "GrupoProcesso")
+                        .WithMany()
+                        .HasForeignKey("GrupoProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("GrupoProcesso");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity.Produto", b =>

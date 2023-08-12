@@ -4,8 +4,11 @@ namespace GestaoProduto.Dominio._Base
 {
     public interface IRepositorio<TEntidade>
     {
-        TEntidade ObterPorId(int id);
-        List<TEntidade> ObterLista();
-        void Adicionar(TEntidade entity);
+        Task<TEntidade> ObterPorIdAsync(int id);
+        Task<List<TEntidade>> ObterListaAsync();
+        Task<TEntidade> AdicionarAsync(TEntidade entity);
+        Task<TEntidade> EditarAsync(TEntidade entity);
+        Task ExcluirAsync(TEntidade entity);
+
     }
 }

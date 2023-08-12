@@ -1,6 +1,6 @@
 ﻿using GestaoProduto.Dominio.Entity;
 
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Dominio.Servico
 {
     public interface IObjetoCustomizadoServico
     {

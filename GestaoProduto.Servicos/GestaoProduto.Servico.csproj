@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Dados\GestaoProduto.Dados.csproj" />
   </ItemGroup>
 
 </Project>

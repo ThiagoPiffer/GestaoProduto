@@ -744,6 +744,7 @@
       "GestaoProduto.Servico/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "GestaoProduto.Dados": "1.0.0",
           "GestaoProduto.Dominio": "1.0.0"
         },
         "runtime": {

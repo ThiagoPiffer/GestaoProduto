@@ -1,14 +1,14 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Model;
 
 namespace GestaoProduto.Dominio.Repositorio
 {    
     public interface IProcessoRepositorio : IRepositorio<Processo>
     {
-        List<Processo> BuscaPorTermo(string termo);
-        void Armazenar(Processo processo);
+        Task<List<Processo>> BuscaPorTermo(string termo);
+        Task Armazenar(Processo processo);  
         void Update(Processo processo);
-
-        void Delete(int id);
+        Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel();
     }
 }

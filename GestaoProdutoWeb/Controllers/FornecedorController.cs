@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Servico;
 using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Web.Controllers

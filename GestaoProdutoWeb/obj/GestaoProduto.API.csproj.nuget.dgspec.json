@@ -291,6 +291,9 @@
             "projectReferences": {
               "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
                 "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+              },
+              "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
+                "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"
               }
             }
           }

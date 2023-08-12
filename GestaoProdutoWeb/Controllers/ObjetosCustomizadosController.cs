@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Servico;
+using GestaoProduto.Dominio.Servico;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers

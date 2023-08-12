@@ -23,13 +23,13 @@ namespace GestaoProduto.Dominio.Entity
             if (fornecedorDto.Id == 0)
             {
                 var fornecedor = new Fornecedor(fornecedorDto.Descricao, fornecedorDto.CNPJ, fornecedorDto.Ativo);
-                _fornecedorRepositorio.Adicionar(fornecedor);
+                _fornecedorRepositorio.AdicionarAsync(fornecedor);
             }
             else
             {
-                var fornecedor = _fornecedorRepositorio.ObterPorId(fornecedorDto.Id);
-                fornecedor.Descricao = fornecedorDto.Descricao;
-                fornecedor.CNPJ = Fornecedor.CNPJValido(fornecedorDto.CNPJ) ? fornecedorDto.CNPJ : fornecedor.CNPJ;
+                var fornecedor = _fornecedorRepositorio.ObterPorIdAsync(fornecedorDto.Id);
+                //fornecedor.Descricao = fornecedorDto.Descricao;
+                //fornecedor.CNPJ = Fornecedor.CNPJValido(fornecedorDto.CNPJ) ? fornecedorDto.CNPJ : fornecedor.CNPJ;
             }
         }
 
@@ -41,10 +41,10 @@ namespace GestaoProduto.Dominio.Entity
 
             if (fornecedorDto.Id != 0)
             {
-                var fornecedor = _fornecedorRepositorio.ObterPorId(fornecedorDto.Id);
-                fornecedor.Descricao = fornecedorDto.Descricao;
-                fornecedor.AlterarCNPJ(fornecedorDto.CNPJ);
-                fornecedor.AlterarAtivo(fornecedorDto.Ativo);
+                var fornecedor = _fornecedorRepositorio.ObterPorIdAsync(fornecedorDto.Id);
+                //fornecedor.Descricao = fornecedorDto.Descricao;
+                //fornecedor.AlterarCNPJ(fornecedorDto.CNPJ);
+                //fornecedor.AlterarAtivo(fornecedorDto.Ativo);
             }
         }
 
@@ -52,8 +52,8 @@ namespace GestaoProduto.Dominio.Entity
         {
             if (fornecedorDto.Id != 0)
             {
-                var fornecedor = _fornecedorRepositorio.ObterPorId(fornecedorDto.Id);
-                fornecedor.AlterarAtivo(false);
+                var fornecedor = _fornecedorRepositorio.ObterPorIdAsync(fornecedorDto.Id);
+                //fornecedor.AlterarAtivo(false);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
 using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Servico;
 
 namespace GestaoProduto.Servico
 {
@@ -21,7 +22,7 @@ namespace GestaoProduto.Servico
 
         public async Task<List<FornecedorDto>> Get()
         {
-            var listaFornecedores = _repositorio.ObterLista();
+            var listaFornecedores = _repositorio.ObterListaAsync();
             var listaFornecedoresDto = _mapper.Map<List<FornecedorDto>>(listaFornecedores);
 
             return listaFornecedoresDto;
@@ -31,7 +32,7 @@ namespace GestaoProduto.Servico
         {
             try
             {
-                var fornecedor = _repositorio.ObterPorId(id);
+                var fornecedor = _repositorio.ObterPorIdAsync(id);
                 var fornecedorDto = _mapper.Map<FornecedorDto>(fornecedor);
 
                 return fornecedorDto;
@@ -73,7 +74,7 @@ namespace GestaoProduto.Servico
         {
             try
             {
-                var fornecedor = _repositorio.ObterPorId(id);
+                var fornecedor = _repositorio.ObterPorIdAsync(id);
                 var fornecedorDto = _mapper.Map<FornecedorDto>(fornecedor);
                 _armazenadorFornecedor.Deletar(fornecedorDto);
 

@@ -31,34 +31,34 @@ namespace GestaoProduto.Dominio.Entity
                 var fornecedor = _fornecedorRepositorio.ObterPeloCNPJ(produtoDto.Fornecedor.CNPJ);
 
                 var produto = new Produto(produtoDto.Descricao, produtoDto.DataFabricacao, produtoDto.DataValidade, fornecedor, produtoDto.Ativo);
-                _produtoRepositorio.Adicionar(produto);
+                _produtoRepositorio.AdicionarAsync(produto);
             }
             else
             {
-                var produto = _produtoRepositorio.ObterPorId(produtoDto.Id);
-                produto.AlterarDescricao(produtoDto.Descricao);
-                produto.AlterarDataFabricacao(produtoDto.DataFabricacao);
-                produto.AlterarDataValidade(produtoDto.DataValidade);
-                produto.AlterarFornecedor(produto.Fornecedor);
+                var produto = _produtoRepositorio.ObterPorIdAsync(produtoDto.Id);
+                //produto.AlterarDescricao(produtoDto.Descricao);
+                //produto.AlterarDataFabricacao(produtoDto.DataFabricacao);
+                //produto.AlterarDataValidade(produtoDto.DataValidade);
+                //produto.AlterarFornecedor(produto.Fornecedor);
             }
         }
 
         public void Editar(ProdutoDto produtoDto)
         {
-            ValidadorDeRegra.Novo()
-                .Quando(_produtoRepositorio.ObterLista().Where(p => p.Ativo && p.Descricao == produtoDto.Descricao && p.Id != produtoDto.Id).Count() > 0, ChaveTextos.ProdutoJaCadastrado)
-                .Quando(_fornecedorRepositorio.ObterLista().Where(f => f.Ativo && f.CNPJ == produtoDto.Fornecedor.CNPJ).Count() == 0, ChaveTextos.CNPJInexistente)
-                .Quando(produtoDto.DataFabricacao >= produtoDto.DataValidade, ChaveTextos.DataFabricacaoMaiorQueDataValidade)
-                .DispararExcecaoSeExistir();
+            //ValidadorDeRegra.Novo()
+            //    .Quando(_produtoRepositorio.ObterLista().Where(p => p.Ativo && p.Descricao == produtoDto.Descricao && p.Id != produtoDto.Id).Count() > 0, ChaveTextos.ProdutoJaCadastrado)
+            //    .Quando(_fornecedorRepositorio.ObterLista().Where(f => f.Ativo && f.CNPJ == produtoDto.Fornecedor.CNPJ).Count() == 0, ChaveTextos.CNPJInexistente)
+            //    .Quando(produtoDto.DataFabricacao >= produtoDto.DataValidade, ChaveTextos.DataFabricacaoMaiorQueDataValidade)
+            //    .DispararExcecaoSeExistir();
 
             if (produtoDto.Id != 0)
             {
-                var produto = _produtoRepositorio.ObterPorId(produtoDto.Id);
+                var produto = _produtoRepositorio.ObterPorIdAsync(produtoDto.Id);
                 var fornecedor = _fornecedorRepositorio.ObterPeloCNPJ(produtoDto.Fornecedor.CNPJ);
-                produto.AlterarDescricao(produtoDto.Descricao);
-                produto.AlterarDataFabricacao(produtoDto.DataFabricacao);
-                produto.AlterarDataValidade(produtoDto.DataValidade);
-                produto.AlterarFornecedor(fornecedor);
+                //produto.AlterarDescricao(produtoDto.Descricao);
+                //produto.AlterarDataFabricacao(produtoDto.DataFabricacao);
+                //produto.AlterarDataValidade(produtoDto.DataValidade);
+                //produto.AlterarFornecedor(fornecedor);
             }
         }
 
@@ -66,8 +66,8 @@ namespace GestaoProduto.Dominio.Entity
         {
             if (produtoDto.Id != 0)
             {
-                var produto = _produtoRepositorio.ObterPorId(produtoDto.Id);
-                produto.AlterarAtivo(false);
+                var produto = _produtoRepositorio.ObterPorIdAsync(produtoDto.Id);
+                //produto.AlterarAtivo(false);
             }
         }
 

@@ -58,8 +58,8 @@ namespace GestaoProduto.Dominio.Entity
         {
             if (pessoaDto.Id != 0)
             {
-                var pessoa = _pessoaRepositorio.ObterPorId(pessoaDto.Id);
-                pessoa.Ativo = false;
+                var pessoa = _pessoaRepositorio.ObterPorIdAsync(pessoaDto.Id);
+                //pessoa.Ativo = false;
             }
         }
     }

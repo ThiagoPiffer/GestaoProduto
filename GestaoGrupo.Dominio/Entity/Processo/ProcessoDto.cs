@@ -7,11 +7,11 @@ namespace GestaoProduto.Dominio.Entity
         public int Id { get; set; }
         public string Numero { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;
-        public DateTime DataCadastro { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataPrevista { get; set; }
-        public DateTime DataFinal { get; set; }        
-        public int ValorCausa { get; set; }
+        public string DataCadastro { get; set; } = string.Empty;
+        public string DataInicio { get; set; } = string.Empty;
+        public string DataPrevista { get; set; } = string.Empty;
+        public string DataFinal { get; set; } = string.Empty;        
+        public double ValorCausa { get; set; }
         public Boolean Ativo { get; set; }
 
 

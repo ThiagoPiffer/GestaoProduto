@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Servico;
 using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Servico;
+
 
 namespace GestaoProduto.Ioc
 {
@@ -29,6 +31,9 @@ namespace GestaoProduto.Ioc
             services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();
 
             services.AddScoped<IProcessoServico, ProcessoServico>();
+            services.AddScoped<IGrupoProcessoServico, GrupoProcessoServico>();
+
+            
             #endregion
 
         }
