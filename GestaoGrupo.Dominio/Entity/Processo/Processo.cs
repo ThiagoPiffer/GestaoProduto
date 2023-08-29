@@ -5,11 +5,9 @@ namespace GestaoProduto.Dominio.Entity
     public class Processo : Entidade
     {
         public Processo() { }
-
-        //public int Id { get; set; }
+        
         public string Numero { get; set; }
         public string? Descricao { get; set; }
-        public DateTime? DataCadastro { get; set; }
         public DateTime? DataInicio { get; set; }
         public DateTime? DataPrevista { get; set; }
         public DateTime? DataFinal { get; set; }

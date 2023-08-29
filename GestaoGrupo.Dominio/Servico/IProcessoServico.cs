@@ -6,12 +6,10 @@ namespace GestaoProduto.Dominio.Servico
     public interface IProcessoServico
     {
         Task<List<Processo>> Listar();
-        Task<Processo> ObterPorId(int id);
+        Task<ProcessoModel> ObterPorId(int id);
         Task<List<Processo>> BuscaPorTermo(string termo);
-        Task<Processo> Adicionar(ProcessoModel processoDto);
-        Task<Processo> Editar(ProcessoModel processoDto);
-        Task<Processo> EditarDto(ProcessoDto processoDto);
-
+        Task<Processo> Adicionar(ProcessoModel processoModel);
+        Task<Processo> Editar(ProcessoModel processoModel);
         Task<string> Delete(int id);
     }
 }

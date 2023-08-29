@@ -7,7 +7,6 @@ using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
 using GestaoProduto.Dominio.Servico;
 
-
 namespace GestaoProduto.Web
 {
     public class Program
@@ -49,6 +48,12 @@ namespace GestaoProduto.Web
             builder.Services.AddScoped<IGrupoProcessoServico, GrupoProcessoServico>();
             builder.Services.AddScoped<IGrupoProcessoRepositorio, GrupoProcessoRepositorio>();
 
+            builder.Services.AddScoped<IPessoaServico, PessoaServico>();
+            builder.Services.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
+
+            builder.Services.AddScoped<IArquivoProcessoServico, ArquivoProcessoServico>();
+            builder.Services.AddScoped<IArquivoProcessoRepositorio, ArquivoProcessoRepositorio>();
+
 
 
 
@@ -56,6 +61,8 @@ namespace GestaoProduto.Web
             #endregion
 
             var app = builder.Build();
+
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
 
             app.Use(async (context, next) =>
             {

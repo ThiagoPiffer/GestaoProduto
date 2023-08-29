@@ -14,7 +14,6 @@ namespace GestaoProduto.Dominio.Model
         public int Id { get; set; }
         public string? Numero { get; set; } = string.Empty;
         public string? Descricao { get; set; } = string.Empty;
-        public string? DataCadastro { get; set; } = string.Empty;
         public string? DataInicio { get; set; } = string.Empty;
         public int? Prazo { get; set; } = 0;
         public string? DataPrevista { get; set; } = string.Empty;

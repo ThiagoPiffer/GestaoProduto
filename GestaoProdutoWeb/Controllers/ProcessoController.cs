@@ -35,35 +35,28 @@ namespace GestaoProduto.API.Controllers
 
         [HttpPost]
         [Route("Adicionar")]
-        public async Task<IActionResult> Adicionar([FromBody] ProcessoModel processoDto)
+        public async Task<IActionResult> Adicionar([FromBody] ProcessoModel processoModel)
         {
-            try
-            {
-                Processo processo = await _processoServico.Adicionar(processoDto);
-                return Ok(processo);
-            }catch (Exception ex)
-            {
-                // Retorna um erro 500 e a mensagem da exceção.
-                return StatusCode(500, $"Um erro ocorreu: {ex.Message}");
-            }
+            Processo processo = await _processoServico.Adicionar(processoModel);
+            return Ok(processo);  
         }
 
         [HttpPut]
         [Route("Editar")]
-        public async Task<IActionResult> Editar([FromBody] ProcessoModel processoDto)
+        public async Task<IActionResult> Editar([FromBody] ProcessoModel processoModel)
         {
-            Processo processo = await _processoServico.Editar(processoDto);
+            Processo processo = await _processoServico.Editar(processoModel);
             return Ok(processo);
         }
 
 
-        [HttpPut]
-        [Route("EditarDto")]
-        public async Task<IActionResult> EditarDto([FromBody] ProcessoDto processoDto)
-        {
-            Processo processo = await _processoServico.EditarDto(processoDto);
-            return Ok(processo);
-        }
+        //[HttpPut]
+        //[Route("EditarDto")]
+        //public async Task<IActionResult> EditarDto([FromBody] ProcessoDto processoDto)
+        //{
+        //    Processo processo = await _processoServico.EditarDto(processoDto);
+        //    return Ok(processo);
+        //}
 
         [HttpDelete]
         [Route("Deletar")]

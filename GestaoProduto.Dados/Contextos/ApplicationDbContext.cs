@@ -15,6 +15,12 @@ namespace GestaoProduto.Dados.Contextos
         public DbSet<ObjetoCustomizado> ObjetosCustomizados { get; set; }
         public DbSet<Processo> Processos { get; set; }
         public DbSet<GrupoProcesso> GrupoProcessos { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<PessoasProcesso> PessoasProcesso { get; set; }
+        public DbSet<TipoPessoaProcesso> TipoPessoaProcesso { get; set; }
+        public DbSet<ArquivoProcesso> ArquivoProcesso { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,10 +38,16 @@ namespace GestaoProduto.Dados.Contextos
                 }
             }
 
+
             modelBuilder.Entity<Processo>()
             .HasOne(p => p.GrupoProcesso)
             .WithMany()
             .HasForeignKey(p => p.GrupoProcessoId);
+
+            //modelBuilder.Entity<ArquivoProcesso>()
+            //.Property(ap => ap.ConteudoArquivo)
+            //.HasColumnType("varbinary(max)");
+
 
             base.OnModelCreating(modelBuilder);
         }

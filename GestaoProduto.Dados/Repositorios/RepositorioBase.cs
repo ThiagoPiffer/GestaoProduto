@@ -3,37 +3,10 @@ using System.Linq;
 using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dominio._Base;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace GestaoProduto.Dados.Repositorios
 {
-    //public class RepositorioBase<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade
-    //{
-    //    protected readonly ApplicationDbContext Context;
-
-    //    public RepositorioBase(ApplicationDbContext context)
-    //    {
-    //        Context = context;
-    //    }
-
-    //    public void Adicionar(TEntidade entity)
-    //    {
-    //        Context.Set<TEntidade>().Add(entity);
-
-    //    }
-
-    //    public virtual TEntidade ObterPorId(int id)
-    //    {
-    //        var query = Context.Set<TEntidade>().Where(entidade => entidade.Id == id);
-    //        return query.Any() ? query.First() : null;
-    //    }
-
-    //    public virtual List<TEntidade> ObterLista()
-    //    {
-    //        var entidades = Context.Set<TEntidade>().ToList().Where(l => l.Ativo).ToList();
-    //        return entidades.Any() ? entidades : new List<TEntidade>();
-    //    }
-    //}
-
     public class RepositorioBase<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade
     {
         protected readonly ApplicationDbContext Context;
@@ -45,16 +18,46 @@ namespace GestaoProduto.Dados.Repositorios
 
         public virtual async Task<TEntidade> AdicionarAsync(TEntidade entity)
         {
-            await Context.Set<TEntidade>().AddAsync(entity);            
-            return entity;
+            try
+            {
+                entity.DataCadastro = DateTime.Now;
+                entity.Ativo = true;
+
+                await Context.Set<TEntidade>().AddAsync(entity);
+                await Context.SaveChangesAsync();
+
+                return entity;
+            }catch (Exception ex)
+            {
+                var x  = ex.Message;
+                return null;
+            }
         }
 
-        public virtual async Task<TEntidade> EditarAsync(TEntidade entity)
+        public virtual async Task<TEntidade> AdicionarAsyncSaveChanges(TEntidade entity)
         {
-            Context.Set<TEntidade>().Update(entity);
+            entity.DataCadastro = DateTime.Now;
+            entity.Ativo = true;
+
+            await Context.Set<TEntidade>().AddAsync(entity);
             await Context.SaveChangesAsync();
             return entity;
         }
+
+
+        public virtual async Task<TEntidade> EditarAsync(TEntidade entity)
+        {
+            try
+            {
+                Context.Set<TEntidade>().Update(entity);
+                await Context.SaveChangesAsync();
+                return entity;
+            }catch (Exception ex)
+            {
+                var x = ex.Message;
+                return null;
+            }
+}
 
 
         public virtual async Task<TEntidade> ObterPorIdAsync(int id)

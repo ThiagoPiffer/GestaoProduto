@@ -29,11 +29,12 @@ namespace GestaoProduto.Servico
             return listaProcessos;
         }
 
-        public async Task<Processo> ObterPorId(int id)
+        public async Task<ProcessoModel> ObterPorId(int id)
         {
             var processo = await _repositorio.ObterPorIdAsync(id);
+            var processoModel = _mapper.Map<ProcessoModel>(processo);
             
-            return processo;
+            return processoModel;
         }
 
         public async Task<List<Processo>> BuscaPorTermo(string termo)
@@ -42,64 +43,28 @@ namespace GestaoProduto.Servico
             return processos;
         }
 
-        public async Task<Processo> Adicionar(ProcessoModel processoDto)
-        {
-            try
-            {
-                var processo = _mapper.Map<Processo>(processoDto);                
-                await _processoRepositorio.AdicionarAsync(processo);
+        public async Task<Processo> Adicionar(ProcessoModel processoModel)
+        {            
+            var processo = _mapper.Map<Processo>(processoModel);                
+            await _processoRepositorio.AdicionarAsync(processo);
 
-                return processo;
-            }
-            catch (ExcecaoDeDominio ex)
-            {
-                throw new Exception(ex.MensagensDeErro.First());
-            }
+            return processo;
         }
 
-        public async Task<Processo> Editar(ProcessoModel processoDto)
-        {
-            try
-            {
-                var processo = _mapper.Map<Processo>(processoDto);
-                await _processoRepositorio.EditarAsync(processo);
+        public async Task<Processo> Editar(ProcessoModel processoModel)
+        {            
+            var processo = _mapper.Map<Processo>(processoModel);
+            await _processoRepositorio.EditarAsync(processo);
 
-                return processo;
-            }
-            catch (ExcecaoDeDominio ex)
-            {
-                throw new Exception(ex.MensagensDeErro.First());
-            }
-        }
-
-        public async Task<Processo> EditarDto(ProcessoDto processoDto)
-        {
-            try
-            {
-                var processo = _mapper.Map<Processo>(processoDto);
-                await _processoRepositorio.EditarAsync(processo);
-
-                return processo;
-            }
-            catch (ExcecaoDeDominio ex)
-            {
-                throw new Exception(ex.MensagensDeErro.First());
-            }
+            return processo;
         }
 
         public async Task<string> Delete(int id)
         {
-            try
-            {
-                var obj = await _repositorio.ObterPorIdAsync(id);
-                await _repositorio.ExcluirAsync(obj);
+            var obj = await _repositorio.ObterPorIdAsync(id);
+            await _repositorio.ExcluirAsync(obj);
 
-                return "Excluído com sucesso";
-            }
-            catch (ExcecaoDeDominio ex)
-            {
-                throw new Exception(ex.MensagensDeErro.First());
-            }
+            return "Excluído com sucesso";
         }
     }
 }

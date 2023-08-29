@@ -3,11 +3,7 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.Ge
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfoInputs.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfo.cs
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.CoreCompileInputs.cache
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cs
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cache
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.dll
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\refint\GestaoProduto.API.dll
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\appsettings.Development.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\appsettings.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.exe
@@ -17,6 +13,7 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.dl
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\AutoMapper.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Google.Apis.Core.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Humanizer.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
@@ -37,6 +34,7 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.IdentityMo
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.OpenApi.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Newtonsoft.Json.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -76,7 +74,8 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\staticwebassets.buil
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\staticwebassets.development.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\scopedcss\bundle\GestaoProduto.API.styles.css
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.CopyComplete
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\refint\GestaoProduto.API.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.genruntimeconfig.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\ref\GestaoProduto.API.dll
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Google.Apis.Core.dll
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Newtonsoft.Json.dll

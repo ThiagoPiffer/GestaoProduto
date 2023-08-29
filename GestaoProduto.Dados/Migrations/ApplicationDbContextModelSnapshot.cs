@@ -22,6 +22,48 @@ namespace GestaoProduto.Dados.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.ArquivoProcesso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CaminhoArquivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtensaoArquivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NomeArquivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProcessoId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("TamanhoArquivo")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProcessoId");
+
+                    b.ToTable("ArquivoProcesso");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Entity.Fornecedor", b =>
                 {
                     b.Property<int>("Id")
@@ -36,6 +78,9 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<string>("CNPJ")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -56,6 +101,9 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -102,6 +150,89 @@ namespace GestaoProduto.Dados.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ObjetosCustomizados");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.Pessoa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CPFCNPJ")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Celular")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DDDCelular")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DDDTelefone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime?>("DataNascimento")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Identidade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pessoas");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.PessoasProcesso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("PessoaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProcessoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TipoPessoaProcessoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PessoaId");
+
+                    b.HasIndex("ProcessoId");
+
+                    b.HasIndex("TipoPessoaProcessoId");
+
+                    b.ToTable("PessoasProcesso");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity.Processo", b =>
@@ -158,6 +289,9 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
                     b.Property<DateTime>("DataFabricacao")
                         .HasColumnType("datetime");
 
@@ -176,6 +310,65 @@ namespace GestaoProduto.Dados.Migrations
                     b.HasIndex("FornecedorId");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.TipoPessoaProcesso", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoPessoaProcesso");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.ArquivoProcesso", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity.Processo", "Processo")
+                        .WithMany()
+                        .HasForeignKey("ProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Processo");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity.PessoasProcesso", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity.Pessoa", "Pessoa")
+                        .WithMany()
+                        .HasForeignKey("PessoaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestaoProduto.Dominio.Entity.Processo", "Processo")
+                        .WithMany()
+                        .HasForeignKey("ProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestaoProduto.Dominio.Entity.TipoPessoaProcesso", "TipoPessoaProcesso")
+                        .WithMany()
+                        .HasForeignKey("TipoPessoaProcessoId");
+
+                    b.Navigation("Pessoa");
+
+                    b.Navigation("Processo");
+
+                    b.Navigation("TipoPessoaProcesso");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity.Processo", b =>

@@ -12,5 +12,6 @@
         public string Telefone { get; set; } = string.Empty;
         public string DDDCelular { get; set; } = string.Empty;
         public string Celular { get; set; } = string.Empty;
+        public Boolean Ativo { get; set; }
     }
 }

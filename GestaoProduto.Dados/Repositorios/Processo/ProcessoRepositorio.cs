@@ -60,7 +60,7 @@ namespace GestaoProduto.Dados.Repositorios
                                     Id = p.Id,
                                     Numero = p.Numero ?? string.Empty,
                                     Descricao = p.Descricao ?? string.Empty,
-                                    DataCadastro = p.DataCadastro.HasValue ? p.DataCadastro.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
+                                    //DataCadastro = p.DataCadastro.HasValue ? p.DataCadastro.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     DataInicio = p.DataInicio.HasValue ? p.DataInicio.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     Prazo = p.DataInicio.HasValue && p.DataPrevista.HasValue ? (int?)p.DataPrevista.Value.Subtract(p.DataInicio.Value).TotalDays : null,
                                     //Prazo = 0,
