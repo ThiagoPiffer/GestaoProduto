@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ttHMf1sBkpJe1ckp+eBNH7afE7q8+uViSP2e80Wx5qFQvjVkrX+TTn8cAk2VVpgNXEnPaHyDVbgJIiFZTgI1aw==",
+  "dgSpecHash": "lVsjYcblOtoWpw8aC8HYp76yaedUFRul8LiDygjD2tuSCwFWkolD/U96W4b8DnG4bz0ucTXe/P6TmKn3ThnpVw==",
   "success": true,
   "projectFilePath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Teste\\GestaoProduto.Teste.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,6 @@
     "C:\\Users\\Thiago\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\expectedobjects\\3.5.4\\expectedobjects.3.5.4.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
-    "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

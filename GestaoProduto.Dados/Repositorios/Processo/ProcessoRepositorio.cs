@@ -4,7 +4,7 @@ using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Model;
 using GestaoProduto.Dominio.Repositorio;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+//using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace GestaoProduto.Dados.Repositorios
 {

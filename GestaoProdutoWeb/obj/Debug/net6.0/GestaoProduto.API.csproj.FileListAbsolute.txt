@@ -1,11 +1,6 @@
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.AssemblyReference.cache
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.GeneratedMSBuildEditorConfig.editorconfig
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfoInputs.cache
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfo.cs
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.CoreCompileInputs.cache
-H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\appsettings.Development.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\appsettings.json
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.staticwebassets.runtime.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.exe
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.deps.json
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.API.runtimeconfig.json
@@ -39,6 +34,7 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCo
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\System.Drawing.Common.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\System.Runtime.Caching.dll
@@ -65,6 +61,13 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.Domini
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.Ioc.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.Servico.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\GestaoProduto.Dados.pdb
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.AssemblyReference.cache
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfoInputs.cache
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.AssemblyInfo.cs
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.csproj.CoreCompileInputs.cache
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cs
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\staticwebassets\msbuild.GestaoProduto.API.Microsoft.AspNetCore.StaticWebAssets.props
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\staticwebassets\msbuild.build.GestaoProduto.API.props
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.GestaoProduto.API.props
@@ -79,3 +82,8 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\refint\GestaoProduto
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\GestaoProduto.API.genruntimeconfig.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net6.0\ref\GestaoProduto.API.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
