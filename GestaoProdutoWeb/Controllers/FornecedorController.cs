@@ -4,6 +4,7 @@ using GestaoProduto.Dominio.Entity;
 
 namespace GestaoProduto.Web.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("api/[controller]")]
     [ApiController]
     public class FornecedorController : ControllerBase

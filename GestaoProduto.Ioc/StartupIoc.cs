@@ -32,8 +32,6 @@ namespace GestaoProduto.Ioc
 
             services.AddScoped<IProcessoServico, ProcessoServico>();
             services.AddScoped<IGrupoProcessoServico, GrupoProcessoServico>();
-
-            
             #endregion
 
         }

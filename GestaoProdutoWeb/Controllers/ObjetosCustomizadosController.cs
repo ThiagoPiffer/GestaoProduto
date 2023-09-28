@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     [Route("api/[controller]")]
     public class ObjetosCustomizadosController : ControllerBase
     {

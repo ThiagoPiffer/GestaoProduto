@@ -16,7 +16,7 @@ namespace GestaoProduto.Identidade
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
-                .AddJsonFile("appsettings.jason", true, true)
+                .AddJsonFile("appsettings.json", true, true)
                 .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
 
@@ -24,6 +24,8 @@ namespace GestaoProduto.Identidade
             {
                 builder.AddUserSecrets<Startup>();
             }
+
+            Configuration = builder.Build();
         }
 
         //public Startup(IConfiguration configuration)
