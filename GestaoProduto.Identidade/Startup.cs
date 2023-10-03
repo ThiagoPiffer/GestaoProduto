@@ -39,6 +39,17 @@ namespace GestaoProduto.Identidade
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()  // Permite qualquer cabeçalho
+                        .AllowAnyMethod()  // Permite qualquer método, como GET, POST, etc.
+                        .AllowCredentials());  // Se você precisa de cookies, autenticação http, etc.
+            });
+
+
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<ApplicationDbContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("DataBase"))
@@ -76,14 +87,14 @@ namespace GestaoProduto.Identidade
                     ValidIssuer = appSettings.Emissor
                 };
             });
-               
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Gestão Produto Identidade",
                     Description = "Api de autenticação",
-                    Contact = new OpenApiContact() { Name = "Nome Teste",  Email = "email.teste@gmail.com"},
+                    Contact = new OpenApiContact() { Name = "Nome Teste", Email = "email.teste@gmail.com" },
                     License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
 
                 });
@@ -93,7 +104,7 @@ namespace GestaoProduto.Identidade
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-            app.UseSwaggerUI( c =>
+            app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
@@ -104,8 +115,10 @@ namespace GestaoProduto.Identidade
                 //app.UseSwagger();
                 //app.UseSwaggerUI();
             }
-            
+
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseRouting();
 

@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using GestaoProduto.Dados.Contextos;
+﻿using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dados.Repositorios;
 using GestaoProduto.Dominio._Base;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +7,8 @@ using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
 using GestaoProduto.Dominio.Servico;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
+using GestaoProduto.API.Configuracao;
 
 namespace GestaoProduto.API
 {
@@ -40,10 +33,23 @@ namespace GestaoProduto.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddIdentityConfiguration();
+
+            services.AddMvcConfiguration(Configuration);
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()  // Permite qualquer cabeçalho
+                        .AllowAnyMethod()  // Permite qualquer método, como GET, POST, etc.
+                        .AllowCredentials());  // Se você precisa de cookies, autenticação http, etc.
+            });
+
 
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<ApplicationDbContext>(
@@ -51,35 +57,7 @@ namespace GestaoProduto.API
                 );
 
             // Injeção de dependencia
-            services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioBase<>));
-            services.AddScoped<IFornecedorServico, FornecedorServico>();
-            services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
-            services.AddScoped<ArmazenadorFornecedor>();
-
-            services.AddScoped<IFornecedorServico, FornecedorServico>();
-            services.AddScoped<IFornecedorRepositorio, FornecedorRepositorio>();
-            services.AddScoped<ArmazenadorFornecedor>();
-
-            services.AddScoped<IProdutoServico, ProdutoServico>();
-            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
-            services.AddScoped<ArmazenadorProduto>();
-
-            services.AddScoped<IObjetoCustomizadoServico, ObjetoCustomizadoServico>();
-            services.AddScoped<IObjetoCustomizadoRepositorio, ObjetoCustomizadoRepositorio>();
-            
-            services.AddScoped<IProcessoServico, ProcessoServico>();
-            services.AddScoped<IProcessoRepositorio, ProcessoRepositorio>();
-            
-            services.AddScoped<IGrupoProcessoServico, GrupoProcessoServico>();
-            services.AddScoped<IGrupoProcessoRepositorio, GrupoProcessoRepositorio>();
-            
-            services.AddScoped<IPessoaServico, PessoaServico>();
-            services.AddScoped<IPessoaRepositorio, PessoaRepositorio>();
-            
-            services.AddScoped<IArquivoProcessoServico, ArquivoProcessoServico>();
-            services.AddScoped<IArquivoProcessoRepositorio, ArquivoProcessoRepositorio>();
-
-
+            services.RegisterServices(Configuration);
 
             services.AddSwaggerGen(c =>
             {
@@ -99,49 +77,7 @@ namespace GestaoProduto.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            });
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
-
-            app.UseHttpsRedirection();            
-
-            app.UseRouting();
-
-            //app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseMiddleware<ExceptionHandlingMiddleware>();
-
-            app.Use(async (context, next) =>
-            {
-                await next.Invoke();
-                var unitOfWork = (IUnitOfWork)context.RequestServices.GetService(typeof(IUnitOfWork));
-                await unitOfWork.Commit();
-            });
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseMvcConfiguration(env);
         }
     }
 }

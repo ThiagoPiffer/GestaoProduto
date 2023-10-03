@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "C49MrELwBg/Tgt7DvzHOynVufaY1m/FdhVMRKIGuayBUas580B/sVylMI0DICHPBLUiRJgbS/CTZhBP2/+XOag==",
+  "dgSpecHash": "dhwRlkZDyMlm2M3hTdGh7S0LThl8z9IuMJxY2SiQKTr57Uo5QCTDko5v7SxjFnu4QwynEJbGNSiZ5/rfN1d6rQ==",
   "success": true,
   "projectFilePath": "H:\\Projetos\\GestaoProduto\\GestaoProdutoWeb\\GestaoProduto.API.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Thiago\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.11\\microsoft.aspnetcore.cryptography.internal.7.0.11.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\7.0.11\\microsoft.aspnetcore.cryptography.keyderivation.7.0.11.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.11.nupkg.sha512",

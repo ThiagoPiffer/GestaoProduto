@@ -91,3 +91,4 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net7.0\Microsoft.AspNetCore
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
