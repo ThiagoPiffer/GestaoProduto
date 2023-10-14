@@ -1,12 +1,18 @@
-﻿using GestaoProduto.Dominio._Base;
+﻿using GestaoProduto.Core.Identidade;
+using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Model;
 using GestaoProduto.Dominio.Servico;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    
+    //[AllowAnonymous]
+    
     public class PessoaController : Controller
     {
         private readonly IRepositorio<Pessoa> _repositorio;
@@ -21,6 +27,7 @@ namespace GestaoProduto.API.Controllers
 
         [HttpGet]
         [Route("Listar")]
+        //[ClaimsAuthorize("API","Ler")]
         public async Task<IActionResult> Listar()
         {
             return Ok(await _pessoaServico.Listar());

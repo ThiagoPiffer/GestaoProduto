@@ -1,0 +1,17 @@
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Servico.deps.json
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Servico.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Servico.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Dados.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Dominio.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Dominio.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\bin\Debug\net7.0\GestaoProduto.Dados.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.csproj.AssemblyReference.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.AssemblyInfoInputs.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.AssemblyInfo.cs
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.csproj.CoreCompileInputs.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.csproj.CopyComplete
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\refint\GestaoProduto.Servico.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\GestaoProduto.Servico.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Servicos\obj\Debug\net7.0\ref\GestaoProduto.Servico.dll

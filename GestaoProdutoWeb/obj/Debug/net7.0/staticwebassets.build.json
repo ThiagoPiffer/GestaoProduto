@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "M4+DkZVvz9t0K06VjYJAPC7ntPqevmKWVlEnT0ImDAA=",
+  "Source": "GestaoProduto.API",
+  "BasePath": "_content/GestaoProduto.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Identidade\\GestaoProduto.Identidade.csproj",
+      "Version": 2,
+      "Source": "GestaoProduto.Identidade",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

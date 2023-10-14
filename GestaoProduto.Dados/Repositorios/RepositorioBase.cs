@@ -3,7 +3,7 @@ using System.Linq;
 using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dominio._Base;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+//using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace GestaoProduto.Dados.Repositorios
 {

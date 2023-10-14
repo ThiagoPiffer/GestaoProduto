@@ -1,0 +1,14 @@
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\bin\Debug\net7.0\GestaoProduto.Dominio.deps.json
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\bin\Debug\net7.0\GestaoProduto.Dominio.runtimeconfig.json
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\bin\Debug\net7.0\GestaoProduto.Dominio.dll
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\bin\Debug\net7.0\GestaoProduto.Dominio.pdb
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.csproj.AssemblyReference.cache
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.AssemblyInfoInputs.cache
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.AssemblyInfo.cs
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.csproj.CoreCompileInputs.cache
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.dll
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\refint\GestaoProduto.Dominio.dll
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.pdb
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\GestaoProduto.Dominio.genruntimeconfig.cache
+H:\Projetos\GestaoProduto\GestaoGrupo.Dominio\obj\Debug\net7.0\ref\GestaoProduto.Dominio.dll
