@@ -1,11 +1,18 @@
-﻿using GestaoProduto.Dados.Contextos;
+﻿
+
+using GestaoProduto.Dados.Contextos;
+using GestaoProduto.Identidade.Configuration;
 using GestaoProduto.Identidade.Extensao;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Net;
 using System.Text;
+using System.Xml.Linq;
 
 namespace GestaoProduto.Identidade
 {
@@ -28,38 +35,13 @@ namespace GestaoProduto.Identidade
             Configuration = builder.Build();
         }
 
-        //public Startup(IConfiguration configuration)
-        //{
-        //    Configuration = configuration;
-        //}
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder
-                        .WithOrigins("http://localhost:4200")
-                        .AllowAnyHeader()  // Permite qualquer cabeçalho
-                        .AllowAnyMethod()  // Permite qualquer método, como GET, POST, etc.
-                        .AllowCredentials());  // Se você precisa de cookies, autenticação http, etc.
-            });
-
-
-            services.AddEntityFrameworkSqlServer()
-                .AddDbContext<ApplicationDbContext>(
-                    options => options.UseSqlServer(Configuration.GetConnectionString("DataBase"))
-                );
-
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddRoles<IdentityRole>()
-                .AddErrorDescriber<IdentityMensagensPortugues>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddDefaultTokenProviders();
+            services.AddCorsExtensions(Configuration);
+            services.AddIdentityConfiguration(Configuration);
 
             // JWT
             var appSettiongsSection = Configuration.GetSection("AppSettings");
@@ -72,20 +54,41 @@ namespace GestaoProduto.Identidade
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(bearrerOptions =>
+            }).AddJwtBearer(bearreroptions =>
             {
-                bearrerOptions.RequireHttpsMetadata = true;
-                bearrerOptions.SaveToken = true;
-                bearrerOptions.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    //ValidAudiences
-                    ValidAudience = appSettings.ValidoEm,
-                    ValidIssuer = appSettings.Emissor
-                };
+                bearreroptions.RequireHttpsMetadata = true;
+                bearreroptions.SaveToken = true;
+
+                var paramsValidation = bearreroptions.TokenValidationParameters;
+                paramsValidation.IssuerSigningKey = new SymmetricSecurityKey(key);
+                paramsValidation.ValidAudience = appSettings.ValidoEm;
+                paramsValidation.ValidIssuer = appSettings.Emissor;
+
+                // Valida a assinatura de um token recebido
+                paramsValidation.ValidateIssuerSigningKey = true;
+
+                // Verifica se um token recebido ainda é válido
+                paramsValidation.ValidateLifetime = true;
+
+                // Tempo de tolerância para a expiração de um token (utilizado
+                // caso haja problemas de sincronismo de horário entre diferentes
+                // computadores envolvidos no processo de comunicação)
+                paramsValidation.ClockSkew = TimeSpan.Zero;
+
+                //bearreroptions.TokenValidationParameters = new TokenValidationParameters
+                //{
+                //    ValidateIssuerSigningKey = true,
+                //    IssuerSigningKey = new SymmetricSecurityKey(key),
+                //    ValidateIssuer = true,
+                //    ValidateAudience = true,
+                //    ValidateLifetime = true,// coloquei depois 
+                //    //validaudiences
+                //    ValidAudience = appSettings.ValidoEm,
+                //    ValidIssuer = appSettings.Emissor,
+
+                //    // Valida a assinatura de um token recebido
+
+                //};
             });
 
             services.AddSwaggerGen(c =>
@@ -99,6 +102,8 @@ namespace GestaoProduto.Identidade
 
                 });
             });
+
+            services.AddResponseCompression();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -109,16 +114,16 @@ namespace GestaoProduto.Identidade
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
             });
 
-            if (env.IsDevelopment())
+            app.UseApiConfiguration(env);
+
+            if (env.IsDevelopment() || env.EnvironmentName == "Local")
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
-            app.UseCors("AllowSpecificOrigin");
+            app.AddCorsConfig();
 
             app.UseRouting();
 
@@ -129,6 +134,8 @@ namespace GestaoProduto.Identidade
             {
                 endpoints.MapControllers();
             });
+            app.UseResponseCompression();
+
         }
     }
 }

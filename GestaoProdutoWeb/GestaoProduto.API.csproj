@@ -22,6 +22,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Core\GestaoProduto.Core.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Identidade\GestaoProduto.Identidade.csproj" />
     <ProjectReference Include="..\GestaoProduto.Ioc\GestaoProduto.Ioc.csproj" />
     <ProjectReference Include="..\GestaoProduto.Servicos\GestaoProduto.Servico.csproj" />
   </ItemGroup>

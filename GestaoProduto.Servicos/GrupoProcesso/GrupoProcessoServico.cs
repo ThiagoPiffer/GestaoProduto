@@ -9,6 +9,7 @@ using GestaoProduto.Dominio.Model;
 using System.Linq;
 using Newtonsoft.Json;
 
+
 namespace GestaoProduto.Servico
 {
     public class GrupoProcessoServico : IGrupoProcessoServico

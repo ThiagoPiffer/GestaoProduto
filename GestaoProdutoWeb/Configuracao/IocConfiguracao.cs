@@ -1,9 +1,11 @@
-﻿using GestaoProduto.Dados.Repositorios;
+﻿using GestaoProduto.Dados.Contextos;
+using GestaoProduto.Dados.Repositorios;
 using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Repositorio;
 using GestaoProduto.Dominio.Servico;
 using GestaoProduto.Servico;
+using GestaoProduto.Identidade;
 using Microsoft.Extensions.Configuration;
 
 namespace GestaoProduto.API.Configuracao
@@ -45,6 +47,8 @@ namespace GestaoProduto.API.Configuracao
             services.AddScoped<IUser, AspNetUser>();
 
             services.Configure<AppSettings>(configuration.GetSection(nameof(AppSettings)));
+            services.AddScoped(serviceType: typeof(IUnitOfWork), typeof(UnitOfWork));
+
 
         }
     }

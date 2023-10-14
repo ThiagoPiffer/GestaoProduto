@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\GestaoProduto.Web.props" />
-</Project>

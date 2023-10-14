@@ -1,5 +1,6 @@
 ﻿using GestaoProduto.Dominio.Model.Identidade;
 using GestaoProduto.Identidade.Extensao;
+//using GestaoProduto.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -7,6 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+
 
 namespace GestaoProduto.Identidade.Controllers
 {
@@ -53,7 +55,7 @@ namespace GestaoProduto.Identidade.Controllers
             return CustomResponse();
         }
 
-        [HttpPost("Login")]
+        [HttpPost("LoginAutenticacao")]
         public async Task<ActionResult> Login(UsuarioLoginModel usuariologin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);

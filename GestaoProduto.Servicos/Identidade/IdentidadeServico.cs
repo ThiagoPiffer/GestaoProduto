@@ -25,7 +25,7 @@ namespace GestaoProduto.Servico
         {
             var loginContent = ObterConteudo(usuarioLogin);
 
-            var response = await _httpClient.PostAsync("https://localhost:7139/api/Identidade/Login", loginContent);
+            var response = await _httpClient.PostAsync("https://localhost:7139/api/Identidade/LoginAutenticacao", loginContent);
 
 
             var options = new JsonSerializerOptions
@@ -48,7 +48,7 @@ namespace GestaoProduto.Servico
         {
             var registroContent = ObterConteudo(usuarioRegistroModel);
 
-            var response = await _httpClient.PostAsync("http://localhost:7139/api/Identidade/Registrar", registroContent);
+            var response = await _httpClient.PostAsync("https://localhost:7139/api/Identidade/Registrar", registroContent);
 
 
 

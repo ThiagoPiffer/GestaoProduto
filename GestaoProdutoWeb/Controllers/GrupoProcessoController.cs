@@ -2,27 +2,50 @@
 using GestaoProduto.Dominio.Entity;
 using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Servico;
+using Microsoft.AspNetCore.Authorization;
+using GestaoProduto.Core.Identidade;
+using System.Security.Claims;
+using GestaoProduto.Identidade;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
+
 
     public class GrupoProcessoController : Controller
     {
         private readonly IRepositorio<GrupoProcesso> _repositorio;
         private readonly IGrupoProcessoServico _grupoProcessoServico;
+        private readonly IUser _user;
+
 
         public GrupoProcessoController(IRepositorio<GrupoProcesso> repositorio,
-                                    IGrupoProcessoServico grupoProcessoServico)
+                                       IGrupoProcessoServico grupoProcessoServico,
+                                       IUser user)
         {
             _repositorio = repositorio;
             _grupoProcessoServico = grupoProcessoServico;
+            _user=user;
         }
 
         [HttpGet]
         [Route("Listar")]
         public async Task<IActionResult> Listar()
         {
+            //var userId = _user.ObterUserId();
+            //var userEmail = _user.ObterUserEmail();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+            var sub = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+
+            var userId1 = _user.ObterUserId();
+            var userEmail2 = _user.ObterUserEmail();
+
+
             return Ok(await _grupoProcessoServico.Listar());
         }
 

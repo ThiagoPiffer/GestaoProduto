@@ -9,9 +9,16 @@ using GestaoProduto.Dominio.Servico;
 //using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using GestaoProduto.API.Configuracao;
+using GestaoProduto.Core.Identidade;
+using System.Net;
+using GestaoProduto.API.Controllers.Identidade;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API
-{
+{    
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -21,7 +28,7 @@ namespace GestaoProduto.API
                 .SetBasePath(hostEnvironment.ContentRootPath)
                 .AddJsonFile("appsettings.json", true, true)
                 .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables();            
 
             if (hostEnvironment.IsDevelopment())
             {
@@ -33,22 +40,40 @@ namespace GestaoProduto.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddIdentityConfiguration();
-
+            services.AddIdentityConfiguration(Configuration);
             services.AddMvcConfiguration(Configuration);
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerGen();
+            services.AddSwaggerConfiguration();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddCorsExtensions(Configuration);
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder
-                        .WithOrigins("http://localhost:4200")
-                        .AllowAnyHeader()  // Permite qualquer cabeçalho
-                        .AllowAnyMethod()  // Permite qualquer método, como GET, POST, etc.
-                        .AllowCredentials());  // Se você precisa de cookies, autenticação http, etc.
-            });
+
+            //var appSettiongsSection = Configuration.GetSection("AppSettings");
+            //services.Configure<AppSettings>(appSettiongsSection);
+
+            //var appSettings = appSettiongsSection.Get<AppSettings>();
+            //var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //}).AddJwtBearer(bearreroptions =>
+            //{
+            //    bearreroptions.RequireHttpsMetadata = true;
+            //    bearreroptions.SaveToken = true;
+            //    bearreroptions.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(key),
+            //        ValidateIssuer = true,
+            //        ValidateAudience = true,
+            //        ValidateLifetime = true,// coloquei depois 
+            //        //validaudiences
+            //        ValidAudience = appSettings.ValidoEm,
+            //        ValidIssuer = appSettings.Emissor
+            //    };
+            //});
 
 
             services.AddEntityFrameworkSqlServer()
@@ -56,28 +81,16 @@ namespace GestaoProduto.API
                     options => options.UseSqlServer(Configuration.GetConnectionString("DataBase"))
                 );
 
-            // Injeção de dependencia
-            services.RegisterServices(Configuration);
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Gestão Produto API",
-                    Description = "Api de autenticação",
-                    Contact = new OpenApiContact() { Name = "Nome Teste", Email = "email.teste@gmail.com" },
-                    License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
-
-                });
-            });
-
-
-            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.RegisterServices(Configuration); // Injeção de dependencia
+            services.AddResponseCompression();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
+            app.AddCorsConfig(); 
             app.UseMvcConfiguration(env);
+            app.UseResponseCompression();
         }
     }
 }

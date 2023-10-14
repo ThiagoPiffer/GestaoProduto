@@ -3,6 +3,7 @@ using GestaoProduto.Dominio.Servico;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -19,8 +20,8 @@ namespace GestaoProduto.API.Controllers.Identidade
         }
 
         [HttpPost]
-        [Route("novaConta")]
-        public async Task<IActionResult> Registro(UsuarioRegistroModel usuarioRegistro)
+        [Route("registro")]
+        public async Task<IActionResult> Registro([FromBody] UsuarioRegistroModel usuarioRegistro)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
@@ -28,7 +29,7 @@ namespace GestaoProduto.API.Controllers.Identidade
 
             if (ResponsePossuiErros(resposta.responseResult)) return BadRequest(ModelState); // retorno erro nao deu certo
 
-            await RealizarLogin(resposta);
+            RealizarLogin(resposta);
 
 
             return Ok(resposta);
@@ -44,20 +45,46 @@ namespace GestaoProduto.API.Controllers.Identidade
 
             if (ResponsePossuiErros(resposta.responseResult)) return BadRequest(ModelState); // retorno erro nao deu certo
 
-            await RealizarLogin(resposta);
+            RealizarLogin(resposta);
+            string json = JsonConvert.SerializeObject(resposta);
 
             return Ok(resposta);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("sair")]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return Ok();
+            // Você pode adicionar a lógica necessária para revogar o token aqui, se necessário.
+
+            // Para efetuar o logout no lado do cliente, você pode apenas retornar um OkResult.
+            return Ok(new { message = "Logout bem-sucedido" });
         }
 
-        private async Task RealizarLogin(UsuarioRespostaLoginModel resposta)
+        //private async Task RealizarLogin(UsuarioRespostaLoginModel resposta)
+        //{
+        //    var token = ObterTokenFormatado(resposta.AccessToken);
+
+        //    var claims = new List<Claim>();
+        //    claims.Add(new Claim("JWT", resposta.AccessToken));
+        //    claims.AddRange(token.Claims);
+
+        //    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        //    var authProperties = new AuthenticationProperties
+        //    {
+        //        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
+        //        IsPersistent = true
+        //    };
+
+        //    await HttpContext.SignInAsync(
+        //        CookieAuthenticationDefaults.AuthenticationScheme,
+        //        new ClaimsPrincipal(claimsIdentity)
+        //        , authProperties
+        //        );
+        //}
+
+        private void RealizarLogin(UsuarioRespostaLoginModel resposta)
         {
             var token = ObterTokenFormatado(resposta.AccessToken);
 
@@ -65,20 +92,15 @@ namespace GestaoProduto.API.Controllers.Identidade
             claims.Add(new Claim("JWT", resposta.AccessToken));
             claims.AddRange(token.Claims);
 
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            var claimsIdentity = new ClaimsIdentity(claims, "Bearer"); // Usando o esquema "Bearer"
 
-            var authProperties = new AuthenticationProperties
-            {
-                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
-                IsPersistent = true
-            };
+            var principal = new ClaimsPrincipal(claimsIdentity);
 
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity)
-                , authProperties
-                );
+            // Defina o contexto de usuário manualmente
+            HttpContext.User = principal;
         }
+
+
 
         private static JwtSecurityToken ObterTokenFormatado(string jwtToken)
         {

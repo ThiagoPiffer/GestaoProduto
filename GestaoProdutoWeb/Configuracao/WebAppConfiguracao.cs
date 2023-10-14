@@ -7,8 +7,11 @@ namespace GestaoProduto.API.Configuracao
     {
         public static void AddMvcConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddControllersWithViews();
-            services.Configure<AppSettings>(configuration);
+            services.AddControllers();
+
+            //services.Configure<AppSettings>(configuration);
+            //services.Configure<TokenConfiguration>(configuration.GetSection(nameof(TokenConfiguration)));
+
         }
 
         public static void UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -22,8 +25,7 @@ namespace GestaoProduto.API.Configuracao
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI();
+                app.UseHsts();
             }
             else
             {
@@ -31,15 +33,11 @@ namespace GestaoProduto.API.Configuracao
                 app.UseHsts();
             }
 
-            app.UseCors("AllowSpecificOrigin");
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
 
             app.UseIdentityConfiguration();
-            //app.UseAuthentication();
-            //app.UseAuthorization();
 
             app.UseMiddleware<ExceptionHandlingMiddleware>();
 
@@ -49,11 +47,6 @@ namespace GestaoProduto.API.Configuracao
                 var unitOfWork = (IUnitOfWork)context.RequestServices.GetService(typeof(IUnitOfWork));
                 await unitOfWork.Commit();
             });
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
