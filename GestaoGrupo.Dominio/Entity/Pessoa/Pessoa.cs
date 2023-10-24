@@ -1,6 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
+using GestaoProduto.Dominio.Entity._Empresa;
 
-namespace GestaoProduto.Dominio.Entity
+namespace GestaoProduto.Dominio.Entity._Pessoa
 {
     public class Pessoa : Entidade
     {
@@ -15,9 +16,12 @@ namespace GestaoProduto.Dominio.Entity
         public string? Telefone { get; set; }
         public string? DDDCelular { get; set; }
         public string? Celular { get; set; }
+        public int IdEmpresa { get; set; }
 
         //TIPOPESSOA
-        //CLIENTE, TESTEMUNHA, TERCEIRO INTERESSADO
+        //Cliente, Advogado de Defesa, Advogado de Acusação, Testemunha, Perito, Juiz, Júri, Réu, Queixoso/Reclamante, Terceiro Interessado, Fiador, Curador/Guardião ad Litem, Oficial de Justiça, Mediador, Árbitro, Transcritor/Court Reporter, Interveniente.
+
+
 
         /*
          * ---- CLIENTE

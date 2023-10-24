@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GestaoProduto.Dominio.Entity._GrupoProcesso;
+using GestaoProduto.Dominio.Entity._GrupoProcessoDto;
 
 namespace GestaoProduto.Dados.Mapeamento
 {

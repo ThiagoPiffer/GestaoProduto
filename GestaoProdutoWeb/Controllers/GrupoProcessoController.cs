@@ -1,12 +1,12 @@
 ﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Entity._GrupoProcesso;
+using GestaoProduto.Dominio.Entity._GrupoProcessoDto;
 using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Dominio.Servico;
 using Microsoft.AspNetCore.Authorization;
-using GestaoProduto.Core.Identidade;
 using System.Security.Claims;
 using GestaoProduto.Identidade;
 using System.IdentityModel.Tokens.Jwt;
+using GestaoProduto.Dominio.IServico._GrupoProcesso;
 
 namespace GestaoProduto.API.Controllers
 {

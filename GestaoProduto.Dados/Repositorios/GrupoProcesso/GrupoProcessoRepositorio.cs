@@ -1,10 +1,10 @@
 ﻿using GestaoProduto.Dados.Contextos;
-using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dados.Repositorio._RepositorioBase;
+using GestaoProduto.Dominio.Entity._GrupoProcesso;
+using GestaoProduto.Dominio.IRepositorio._GrupoProcesso;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestaoProduto.Dados.Repositorios
+namespace GestaoProduto.Dados.Repositorio._GrupoProcesso
 {
     public class GrupoProcessoRepositorio : RepositorioBase<GrupoProcesso>, IGrupoProcessoRepositorio
     {
@@ -18,7 +18,7 @@ namespace GestaoProduto.Dados.Repositorios
             await Context.GrupoProcessos.AddAsync(grupoProcesso);
         }
 
-        public Task<List<GrupoProcesso>> ObterListaAsync()
+        public Task<List<GrupoProcesso>> ObterListaCustomizadaAsync()
         {
             return Context.GrupoProcessos.ToListAsync();
         }

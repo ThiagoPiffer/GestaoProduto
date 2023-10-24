@@ -74,21 +74,6 @@ namespace GestaoProduto.Identidade
                 // caso haja problemas de sincronismo de horário entre diferentes
                 // computadores envolvidos no processo de comunicação)
                 paramsValidation.ClockSkew = TimeSpan.Zero;
-
-                //bearreroptions.TokenValidationParameters = new TokenValidationParameters
-                //{
-                //    ValidateIssuerSigningKey = true,
-                //    IssuerSigningKey = new SymmetricSecurityKey(key),
-                //    ValidateIssuer = true,
-                //    ValidateAudience = true,
-                //    ValidateLifetime = true,// coloquei depois 
-                //    //validaudiences
-                //    ValidAudience = appSettings.ValidoEm,
-                //    ValidIssuer = appSettings.Emissor,
-
-                //    // Valida a assinatura de um token recebido
-
-                //};
             });
 
             services.AddSwaggerGen(c =>

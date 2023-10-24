@@ -1,4 +1,4 @@
-﻿using GestaoProduto.Dominio.Model.Identidade;
+﻿using GestaoProduto.Dominio.Model._Identidade;
 using GestaoProduto.Identidade.Extensao;
 //using GestaoProduto.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace GestaoProduto.Identidade.Controllers
 {
     
-    [Route("api/[controller]")]
+    [Route("apiIdentidade/[controller]")]
     public class IdentidadeController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -29,6 +29,7 @@ namespace GestaoProduto.Identidade.Controllers
             _appSettings=appSettings.Value;
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPost("Registrar")]
         public async Task<ActionResult> Registrar(UsuarioRegistroModel usuarioRegistro)
         {
@@ -55,13 +56,14 @@ namespace GestaoProduto.Identidade.Controllers
             return CustomResponse();
         }
 
+        [ApiExplorerSettings(IgnoreApi = true)]
         [HttpPost("LoginAutenticacao")]
         public async Task<ActionResult> Login(UsuarioLoginModel usuariologin)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
 
             var result = await _signInManager.PasswordSignInAsync(usuariologin.Email, usuariologin.Senha,
-                false, true);
+                    false, true);
 
             if (result.Succeeded)
                 return CustomResponse(await GerarJwt(usuariologin.Email));
@@ -88,6 +90,10 @@ namespace GestaoProduto.Identidade.Controllers
             claims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
+            var expiracao = DateTime.UtcNow.AddHours(2);
+            claims.Add(new Claim("exp", ToUnixEpochDate(expiracao).ToString(), ClaimValueTypes.DateTime)); // Expira token
+
+
 
             foreach (var userRole in userRoles)
             {

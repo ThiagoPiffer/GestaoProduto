@@ -1,6 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
+using GestaoProduto.Dominio.Entity._GrupoProcesso;
 
-namespace GestaoProduto.Dominio.Entity
+namespace GestaoProduto.Dominio.Entity._Processo
 {
     public class Processo : Entidade
     {

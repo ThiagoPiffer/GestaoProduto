@@ -1,11 +1,11 @@
 ﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Repositorio;
-using GestaoProduto.Dominio.Servico;
-using GestaoProduto.Dominio.Model;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.IRepositorio._Processo;
+using GestaoProduto.Dominio.Model._Processo;
+using GestaoProduto.Dominio.IServico._Processo;
 
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Servico._Processo
 {
     public class ProcessoServico : IProcessoServico
     {

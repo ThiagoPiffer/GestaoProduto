@@ -1,4 +1,4 @@
-﻿namespace GestaoProduto.Dominio.Model
+﻿namespace GestaoProduto.Dominio.Model._Pessoa
 {
     public class PessoaModel
     {

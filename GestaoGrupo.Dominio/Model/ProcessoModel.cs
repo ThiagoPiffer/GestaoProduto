@@ -1,13 +1,4 @@
-﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GestaoProduto.Dominio.Model
+﻿namespace GestaoProduto.Dominio.Model._Processo
 {
     public class ProcessoModel
     {

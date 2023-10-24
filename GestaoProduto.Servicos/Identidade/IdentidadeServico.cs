@@ -1,6 +1,6 @@
 ﻿using Azure;
-using GestaoProduto.Dominio.Model.Identidade;
-using GestaoProduto.Dominio.Servico;
+using GestaoProduto.Dominio.Model._Identidade;
+using GestaoProduto.Dominio.IServico._Identidade;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Servico._Identidade
 {
     public class IdentidadeServico : Service, IIdentidadeServico
     {

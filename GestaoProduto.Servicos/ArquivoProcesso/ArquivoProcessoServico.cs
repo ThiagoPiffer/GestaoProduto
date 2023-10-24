@@ -1,11 +1,11 @@
 ﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Repositorio;
-using GestaoProduto.Dominio.Servico;
-using GestaoProduto.Dominio.Model;
+using GestaoProduto.Dominio.Entity._ArquivoProcesso;
+using GestaoProduto.Dominio.IRepositorio._ArquivoProcesso;
+using GestaoProduto.Dominio.Model._ArquivoProcesso;
+using GestaoProduto.Dominio.IServico._ArquivoProcesso;
 
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Servico._ArquivoProcesso
 {
     public class ArquivoProcessoServico : IArquivoProcessoServico
     {
@@ -51,7 +51,8 @@ namespace GestaoProduto.Servico
 
             // Defina o ID do usuário como 1 (por enquanto)
             int idUsuario = 1;
-            string pathBase = Path.Combine("Arquivos", $"folder_{idUsuario}", $"folder_{arquivoProcessoModel.ProcessoId}");
+            int idEmpresa = 1;
+            string pathBase = Path.Combine("Arquivos", $"folderEmpresa_{idEmpresa}", $"folderUsuario_{idUsuario}", $"folderProcesso_{arquivoProcessoModel.ProcessoId}");
 
             // Verifique se o diretório existe; se não, crie-o
             if (!Directory.Exists(pathBase))

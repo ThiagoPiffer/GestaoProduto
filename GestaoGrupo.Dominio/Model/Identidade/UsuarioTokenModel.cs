@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestaoProduto.Dominio.Model.Identidade
+namespace GestaoProduto.Dominio.Model._Identidade
 {
     public class UsuarioTokenModel
     {

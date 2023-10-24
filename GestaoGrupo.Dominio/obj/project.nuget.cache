@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2C/cS6Tr8rdDCDDyBWQJjKzvxJqak3uQ67vJCOgGip2tkIYh4jbIKDAARR2ibCp4q6bnEai30KJfmlLu1GXN7g==",
+  "dgSpecHash": "fPxDCNtZTy5h7HANT2B/ALNDyI69eW6hQQjTO/TaE72pb5OHsCgXYBd0dHZVwxlJJs/8UAyvgiIueqXMJmD+QQ==",
   "success": true,
   "projectFilePath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thiago\\.nuget\\packages\\google.apis.core\\1.60.0\\google.apis.core.1.60.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Thiago\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
