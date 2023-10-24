@@ -1,10 +1,10 @@
 ﻿using GestaoProduto.Dados.Contextos;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Entity._ArquivoProcesso;
+using GestaoProduto.Dominio.IRepositorio._ArquivoProcesso;
 using Microsoft.EntityFrameworkCore;
+using GestaoProduto.Dados.Repositorio._RepositorioBase;
 
-namespace GestaoProduto.Dados.Repositorios
+namespace GestaoProduto.Dados.Repositorio._ArquivoProcesso
 {
     public class ArquivoProcessoRepositorio : RepositorioBase<ArquivoProcesso>, IArquivoProcessoRepositorio
     {

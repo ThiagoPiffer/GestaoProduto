@@ -1,4 +1,4 @@
-﻿namespace GestaoProduto.Dominio.Model.Identidade
+﻿namespace GestaoProduto.Dominio.Model._Identidade
 {
     public class UsuarioRespostaLoginModel
     {

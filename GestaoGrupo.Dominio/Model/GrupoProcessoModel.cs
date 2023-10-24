@@ -1,4 +1,6 @@
-﻿namespace GestaoProduto.Dominio.Model
+﻿using GestaoProduto.Dominio.Model._Processo;
+
+namespace GestaoProduto.Dominio.Model._GrupoProcesso
 {
     public class GrupoProcessoModel
     {

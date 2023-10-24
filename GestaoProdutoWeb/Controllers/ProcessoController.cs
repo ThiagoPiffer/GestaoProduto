@@ -1,7 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using GestaoProduto.Dominio.Servico;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Model._Processo;
+using GestaoProduto.Dominio.IServico._Processo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers
@@ -35,28 +35,19 @@ namespace GestaoProduto.API.Controllers
 
         [HttpPost]
         [Route("Adicionar")]
-        public async Task<IActionResult> Adicionar([FromBody] ProcessoModel processoModel)
+        public async Task<IActionResult> Adicionar([FromBody] ProcessoModel model)
         {
-            Processo processo = await _processoServico.Adicionar(processoModel);
-            return Ok(processo);  
+            Processo obj = await _processoServico.Adicionar(model);
+            return Ok(obj);  
         }
 
         [HttpPut]
         [Route("Editar")]
-        public async Task<IActionResult> Editar([FromBody] ProcessoModel processoModel)
+        public async Task<IActionResult> Editar([FromBody] ProcessoModel model)
         {
-            Processo processo = await _processoServico.Editar(processoModel);
-            return Ok(processo);
+            Processo obj = await _processoServico.Editar(model);
+            return Ok(obj);
         }
-
-
-        //[HttpPut]
-        //[Route("EditarDto")]
-        //public async Task<IActionResult> EditarDto([FromBody] ProcessoDto processoDto)
-        //{
-        //    Processo processo = await _processoServico.EditarDto(processoDto);
-        //    return Ok(processo);
-        //}
 
         [HttpDelete]
         [Route("Deletar")]

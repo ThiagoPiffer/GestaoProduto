@@ -1,9 +1,7 @@
-﻿using GestaoProduto.Core.Identidade;
-using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using GestaoProduto.Dominio.Servico;
-using Microsoft.AspNetCore.Authorization;
+﻿using GestaoProduto.Dominio._Base;
+using GestaoProduto.Dominio.Entity._Pessoa;
+using GestaoProduto.Dominio.Model._Pessoa;
+using GestaoProduto.Dominio.IServico._Pessoa;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -25,10 +23,9 @@ namespace GestaoProduto.API.Controllers
             _pessoaServico = pessoaServico;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("Listar")]
-        //[ClaimsAuthorize("API","Ler")]
-        public async Task<IActionResult> Listar()
+        public async Task<IActionResult> Listar([FromBody] object request)
         {
             return Ok(await _pessoaServico.Listar());
         }

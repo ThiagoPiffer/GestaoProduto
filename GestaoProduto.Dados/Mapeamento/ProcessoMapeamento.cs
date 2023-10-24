@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Model._Processo;
 
 namespace GestaoProduto.Dados.Mapeamento
 {

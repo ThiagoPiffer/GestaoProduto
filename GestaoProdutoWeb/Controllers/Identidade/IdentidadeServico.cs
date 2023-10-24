@@ -1,13 +1,7 @@
-﻿using Azure;
-using GestaoProduto.Dominio.Model.Identidade;
-using GestaoProduto.Dominio.Servico;
+﻿using GestaoProduto.Dominio.Model._Identidade;
+using GestaoProduto.Dominio.IServico._Identidade;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 
 namespace GestaoProduto.API.Controllers.Identidade
@@ -30,8 +24,9 @@ namespace GestaoProduto.API.Controllers.Identidade
         {
             var loginContent = ObterConteudo(usuarioLogin);
 
-            var response = await _httpClient.PostAsync($"{_settings}/api/Identidade/Login", loginContent);
+            var _settings3 = _settings;
 
+            var response = await _httpClient.PostAsync($"{_settings.AutenticacaoUrl}/apiIdentidade/Identidade/LoginAutenticacao", loginContent);
 
             var options = new JsonSerializerOptions
             {
@@ -53,7 +48,7 @@ namespace GestaoProduto.API.Controllers.Identidade
         {
             var registroContent = ObterConteudo(usuarioRegistroModel);
 
-            var response = await _httpClient.PostAsync($"{_settings}/api/Identidade/Registrar", registroContent);
+            var response = await _httpClient.PostAsync($"{_settings.AutenticacaoUrl}/apiIdentidade/Identidade/Registrar", registroContent);
 
 
 

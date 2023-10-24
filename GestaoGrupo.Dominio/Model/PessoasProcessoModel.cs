@@ -1,4 +1,4 @@
-﻿namespace GestaoProduto.Dominio.Model
+﻿namespace GestaoProduto.Dominio.Model._PessoasProcesso
 {
     public class PessoasProcessoModel
     {
@@ -13,6 +13,7 @@
         public string? Telefone { get; set; } = string.Empty;
         public string? DDDCelular { get; set; } = string.Empty;
         public string? Celular { get; set; } = string.Empty;
+        public int idTipoPessoa { get; set; }
         public string? TipoPessoaDescricao { get; set; } = string.Empty;
         public bool Ativo { get; set; }
     }

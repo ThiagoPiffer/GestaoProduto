@@ -1,7 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using GestaoProduto.Dominio.Servico;
+using GestaoProduto.Dominio.Entity._ArquivoProcesso;
+using GestaoProduto.Dominio.Model._ArquivoProcesso;
+using GestaoProduto.Dominio.IServico._ArquivoProcesso;
 using GestaoProduto.Servico;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
 using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dominio._Base;
 using Microsoft.EntityFrameworkCore;
 //using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
-namespace GestaoProduto.Dados.Repositorios
+namespace GestaoProduto.Dados.Repositorio._RepositorioBase
 {
     public class RepositorioBase<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade
     {
@@ -33,6 +36,36 @@ namespace GestaoProduto.Dados.Repositorios
                 return null;
             }
         }
+
+        public virtual async Task<List<TEntidade>> AdicionarListaAsync(List<TEntidade> entities)
+        {
+            try
+            {
+                // Define os valores padrão para todas as entidades
+                foreach (var entity in entities)
+                {
+                    entity.DataCadastro = DateTime.Now;
+                    entity.Ativo = true;
+                }
+
+                // Adiciona todas as entidades ao contexto do banco de dados
+                await Context.Set<TEntidade>().AddRangeAsync(entities);
+
+                // Salva as alterações no banco de dados
+                await Context.SaveChangesAsync();
+
+                return entities;
+            }
+            catch (Exception ex)
+            {
+                // Loga ou trata o erro aqui
+                var errorMessage = ex.Message;
+                // Você pode querer logar o erro ou fazer algo com ele
+                // Por exemplo, você pode rethrow a exceção ou logá-la em algum sistema de monitoramento de erros
+                return null;
+            }
+        }
+
 
         public virtual async Task<TEntidade> AdicionarAsyncSaveChanges(TEntidade entity)
         {
@@ -81,6 +114,11 @@ namespace GestaoProduto.Dados.Repositorios
         {
             Context.Set<TEntidade>().Remove(entity);
             await Context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate)
+        {
+            return await Context.Set<TEntidade>().AsNoTracking().Where(predicate).ToListAsync();
         }
     }
 

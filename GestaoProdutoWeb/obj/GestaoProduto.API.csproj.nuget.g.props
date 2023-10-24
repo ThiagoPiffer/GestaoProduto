@@ -21,5 +21,6 @@
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">C:\Users\Thiago\.nuget\packages\microsoft.extensions.apidescription.server\6.0.5</PkgMicrosoft_Extensions_ApiDescription_Server>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Thiago\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.11</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgDocX Condition=" '$(PkgDocX)' == '' ">C:\Users\Thiago\.nuget\packages\docx\2.5.0</PkgDocX>
   </PropertyGroup>
 </Project>

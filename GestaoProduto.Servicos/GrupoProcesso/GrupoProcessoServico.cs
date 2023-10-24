@@ -1,16 +1,18 @@
 ﻿using AutoMapper;
 using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Servico;
-using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Entity._GrupoProcesso;
+using GestaoProduto.Dominio.Entity._GrupoProcessoDto;
+using GestaoProduto.Dominio.IRepositorio._GrupoProcesso;
+using GestaoProduto.Dominio.IRepositorio._Processo;
 using GestaoProduto.Dominio;
-using GestaoProduto.Dados.Repositorios;
-using GestaoProduto.Dominio.Model;
+using GestaoProduto.Dados.Repositorio._GrupoProcesso;
+using GestaoProduto.Dominio.Model._GrupoProcesso;
 using System.Linq;
 using Newtonsoft.Json;
+using GestaoProduto.Dominio.IServico._GrupoProcesso;
 
-
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Servico._GrupoProcesso
 {
     public class GrupoProcessoServico : IGrupoProcessoServico
     {
@@ -113,3 +115,4 @@ namespace GestaoProduto.Servico
         }
     }
 }
+

@@ -1,11 +1,14 @@
 ﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Repositorio;
-using GestaoProduto.Dominio.Servico;
-using GestaoProduto.Dominio.Model;
+using GestaoProduto.Dominio.Entity._Pessoa;
+using GestaoProduto.Dominio.Entity._PessoasProcesso;
+using GestaoProduto.Dominio.Model._Pessoa;
+using GestaoProduto.Dominio.IRepositorio._Pessoa;
+using GestaoProduto.Dominio.IRepositorio._Processo;
+using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.IServico._Pessoa;
 
-namespace GestaoProduto.Servico
+namespace GestaoProduto.Servico_Pessoa
 {
     public class PessoaServico : IPessoaServico
     {
@@ -51,17 +54,17 @@ namespace GestaoProduto.Servico
 
         public async Task<Pessoa> Adicionar(PessoaModel pessoaModel, int idProcesso)
         {
-            var processo = await _processoRepositorio.ObterPorIdAsync(idProcesso);
-
+            //adiciona primeiro a pessoa para obter o id do banco
             var pessoa = _mapper.Map<Pessoa>(pessoaModel);
             pessoa = await _pessoaRepositorio.AdicionarAsyncSaveChanges(pessoa);
 
+            //salva pessoa processo com o id adiquirido do banco apos salvar
             var pessoasProcesso = new PessoasProcesso();
             pessoasProcesso.ProcessoId = idProcesso;
-            pessoasProcesso.PessoaId = pessoa.Id;
+            pessoasProcesso.ProcessoId = pessoa.Id;
             pessoasProcesso.Ativo = true;
 
-            await _repositorioPessoasProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);
+            await _repositorioPessoasProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);            
 
             return pessoa;
         }

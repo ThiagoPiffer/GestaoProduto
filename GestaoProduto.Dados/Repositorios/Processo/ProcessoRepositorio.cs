@@ -1,12 +1,12 @@
 ﻿using GestaoProduto.Dados.Contextos;
-using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity;
-using GestaoProduto.Dominio.Model;
-using GestaoProduto.Dominio.Repositorio;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Model._GrupoProcesso;
+using GestaoProduto.Dominio.Model._Processo;
+using GestaoProduto.Dominio.IRepositorio._Processo;
 using Microsoft.EntityFrameworkCore;
-//using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+using GestaoProduto.Dados.Repositorio._RepositorioBase;
 
-namespace GestaoProduto.Dados.Repositorios
+namespace GestaoProduto.Dados.Repositorio._Processo
 {
     public class ProcessoRepositorio : RepositorioBase<Processo>, IProcessoRepositorio
     {

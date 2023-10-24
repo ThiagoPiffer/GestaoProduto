@@ -1,6 +1,6 @@
 ﻿using GestaoProduto.Dominio._Base;
 
-namespace GestaoProduto.Dominio.Model
+namespace GestaoProduto.Dominio.Model._ArquivoProcesso
 {
     public class ArquivoProcessoModel
     {

@@ -29,4 +29,8 @@
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="_Builders\" />
+  </ItemGroup>
+
 </Project>

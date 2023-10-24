@@ -1,19 +1,16 @@
 ﻿using GestaoProduto.Dominio._Base;
+using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Entity._Pessoa;
+using GestaoProduto.Dominio.Entity._TipoPessoa;
 
-namespace GestaoProduto.Dominio.Entity
+namespace GestaoProduto.Dominio.Entity._PessoasProcesso
 {
     public class PessoasProcesso : Entidade
     {
-        public int ProcessoId { get; set; }
-        public Processo Processo { get; set; }
-
-        public int PessoaId { get; set; }
-        public Pessoa Pessoa { get; set; }
-
-        public int? TipoPessoaProcessoId { get; set; }
-        public TipoPessoaProcesso? TipoPessoaProcesso { get; set; }
-
         public PessoasProcesso() { }
+        public int ProcessoId { get; set; }
+        public int PessoaId { get; set; }        
+        public int? TipoPessoaId { get; set; }        
     }
 
 }
