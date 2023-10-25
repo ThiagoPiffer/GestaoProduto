@@ -67,7 +67,7 @@ namespace GestaoProduto.Servico._ArquivoProcessoTemplate
             string fullPath = Path.Combine(pathBase, obj.Nome);
             obj.CaminhoArquivo = fullPath;
             obj.TamanhoArquivo = file.Length > 0 ? file.Length : 0;
-            obj.idEmpresa = idEmpresa;
+            obj.EmpresaId = idEmpresa;
 
             // Salve o arquivo
             using (var arquivo = new FileStream(fullPath, FileMode.Create, FileAccess.Write))

@@ -1,4 +1,5 @@
 ﻿using GestaoProduto.Dominio._Base;
+using GestaoProduto.Dominio.Entity._Empresa;
 
 namespace GestaoProduto.Dominio.Entity._ArquivoProcessoTemplate
 {
@@ -10,6 +11,7 @@ namespace GestaoProduto.Dominio.Entity._ArquivoProcessoTemplate
         public string? Descricao { get; set; }
         public string CaminhoArquivo { get; set; }
         public long TamanhoArquivo { get; set; }
-        public int idEmpresa { get; set; }
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
     }
 }

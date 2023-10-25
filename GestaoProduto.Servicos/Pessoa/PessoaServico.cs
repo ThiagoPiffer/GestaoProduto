@@ -1,11 +1,11 @@
 ﻿using GestaoProduto.Dominio._Base;
 using AutoMapper;
 using GestaoProduto.Dominio.Entity._Pessoa;
-using GestaoProduto.Dominio.Entity._PessoasProcesso;
+using GestaoProduto.Dominio.Entity._PessoaProcesso;
 using GestaoProduto.Dominio.Model._Pessoa;
 using GestaoProduto.Dominio.IRepositorio._Pessoa;
 using GestaoProduto.Dominio.IRepositorio._Processo;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using GestaoProduto.Dominio.IServico._Pessoa;
 
 namespace GestaoProduto.Servico_Pessoa
@@ -13,19 +13,19 @@ namespace GestaoProduto.Servico_Pessoa
     public class PessoaServico : IPessoaServico
     {
         private readonly IRepositorio<Pessoa> _repositorio;
-        private readonly IRepositorio<PessoasProcesso> _repositorioPessoasProcesso;
+        private readonly IRepositorio<PessoaProcesso> _repositorioPessoaProcesso;
         private readonly IPessoaRepositorio _pessoaRepositorio;
         private readonly IProcessoRepositorio _processoRepositorio;
         private readonly IMapper _mapper;
 
         public PessoaServico(IRepositorio<Pessoa> repositorio,
-                             IRepositorio<PessoasProcesso> repositorioPessoasProcesso,
+                             IRepositorio<PessoaProcesso> repositorioPessoasProcesso,
                              IPessoaRepositorio pessoaRepositorio,
                              IProcessoRepositorio processoRepositorio,
                              IMapper mapper)
         {
             _repositorio = repositorio;
-            _repositorioPessoasProcesso = repositorioPessoasProcesso;
+            _repositorioPessoaProcesso = repositorioPessoasProcesso;
             _pessoaRepositorio = pessoaRepositorio;
             _processoRepositorio = processoRepositorio;
             _mapper = mapper;
@@ -38,7 +38,7 @@ namespace GestaoProduto.Servico_Pessoa
             return mappedPessoas;
         }
 
-        public async Task<List<PessoasProcessoModel>> ListarPessoasProcesso(int idProcesso)
+        public async Task<List<PessoaProcessoModel>> ListarPessoasProcesso(int idProcesso)
         {
             var listaPessoas = await _pessoaRepositorio.ListarPessoasProcesso(idProcesso);
             return listaPessoas;
@@ -59,12 +59,12 @@ namespace GestaoProduto.Servico_Pessoa
             pessoa = await _pessoaRepositorio.AdicionarAsyncSaveChanges(pessoa);
 
             //salva pessoa processo com o id adiquirido do banco apos salvar
-            var pessoasProcesso = new PessoasProcesso();
+            var pessoasProcesso = new PessoaProcesso();
             pessoasProcesso.ProcessoId = idProcesso;
             pessoasProcesso.ProcessoId = pessoa.Id;
             pessoasProcesso.Ativo = true;
 
-            await _repositorioPessoasProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);            
+            await _repositorioPessoaProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);            
 
             return pessoa;
         }

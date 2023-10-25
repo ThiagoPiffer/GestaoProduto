@@ -11,7 +11,7 @@ using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
 using GestaoProduto.Servico._TipoPessoaTemplate;
 using GestaoProduto.Dominio.Model.RequestModel;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using System;
 using System.Reflection.Metadata;
 
@@ -207,7 +207,7 @@ namespace GestaoProduto.API.Controllers
         }
 
         [HttpGet("ListarPessoaTemplate/{idArquivoTemplate}/{idProcesso}")]
-        public Task<List<PessoasProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso)
+        public Task<List<PessoaProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso)
         {            
             return _tipoPessoaTemplateServico.ListarPessoaTemplate(idArquivoTemplate, idProcesso);
         }

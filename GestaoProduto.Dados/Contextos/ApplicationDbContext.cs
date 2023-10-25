@@ -2,7 +2,7 @@
 using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Dominio.Entity._Processo;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
-using GestaoProduto.Dominio.Entity._PessoasProcesso;
+using GestaoProduto.Dominio.Entity._PessoaProcesso;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -22,10 +22,10 @@ namespace GestaoProduto.Dados.Contextos
 
         }
 
-        public DbSet<Processo> Processos { get; set; }
-        public DbSet<GrupoProcesso> GrupoProcessos { get; set; }
-        public DbSet<Pessoa> Pessoas { get; set; }
-        public DbSet<PessoasProcesso> PessoasProcesso { get; set; }
+        public DbSet<Processo> Processo { get; set; }
+        public DbSet<GrupoProcesso> GrupoProcesso { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<PessoaProcesso> PessoaProcesso { get; set; }
         public DbSet<TipoPessoa> TipoPessoa { get; set; }
         public DbSet<ArquivoProcesso> ArquivoProcesso { get; set; }
         public DbSet<Usuario> Usuario { get; set; }

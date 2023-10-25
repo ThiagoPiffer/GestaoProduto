@@ -12,8 +12,8 @@ namespace GestaoProduto.Dominio.Entity._ArquivoProcesso
         public string? Descricao { get; set; } // Uma descrição ou nota sobre o arquivo
         public int TamanhoArquivo { get; set; } 
         public int ProcessoId { get; set; }
-        public string CaminhoArquivo { get; set; }
         public Processo Processo { get; set; }
+        public string CaminhoArquivo { get; set; }        
         //public string CaminhoArquivo { get; set; } 
         //public int UsuarioUploadId { get; set; } 
     }

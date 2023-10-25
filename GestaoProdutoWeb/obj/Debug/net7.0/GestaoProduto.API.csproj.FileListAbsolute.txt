@@ -104,3 +104,4 @@ H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net7.0\refint\GestaoProduto
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net7.0\GestaoProduto.API.pdb
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net7.0\GestaoProduto.API.genruntimeconfig.cache
 H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net7.0\ref\GestaoProduto.API.dll
+H:\Projetos\GestaoProduto\GestaoProdutoWeb\obj\Debug\net7.0\GestaoProduto.API.MvcApplicationPartsAssemblyInfo.cs

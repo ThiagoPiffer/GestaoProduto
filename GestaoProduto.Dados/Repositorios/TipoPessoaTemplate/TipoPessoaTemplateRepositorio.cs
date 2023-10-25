@@ -4,7 +4,7 @@ using GestaoProduto.Dominio.IRepositorio._TipoPessoaTemplateRepositorio;
 using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
 using Microsoft.EntityFrameworkCore;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 
 namespace GestaoProduto.Dados.Repositorios._TipoPessoaTemplate
@@ -42,17 +42,17 @@ namespace GestaoProduto.Dados.Repositorios._TipoPessoaTemplate
             var listaTiposPessoa = Context.TipoPessoa.ToList();
 
             var tiposPessoaTemplates = Context.TipoPessoaTemplate
-                .Where(tpt => tpt.IdArquivoProcessoTemplate == idArquivoTemplate)
+                .Where(tpt => tpt.ArquivoProcessoTemplateId == idArquivoTemplate)
                 .ToList();
 
             return tiposPessoaTemplates.Select(tpt => new TipoPessoaTemplateModel
             {
                 Id = tpt.Id,
-                IdTipoPessoa = tpt.IdTipoPessoa,
-                IdArquivoProcessoTemplate = tpt.IdArquivoProcessoTemplate,
+                IdTipoPessoa = tpt.TipoPessoaId,
+                IdArquivoProcessoTemplate = tpt.ArquivoProcessoTemplateId,
                 CampoChave = tpt.CampoChave,
                 Ativo = tpt.Ativo,
-                Descricao = listaTiposPessoa.FirstOrDefault(tp => tp.Id == tpt.IdTipoPessoa)?.Descricao ?? ""
+                Descricao = listaTiposPessoa.FirstOrDefault(tp => tp.Id == tpt.TipoPessoaId)?.Descricao ?? ""
             }).ToList();
         }
 

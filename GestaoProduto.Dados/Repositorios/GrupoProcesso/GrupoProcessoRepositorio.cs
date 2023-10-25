@@ -15,12 +15,12 @@ namespace GestaoProduto.Dados.Repositorio._GrupoProcesso
 
         public async Task Armazenar(GrupoProcesso grupoProcesso)
         {
-            await Context.GrupoProcessos.AddAsync(grupoProcesso);
+            await Context.GrupoProcesso.AddAsync(grupoProcesso);
         }
 
         public Task<List<GrupoProcesso>> ObterListaCustomizadaAsync()
         {
-            return Context.GrupoProcessos.ToListAsync();
+            return Context.GrupoProcesso.ToListAsync();
         }
     }
 }

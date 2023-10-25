@@ -96,3 +96,4 @@ H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\refint\Gesta
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\GestaoProduto.Identidade.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\GestaoProduto.Identidade.genruntimeconfig.cache
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\ref\GestaoProduto.Identidade.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\GestaoProduto.Identidade.MvcApplicationPartsAssemblyInfo.cs
