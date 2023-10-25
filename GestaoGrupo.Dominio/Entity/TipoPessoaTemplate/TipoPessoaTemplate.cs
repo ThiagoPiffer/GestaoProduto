@@ -9,14 +9,11 @@ namespace GestaoProduto.Dominio.Entity._TipoPessoaTemplate
     {
         public TipoPessoaTemplate() { }
 
-        public int IdTipoPessoa { get; set; }
+        public int TipoPessoaId { get; set; }
+        public TipoPessoa TipoPessoa { get; set; }
 
-        //[ForeignKey("TipoPessoa")]
-        //public int IdTipoPessoa { get; set; }
-
-        //public virtual TipoPessoa TipoPessoa { get; set; }
-
-        public int IdArquivoProcessoTemplate { get; set; }
+        public int ArquivoProcessoTemplateId { get; set; }
+        public ArquivoProcessoTemplate ArquivoProcessoTemplate { get; set; }
         public string CampoChave { get; set; }
     }
 }

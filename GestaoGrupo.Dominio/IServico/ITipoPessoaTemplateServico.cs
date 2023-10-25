@@ -1,5 +1,5 @@
 ﻿using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 using GestaoProduto.Dominio.Model.RequestModel;
 
@@ -13,7 +13,7 @@ namespace GestaoProduto.Dominio.IServico._TipoPessoaTemplateServico
         Task<TipoPessoaTemplate> Editar(TipoPessoaTemplateModel tipoPessoaTemplateModel);
         Task<string> Delete(int id);
         Task<List<TipoPessoaTemplate>> AdicionarTipoPessoaTemplate(List<TipoPessoaTemplateModel> model);
-        Task<List<PessoasProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso);
+        Task<List<PessoaProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso);
         List<TipoPessoaTemplateModel> ListarTiposPessoaTemplate(int idProccessoTemplate);
     }
 }

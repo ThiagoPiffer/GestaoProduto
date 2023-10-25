@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Dominio.Model._Pessoa;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 
 namespace GestaoProduto.Dados.Mapeamento
 {
@@ -24,7 +24,7 @@ namespace GestaoProduto.Dados.Mapeamento
                 .ForMember(dest => dest.Celular, opt => opt.MapFrom(src => src.Celular))
                 .ReverseMap();
 
-            CreateMap<Pessoa, PessoasProcessoModel>();
+            CreateMap<Pessoa, PessoaProcessoModel>();
         }
     }
 }

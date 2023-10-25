@@ -1,6 +1,6 @@
-﻿namespace GestaoProduto.Dominio.Model._PessoasProcesso
+﻿namespace GestaoProduto.Dominio.Model._PessoaProcesso
 {
-    public class PessoasProcessoModel
+    public class PessoaProcessoModel
     {
         public int Id { get; set; }
         public string Nome { get; set; } = string.Empty;

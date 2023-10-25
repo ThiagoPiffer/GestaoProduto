@@ -4,7 +4,7 @@ using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
 using GestaoProduto.Dominio.IRepositorio._Pessoa;
 using GestaoProduto.Dominio.IRepositorio._TipoPessoaTemplateRepositorio;
 using GestaoProduto.Dominio.IServico._TipoPessoaTemplateServico;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 using Microsoft.EntityFrameworkCore;
 
@@ -79,11 +79,11 @@ namespace GestaoProduto.Servico._TipoPessoaTemplate
             return obj;
         }
 
-        public async Task<List<PessoasProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso)
+        public async Task<List<PessoaProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso)
         {
             //busca tipos de pessoa do template
-            var listaTiposPessoa = _repositorio.ObterListaFiltroAsync(t => t.IdArquivoProcessoTemplate == idArquivoTemplate && t.Ativo).Result.ToList();
-            var listaIdsTiposPessoa = listaTiposPessoa.Select(l => l.IdTipoPessoa).ToList();
+            var listaTiposPessoa = _repositorio.ObterListaFiltroAsync(t => t.ArquivoProcessoTemplateId == idArquivoTemplate && t.Ativo).Result.ToList();
+            var listaIdsTiposPessoa = listaTiposPessoa.Select(l => l.TipoPessoaId).ToList();
             var listaModel = _mapper.Map<List<TipoPessoaTemplateModel>>(listaTiposPessoa);
 
             var PessoasProcessoModel = await _pessoaRepositorio.ListarPessoasArquivoTemplate(idArquivoTemplate, idProcesso, listaIdsTiposPessoa);

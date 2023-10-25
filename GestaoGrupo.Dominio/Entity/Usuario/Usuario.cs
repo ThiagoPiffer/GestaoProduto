@@ -9,7 +9,8 @@ namespace GestaoProduto.Dominio.Entity._Usuario
 
         public string Nome { get; set; }
         public string CPF { get; set; }
-        public int IdEmpresa { get; set; }
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; } 
         public string IdAspNetUser { get; set; }
     }
 }

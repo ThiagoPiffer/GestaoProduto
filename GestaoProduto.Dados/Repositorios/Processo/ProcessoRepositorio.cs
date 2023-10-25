@@ -43,7 +43,7 @@ namespace GestaoProduto.Dados.Repositorio._Processo
 
         public async Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel()
         {
-            var grupos = await Context.Processos
+            var grupos = await Context.Processo
                 .Include(p => p.GrupoProcesso) // Inclui os processos associados ao grupo
                 .ToListAsync();
 

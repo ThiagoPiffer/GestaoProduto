@@ -1,7 +1,7 @@
 ﻿using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Dominio.Model._GrupoProcesso;
-using GestaoProduto.Dominio.Model._PessoasProcesso;
+using GestaoProduto.Dominio.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._Processo;
 using GestaoProduto.Dominio.IRepositorio._Pessoa;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +11,7 @@ using GestaoProduto.Dominio._Base;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
 using GestaoProduto.Dominio.Entity._Empresa;
-using GestaoProduto.Dominio.Entity._PessoasProcesso;
+using GestaoProduto.Dominio.Entity._PessoaProcesso;
 
 namespace GestaoProduto.Dados.Repositorio._Pessoa
 {
@@ -20,22 +20,22 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
         public PessoaRepositorio(ApplicationDbContext context) : base(context)
         { }
 
-        public async Task<List<PessoasProcessoModel>> ListarPessoasProcesso(int idProcesso)
+        public async Task<List<PessoaProcessoModel>> ListarPessoasProcesso(int idProcesso)
         {
             var empresaId = 2;
 
             //Pessoas no Processo
-            var pessoasProcesso = await Context.PessoasProcesso.Where(pp => pp.ProcessoId == idProcesso).ToListAsync();
+            var pessoasProcesso = await Context.PessoaProcesso.Where(pp => pp.ProcessoId == idProcesso).ToListAsync();
 
             var pessoasIds = pessoasProcesso.Select(pp => pp.PessoaId).ToList();
 
             //Pessoas
-            var pessoas = await Context.Pessoas
+            var pessoas = await Context.Pessoa
                 .Where(p => pessoasIds.Contains(p.Id))
                 .ToListAsync();
 
             //Tipos Pessoa
-            var tiposPessoa = await Context.TipoPessoa.Where(tp => tp.IdEmpresa == empresaId).ToListAsync();
+            var tiposPessoa = await Context.TipoPessoa.Where(tp => tp.EmpresaId == empresaId).ToListAsync();
 
             //PessoasProcessoModel
             var pessoaProcesssoModel = pessoas.Select(p =>
@@ -43,7 +43,7 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                 var pessoaProcesso = pessoasProcesso.FirstOrDefault(pp => pp.Id == p.Id);
                 var tipoPessoa = pessoaProcesso != null ? tiposPessoa.FirstOrDefault(t => t.Id == pessoaProcesso.TipoPessoaId) : null;
 
-                return new PessoasProcessoModel
+                return new PessoaProcessoModel
                 {
                     Id = p.Id,
                     Nome = p.Nome,
@@ -64,13 +64,13 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
             return pessoaProcesssoModel;
         }
 
-        public async Task<List<PessoasProcessoModel>> ListarPessoasArquivoTemplate(int idArquivoTemplate, int idProcesso, List<int> idsTiposPessoa)
+        public async Task<List<PessoaProcessoModel>> ListarPessoasArquivoTemplate(int idArquivoTemplate, int idProcesso, List<int> idsTiposPessoa)
         {
             var empresaId = 2;
 
             //Tipos Pessoa
             var tiposPessoa = await Context.TipoPessoa.Where(tp => tp.Ativo &&
-                                                                    tp.IdEmpresa == empresaId && 
+                                                                    tp.EmpresaId == empresaId && 
                                                                    idsTiposPessoa.Contains( tp.Id)
             ).ToListAsync();
 
@@ -78,17 +78,17 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
 
             //Tipos Pessoa Template
             var idsTipoPessoatemplate = await Context.TipoPessoaTemplate.Where(pp => pp.Ativo &&
-                idsTiposPessoa.Contains(pp.IdTipoPessoa)
-                ).Select(pp => pp.IdTipoPessoa).ToListAsync();
+                idsTiposPessoa.Contains(pp.TipoPessoaId)
+                ).Select(pp => pp.TipoPessoaId).ToListAsync();
 
             //Pessoas Processo
-            var pessoasProcesso = await Context.PessoasProcesso.Where(pp => pp.Ativo &&
+            var pessoasProcesso = await Context.PessoaProcesso.Where(pp => pp.Ativo &&
                 pp.ProcessoId == idProcesso &&
                 (trazerTodos || (pp.TipoPessoaId.HasValue && idsTipoPessoatemplate.Contains(pp.TipoPessoaId.Value)))
                 ).ToListAsync();
 
             //Pessoas
-            var pessoas = await Context.Pessoas.Where(p => p.Ativo &&            
+            var pessoas = await Context.Pessoa.Where(p => p.Ativo &&            
             pessoasProcesso.Select(pp => pp.Id).Contains(p.Id)).ToListAsync();
 
             //PessoasProcessoModel
@@ -97,7 +97,7 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                 var pessoaProcesso = pessoasProcesso.FirstOrDefault(pp => pp.Id == p.Id);
                 var tipoPessoa = pessoaProcesso != null ? tiposPessoa.FirstOrDefault(t => t.Id == pessoaProcesso.TipoPessoaId) : null;
 
-                return new PessoasProcessoModel
+                return new PessoaProcessoModel
                 {
                     Id = p.Id,
                     Nome = p.Nome,
@@ -124,7 +124,7 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
 
         public async Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel()
         {
-            var grupos = await Context.Processos
+            var grupos = await Context.Processo
                 .Include(p => p.GrupoProcesso) // Inclui os processos associados ao grupo
                 .ToListAsync();
 

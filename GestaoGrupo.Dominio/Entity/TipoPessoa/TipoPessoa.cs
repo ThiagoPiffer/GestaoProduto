@@ -5,8 +5,11 @@ namespace GestaoProduto.Dominio.Entity._TipoPessoa
 {
     public class TipoPessoa : Entidade
     {
+        public TipoPessoa() { }
+
         public string Descricao { get; set; } = string.Empty;
-        public int IdEmpresa { get; set; }
+        public int EmpresaId { get; set; }
+        public Empresa Empresa { get; set; }
     }
 }
 
