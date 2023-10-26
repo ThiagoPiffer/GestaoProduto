@@ -48,8 +48,8 @@ namespace GestaoProduto.Dados.Repositorios._TipoPessoaTemplate
             return tiposPessoaTemplates.Select(tpt => new TipoPessoaTemplateModel
             {
                 Id = tpt.Id,
-                IdTipoPessoa = tpt.TipoPessoaId,
-                IdArquivoProcessoTemplate = tpt.ArquivoProcessoTemplateId,
+                TipoPessoaId = tpt.TipoPessoaId,
+                ArquivoProcessoTemplateId = tpt.ArquivoProcessoTemplateId,
                 CampoChave = tpt.CampoChave,
                 Ativo = tpt.Ativo,
                 Descricao = listaTiposPessoa.FirstOrDefault(tp => tp.Id == tpt.TipoPessoaId)?.Descricao ?? ""

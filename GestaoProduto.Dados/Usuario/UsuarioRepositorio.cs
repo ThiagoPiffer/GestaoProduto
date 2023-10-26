@@ -39,5 +39,18 @@ namespace GestaoProduto.Dados.Repositorio._Usuario
         {
             Context.Update(usuario);
         }
+
+        public string BuscaIdUsuarioAspNet(string email)
+        {
+            return Context.Users.FirstOrDefault(u => u.NormalizedUserName == email.ToUpper()).Id;
+        }
+
+        public void DeletarIdUsuarioAspNet(string id)
+        {
+            var usuario = Context.Users.Where(u => u.Id == id).FirstOrDefault();
+            Context.Users.Remove(usuario);
+            Context.SaveChanges();
+        }
+
     }
 }

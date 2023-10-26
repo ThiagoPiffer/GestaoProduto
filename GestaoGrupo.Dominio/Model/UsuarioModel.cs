@@ -10,7 +10,7 @@ namespace GestaoProduto.Dominio.Model._Usuario
         public string Nome { get; set; }
         public string CPF { get; set; }
         public EmpresaModel Empresa { get; set; }
-        public int Idempresa { get; set; }
-        public string IdAspNetUser { get; set; }
+        public int EmpresaId { get; set; }
+        public string AspNetUserId { get; set; }
     }
 }

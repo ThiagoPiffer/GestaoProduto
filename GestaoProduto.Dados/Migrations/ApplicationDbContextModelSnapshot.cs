@@ -357,6 +357,10 @@ namespace GestaoProduto.Dados.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AspNetUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
@@ -369,10 +373,6 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
-
-                    b.Property<string>("IdAspNetUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()

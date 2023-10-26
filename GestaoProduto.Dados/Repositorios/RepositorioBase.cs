@@ -110,10 +110,29 @@ namespace GestaoProduto.Dados.Repositorio._RepositorioBase
             return entidades.Any() ? entidades : new List<TEntidade>();
         }
 
+        public void DetachAllInstancesOfEntity(int entityId)
+        {
+            var local = Context.Set<TEntidade>().Local
+                .FirstOrDefault(entry => entry.Id.Equals(entityId));
+            if (local != null)
+            {
+                Context.Entry(local).State = EntityState.Detached;
+            }
+        }
+
+
         public async Task ExcluirAsync(TEntidade entity)
         {
-            Context.Set<TEntidade>().Remove(entity);
-            await Context.SaveChangesAsync();
+            try
+            {
+                Context.Set<TEntidade>().Remove(entity);
+                await Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                var x = ex.Message;
+                
+            }
         }
 
         public async Task<IEnumerable<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate)
