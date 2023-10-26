@@ -3,8 +3,8 @@
     public class TipoPessoaTemplateModel
     {
         public int Id { get; set; }
-        public int IdTipoPessoa { get; set; }
-        public int IdArquivoProcessoTemplate { get; set; }
+        public int TipoPessoaId { get; set; }
+        public int ArquivoProcessoTemplateId { get; set; }
         public string CampoChave { get; set; } = string.Empty;
         public bool Ativo { get; set; }
         public string Descricao { get; set; } = string.Empty;

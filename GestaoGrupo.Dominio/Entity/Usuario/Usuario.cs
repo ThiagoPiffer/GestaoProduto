@@ -11,6 +11,6 @@ namespace GestaoProduto.Dominio.Entity._Usuario
         public string CPF { get; set; }
         public int EmpresaId { get; set; }
         public Empresa Empresa { get; set; } 
-        public string IdAspNetUser { get; set; }
+        public string AspNetUserId { get; set; }
     }
 }

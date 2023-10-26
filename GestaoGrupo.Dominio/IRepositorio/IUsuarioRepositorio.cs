@@ -9,5 +9,8 @@ namespace GestaoProduto.Dominio.IRepositorio._Usuario
         Task<List<Usuario>> BuscaPorTermo(string termo);
         Task Armazenar(Usuario usuario);
         void Update(Usuario usuario);
+        string BuscaIdUsuarioAspNet(string email);
+        void DeletarIdUsuarioAspNet(string id);
+
     }
 }

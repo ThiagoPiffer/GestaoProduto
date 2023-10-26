@@ -8,6 +8,6 @@ namespace GestaoProduto.Dominio.Model._ArquivoProcessoTemplate
         public string Nome { get; set; }
         public string? Descricao { get; set; }
         public IFormFile Arquivo { get; set; }
-        public int idEmpresa { get; set; }
+        public int EmpresaId { get; set; }
     }
 }

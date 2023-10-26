@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace GestaoProduto.Dominio._Base
@@ -12,6 +13,7 @@ namespace GestaoProduto.Dominio._Base
         Task<TEntidade> AdicionarAsyncSaveChanges(TEntidade entity);
         Task<TEntidade> EditarAsync(TEntidade entity);
         Task ExcluirAsync(TEntidade entity);
+        void DetachAllInstancesOfEntity(int entityId);
         Task<IEnumerable<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate);
 
 

@@ -33,26 +33,27 @@ namespace GestaoProduto.Servico._Usuario
         {
             var Obj = await _repositorio.ObterPorIdAsync(id);
             var objModel = _mapper.Map<UsuarioModel>(Obj);
-            
+
             return objModel;
         }
 
         public async Task<List<Usuario>> BuscaPorTermo(string termo)
         {
-            List<Usuario> lista = await _usuarioRepositorio.BuscaPorTermo(termo);            
+            List<Usuario> lista = await _usuarioRepositorio.BuscaPorTermo(termo);
             return lista;
         }
 
         public async Task<Usuario> Adicionar(UsuarioModel model)
-        {            
-            var obj = _mapper.Map<Usuario>(model);                
+        {
+            var obj = _mapper.Map<Usuario>(model);
+            obj.Empresa = null;
             await _repositorio.AdicionarAsync(obj);
 
             return obj;
         }
 
         public async Task<Usuario> Editar(UsuarioModel model)
-        {            
+        {
             var obj = _mapper.Map<Usuario>(model);
             await _repositorio.EditarAsync(obj);
 
