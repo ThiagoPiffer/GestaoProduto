@@ -1,4 +1,4 @@
-﻿using GestaoProduto.Dominio.Model._Identidade;
+﻿using GestaoProduto.Compartilhado.Model._Identidade;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers

@@ -14,7 +14,7 @@ namespace GestaoProduto.Dominio._Base
         Task<TEntidade> EditarAsync(TEntidade entity);
         Task ExcluirAsync(TEntidade entity);
         void DetachAllInstancesOfEntity(int entityId);
-        Task<IEnumerable<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate);
+        Task<List<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate);
 
 
     }

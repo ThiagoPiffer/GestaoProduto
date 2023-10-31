@@ -1,15 +1,16 @@
-﻿using GestaoProduto.Dominio.Model._Identidade;
-using GestaoProduto.Dominio.IServico._Identidade;
+﻿using GestaoProduto.Compartilhado.Model._Identidade;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Identidade;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
-using GestaoProduto.Dominio.IServico._Empresa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
 using GestaoProduto.Servico._Empresa;
 using AutoMapper;
 using GestaoProduto.Dominio.Entity._Empresa;
 using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._PessoaProcesso;
 using GestaoProduto.Dominio.Entity._Usuario;
-using GestaoProduto.Dominio.IRepositorio._Usuario;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Usuario;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._Usuario;
 
 namespace GestaoProduto.API.Controllers.Identidade
 {
@@ -38,9 +39,7 @@ namespace GestaoProduto.API.Controllers.Identidade
 
         public async Task<UsuarioRespostaLoginModel> Login(UsuarioLoginModel usuarioLogin)
         {
-            var loginContent = ObterConteudo(usuarioLogin);
-
-            var _settings3 = _settings;
+            var loginContent = ObterConteudo(usuarioLogin);       
 
             var response = await _httpClient.PostAsync($"{_settings.AutenticacaoUrl}/apiIdentidade/Identidade/LoginAutenticacao", loginContent);
 
@@ -79,6 +78,7 @@ namespace GestaoProduto.API.Controllers.Identidade
                     usuario.CPF = usuarioRegistroModel.CPF;
                     usuario.EmpresaId = empresa.Id;
                     usuario.AspNetUserId = idUsuarioAspNet;
+
                     await _repositorioUsuario.Armazenar(usuario);
 
                     //caso algo de errado ao salvar dados ira apagar os dados salvos

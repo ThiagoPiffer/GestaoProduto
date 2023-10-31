@@ -1,17 +1,18 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
-using GestaoProduto.Dominio.Entity._GrupoProcessoDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using GestaoProduto.Identidade;
 using System.IdentityModel.Tokens.Jwt;
-using GestaoProduto.Dominio.IServico._GrupoProcesso;
+using GestaoProduto.Compartilhado.Interfaces.Servico._GrupoProcesso;
+using GestaoProduto.Compartilhado.Interfaces._User;
+using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
 
 
     public class GrupoProcessoController : Controller

@@ -1,7 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._Usuario;
-using GestaoProduto.Dominio.Model._Usuario;
-using GestaoProduto.Dominio.IServico._Usuario;
+using GestaoProduto.Compartilhado.Model._Usuario;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Usuario;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers

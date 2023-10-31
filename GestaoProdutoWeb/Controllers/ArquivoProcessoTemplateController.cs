@@ -1,19 +1,14 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._ArquivoProcessoTemplate;
-using GestaoProduto.Dominio.Model._ArquivoProcessoTemplate;
-using GestaoProduto.Dominio.IServico._ArquivoProcessoTemplate;
-using GestaoProduto.Dominio.IServico._Pessoa;
-using GestaoProduto.Dominio.IServico._TipoPessoaTemplateServico;
+using GestaoProduto.Compartilhado.Model._ArquivoProcessoTemplate;
+using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcessoTemplate;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoaTemplateServico;
 using Microsoft.AspNetCore.Mvc;
-using Xceed.Document.NET;
 using Xceed.Words.NET;
+using GestaoProduto.Compartilhado.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
-using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
-using GestaoProduto.Servico._TipoPessoaTemplate;
-using GestaoProduto.Dominio.Model.RequestModel;
-using GestaoProduto.Dominio.Model._PessoaProcesso;
-using System;
-using System.Reflection.Metadata;
+using Newtonsoft.Json;
 
 namespace GestaoProduto.API.Controllers
 {
@@ -54,16 +49,19 @@ namespace GestaoProduto.API.Controllers
 
         [HttpPost]
         [Route("Adicionar")]
-        public async Task<IActionResult> Adicionar([FromQuery] int idProcesso, int idEmpresa, [FromForm] IFormFile file)
-        {            
-            ArquivoProcessoTemplate arquivoprocessotemplate = await _arquivoProcessoTemplateServico.Adicionar(idProcesso, idEmpresa, file);
+        public async Task<IActionResult> Adicionar([FromQuery] int idProcesso, [FromForm] IFormFile file, [FromForm] string tipoPessoaTemplateModel)
+        {
+            // Deserializar tipoPessoaTemplateModel de volta para uma lista
+            var tiposPessoaTemplateModel = JsonConvert.DeserializeObject<List<TipoPessoaTemplateModel>>(tipoPessoaTemplateModel);
 
+            ArquivoProcessoTemplate arquivoprocessotemplate = await _arquivoProcessoTemplateServico.Adicionar(idProcesso, file, tiposPessoaTemplateModel);
 
             if (arquivoprocessotemplate != null)
                 return Ok(arquivoprocessotemplate);
             else
                 return BadRequest("Erro ao adicionar o arquivo.");
         }
+
 
         [HttpPost]
         [Route("AdicionarTipoPessoaTemplate")]

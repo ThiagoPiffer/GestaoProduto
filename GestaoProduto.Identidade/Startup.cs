@@ -3,6 +3,7 @@
 using GestaoProduto.Dados.Contextos;
 using GestaoProduto.Identidade.Configuration;
 using GestaoProduto.Identidade.Extensao;
+using GestaoProduto.Ioc;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -42,6 +43,7 @@ namespace GestaoProduto.Identidade
             services.AddSwaggerGen();
             services.AddCorsExtensions(Configuration);
             services.AddIdentityConfiguration(Configuration);
+            services.AddCustomAutoMapping(Configuration);
 
             // JWT
             var appSettiongsSection = Configuration.GetSection("AppSettings");
@@ -88,6 +90,7 @@ namespace GestaoProduto.Identidade
                 });
             });
 
+            services.RegisterServicesCompartilhado(Configuration);
             services.AddResponseCompression();
         }
 

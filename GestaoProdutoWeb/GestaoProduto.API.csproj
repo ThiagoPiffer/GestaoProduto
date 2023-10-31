@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Compartilhado\GestaoProduto.Compartilhado.csproj" />
     <ProjectReference Include="..\GestaoProduto.Core\GestaoProduto.Core.csproj" />
     <ProjectReference Include="..\GestaoProduto.Identidade\GestaoProduto.Identidade.csproj" />
     <ProjectReference Include="..\GestaoProduto.Ioc\GestaoProduto.Ioc.csproj" />

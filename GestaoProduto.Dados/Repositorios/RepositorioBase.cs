@@ -69,12 +69,20 @@ namespace GestaoProduto.Dados.Repositorio._RepositorioBase
 
         public virtual async Task<TEntidade> AdicionarAsyncSaveChanges(TEntidade entity)
         {
-            entity.DataCadastro = DateTime.Now;
-            entity.Ativo = true;
+            try
+            {
+                entity.DataCadastro = DateTime.Now;
+                entity.Ativo = true;
 
-            await Context.Set<TEntidade>().AddAsync(entity);
-            await Context.SaveChangesAsync();
-            return entity;
+                await Context.Set<TEntidade>().AddAsync(entity);
+                await Context.SaveChangesAsync();
+                return entity;
+            }catch(Exception ex)
+            {
+                var x = ex.ToString();
+            }
+
+            return null;
         }
 
 
@@ -135,7 +143,7 @@ namespace GestaoProduto.Dados.Repositorio._RepositorioBase
             }
         }
 
-        public async Task<IEnumerable<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate)
+        public async Task<List<TEntidade>> ObterListaFiltroAsync(Expression<Func<TEntidade, bool>> predicate)
         {
             return await Context.Set<TEntidade>().AsNoTracking().Where(predicate).ToListAsync();
         }

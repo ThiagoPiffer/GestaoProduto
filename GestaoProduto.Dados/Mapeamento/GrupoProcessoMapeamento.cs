@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
-using GestaoProduto.Dominio.Entity._GrupoProcessoDto;
 
 namespace GestaoProduto.Dados.Mapeamento
 {
