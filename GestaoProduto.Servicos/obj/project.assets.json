@@ -2037,11 +2037,25 @@
           }
         }
       },
+      "GestaoProduto.Compartilhado/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "GestaoProduto.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GestaoProduto.Compartilhado.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GestaoProduto.Compartilhado.dll": {}
+        }
+      },
       "GestaoProduto.Dados/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "GestaoProduto.Compartilhado": "1.0.0",
           "GestaoProduto.Dominio": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.11",
           "Microsoft.EntityFrameworkCore": "7.0.11",
@@ -5933,6 +5947,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "GestaoProduto.Compartilhado/1.0.0": {
+      "type": "project",
+      "path": "../GestaoProduto.Compartilhado/GestaoProduto.Compartilhado.csproj",
+      "msbuildProject": "../GestaoProduto.Compartilhado/GestaoProduto.Compartilhado.csproj"
+    },
     "GestaoProduto.Dados/1.0.0": {
       "type": "project",
       "path": "../GestaoProduto.Dados/GestaoProduto.Dados.csproj",
@@ -5947,6 +5966,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
+      "GestaoProduto.Compartilhado >= 1.0.0",
       "GestaoProduto.Dados >= 1.0.0",
       "GestaoProduto.Dominio >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Abstractions >= 2.2.0",
@@ -5982,6 +6002,9 @@
           "projectReferences": {
             "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj": {
               "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoGrupo.Dominio\\GestaoProduto.Dominio.csproj"
+            },
+            "H:\\Projetos\\GestaoProduto\\GestaoProduto.Compartilhado\\GestaoProduto.Compartilhado.csproj": {
+              "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Compartilhado\\GestaoProduto.Compartilhado.csproj"
             },
             "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj": {
               "projectPath": "H:\\Projetos\\GestaoProduto\\GestaoProduto.Dados\\GestaoProduto.Dados.csproj"

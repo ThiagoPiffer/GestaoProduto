@@ -4,7 +4,6 @@ using GestaoProduto.Dominio.Entity._Processo;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
 using GestaoProduto.Dominio.Entity._PessoaProcesso;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
-using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using GestaoProduto.Dominio.Entity._Usuario;
 using GestaoProduto.Dominio.Entity._Empresa;
@@ -12,6 +11,9 @@ using GestaoProduto.Dominio.Entity._ArquivoProcessoTemplate;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Entity._ArquivoProcesso;
+using GestaoProduto.Dominio.Entity._Endereco;
 
 namespace GestaoProduto.Dados.Contextos
 {
@@ -32,6 +34,7 @@ namespace GestaoProduto.Dados.Contextos
         public DbSet<Empresa> Empresa { get; set; }
         public DbSet<ArquivoProcessoTemplate> ArquivoProcessotemplate { get; set; }
         public DbSet<TipoPessoaTemplate> TipoPessoaTemplate { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
         {

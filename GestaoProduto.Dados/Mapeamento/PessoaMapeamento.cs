@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GestaoProduto.Dominio.Entity._Pessoa;
-using GestaoProduto.Dominio.Model._Pessoa;
-using GestaoProduto.Dominio.Model._PessoaProcesso;
+using GestaoProduto.Compartilhado.Model._Pessoa;
+using GestaoProduto.Compartilhado.Model._PessoaProcesso;
 
 namespace GestaoProduto.Dados.Mapeamento
 {

@@ -1,0 +1,15 @@
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\bin\Debug\net7.0\GestaoProduto.Compartilhado.deps.json
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\bin\Debug\net7.0\GestaoProduto.Compartilhado.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\bin\Debug\net7.0\GestaoProduto.Compartilhado.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.csproj.AssemblyReference.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.GeneratedMSBuildEditorConfig.editorconfig
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.AssemblyInfoInputs.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.AssemblyInfo.cs
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.csproj.CoreCompileInputs.cache
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\refint\GestaoProduto.Compartilhado.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\ref\GestaoProduto.Compartilhado.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\bin\Debug\net7.0\GestaoProduto.Dominio.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\bin\Debug\net7.0\GestaoProduto.Dominio.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Compartilhado\obj\Debug\net7.0\GestaoProduto.Compartilhado.csproj.CopyComplete

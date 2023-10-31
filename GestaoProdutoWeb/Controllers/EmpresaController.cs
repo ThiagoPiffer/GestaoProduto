@@ -1,8 +1,9 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._Empresa;
-using GestaoProduto.Dominio.Model._Empresa;
-using GestaoProduto.Dominio.IServico._Empresa;
+using GestaoProduto.Compartilhado.Model._Empresa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
 using Microsoft.AspNetCore.Mvc;
+using GestaoProduto.Compartilhado.Model._Empresa;
 
 namespace GestaoProduto.API.Controllers
 {

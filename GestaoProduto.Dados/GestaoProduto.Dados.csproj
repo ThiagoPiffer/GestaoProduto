@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GestaoGrupo.Dominio\GestaoProduto.Dominio.csproj" />
+    <ProjectReference Include="..\GestaoProduto.Compartilhado\GestaoProduto.Compartilhado.csproj" />
   </ItemGroup>
 
   <ItemGroup>

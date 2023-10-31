@@ -1,4 +1,4 @@
-﻿using GestaoProduto.Dominio.Model._Identidade;
+﻿using GestaoProduto.Compartilhado.Model._Identidade;
 using GestaoProduto.Identidade.Extensao;
 //using GestaoProduto.Core.Identidade;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +8,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-
+using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
+using GestaoProduto.Dominio.Entity._Empresa;
 
 namespace GestaoProduto.Identidade.Controllers
 {
@@ -19,14 +20,18 @@ namespace GestaoProduto.Identidade.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
+        private readonly IEmpresaServico _empresaServico;
 
         public IdentidadeController(SignInManager<IdentityUser> signInManager, 
                                     UserManager<IdentityUser> userManager, 
-                                    IOptions<AppSettings> appSettings)
+                                    IOptions<AppSettings> appSettings,
+                                    IEmpresaServico empresaServico
+            )
         {
             _signInManager=signInManager;
             _userManager=userManager;
             _appSettings=appSettings.Value;
+            _empresaServico=empresaServico;
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]
@@ -65,6 +70,10 @@ namespace GestaoProduto.Identidade.Controllers
             var result = await _signInManager.PasswordSignInAsync(usuariologin.Email, usuariologin.Senha,
                     false, true);
 
+            var usuario = _signInManager.ClaimsFactory;
+            var usuario2 = _signInManager.UserManager;
+            //var empresa = _empresaServico.ObterEmpresaUsuarioIdentity(result.);
+
             if (result.Succeeded)
                 return CustomResponse(await GerarJwt(usuariologin.Email));
 
@@ -91,8 +100,7 @@ namespace GestaoProduto.Identidade.Controllers
             claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
             claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
             var expiracao = DateTime.UtcNow.AddHours(2);
-            claims.Add(new Claim("exp", ToUnixEpochDate(expiracao).ToString(), ClaimValueTypes.DateTime)); // Expira token
-
+            claims.Add(new Claim("exp", ToUnixEpochDate(expiracao).ToString(), ClaimValueTypes.DateTime)); // Expira token            
 
 
             foreach (var userRole in userRoles)

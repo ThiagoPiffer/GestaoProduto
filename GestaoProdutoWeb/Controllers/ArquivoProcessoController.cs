@@ -1,9 +1,10 @@
 ﻿using GestaoProduto.Dominio._Base;
-using GestaoProduto.Dominio.Entity._ArquivoProcesso;
-using GestaoProduto.Dominio.Model._ArquivoProcesso;
-using GestaoProduto.Dominio.IServico._ArquivoProcesso;
+using GestaoProduto.Compartilhado.Model._ArquivoProcesso;
+using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcesso;
 using GestaoProduto.Servico;
 using Microsoft.AspNetCore.Mvc;
+using GestaoProduto.Dominio.Entity;
+using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 
 namespace GestaoProduto.API.Controllers
 {

@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
-using GestaoProduto.Dominio.IServico._TipoPessoa;
-using GestaoProduto.Dominio.Model._TipoPessoa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa;
+using GestaoProduto.Compartilhado.Model._TipoPessoa;
 
 namespace GestaoProduto.API.Controllers
 {

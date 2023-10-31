@@ -31,7 +31,7 @@ namespace GestaoProduto.API.Controllers.Identidade
         {
             switch((int)response.StatusCode)
             {
-                case 401: //nao conhece usuario
+                case 401: // nao conhece usuario
                 case 403: // acesso negado
                 case 404: // recurso nao encontrado
                 case 500: // erro servidor

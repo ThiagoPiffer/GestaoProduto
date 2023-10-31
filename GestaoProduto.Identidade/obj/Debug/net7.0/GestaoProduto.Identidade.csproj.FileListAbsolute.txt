@@ -72,6 +72,7 @@ H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\runtimes\win
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Compartilhado.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Core.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Dados.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Dominio.dll
@@ -80,6 +81,7 @@ H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProdut
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Core.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Dados.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Ioc.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Compartilhado.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Dominio.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\bin\Debug\net7.0\GestaoProduto.Servico.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Identidade\obj\Debug\net7.0\staticwebassets\msbuild.GestaoProduto.Identidade.Microsoft.AspNetCore.StaticWebAssets.props

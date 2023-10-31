@@ -2,7 +2,7 @@
 using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
 using GestaoProduto.Dominio.Entity._TipoPessoaTemplate;
-using GestaoProduto.Dominio.IRepositorio._TipoPessoa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 
 namespace GestaoProduto.Dados.Mapeamento

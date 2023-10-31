@@ -1,7 +1,7 @@
 ﻿using GestaoProduto.Dominio._Base;
 using GestaoProduto.Dominio.Entity._Processo;
-using GestaoProduto.Dominio.Model._Processo;
-using GestaoProduto.Dominio.IServico._Processo;
+using GestaoProduto.Compartilhado.Model._Processo;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Processo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestaoProduto.API.Controllers

@@ -1,6 +1,8 @@
 ﻿using GestaoProduto.Dados.Contextos;
 using Microsoft.EntityFrameworkCore;
 using GestaoProduto.API.Configuracao;
+using Microsoft.EntityFrameworkCore.Internal;
+using GestaoProduto.Ioc;
 
 namespace GestaoProduto.API
 {
@@ -44,8 +46,9 @@ namespace GestaoProduto.API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddCorsExtensions(Configuration);
 
-
-            services.RegisterServices(Configuration); // Injeção de dependencia
+            services.AddCustomAutoMapping(Configuration);
+            services.RegisterServicesInternal(Configuration); // Injeção de dependencia            
+            services.RegisterServicesCompartilhado(Configuration); // Injeção de dependencia            
             services.AddResponseCompression();
         }
 

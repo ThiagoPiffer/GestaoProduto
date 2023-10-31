@@ -6,12 +6,14 @@ H:\Projetos\GestaoProduto\GestaoProduto.Ioc\obj\Debug\net7.0\GestaoProduto.Ioc.c
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Ioc.deps.json
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Ioc.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Ioc.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Compartilhado.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Dados.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Dominio.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Servico.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Dominio.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Dados.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Servico.pdb
+H:\Projetos\GestaoProduto\GestaoProduto.Ioc\bin\Debug\net7.0\GestaoProduto.Compartilhado.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\obj\Debug\net7.0\GestaoProduto.Ioc.csproj.CopyComplete
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\obj\Debug\net7.0\GestaoProduto.Ioc.dll
 H:\Projetos\GestaoProduto\GestaoProduto.Ioc\obj\Debug\net7.0\refint\GestaoProduto.Ioc.dll

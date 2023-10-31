@@ -15,3 +15,5 @@ H:\Projetos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net7.0\refint\GestaoProd
 H:\Projetos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net7.0\GestaoProduto.Dados.pdb
 H:\Projetos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net7.0\GestaoProduto.Dados.genruntimeconfig.cache
 H:\Projetos\GestaoProduto\GestaoProduto.Dados\obj\Debug\net7.0\ref\GestaoProduto.Dados.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net7.0\GestaoProduto.Compartilhado.dll
+H:\Projetos\GestaoProduto\GestaoProduto.Dados\bin\Debug\net7.0\GestaoProduto.Compartilhado.pdb

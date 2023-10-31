@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GestaoProduto.Dominio.Entity._Usuario;
-using GestaoProduto.Dominio.Model._Usuario;
+using GestaoProduto.Compartilhado.Model._Usuario;
 
 namespace GestaoProduto.Dados.Mapeamento
 {

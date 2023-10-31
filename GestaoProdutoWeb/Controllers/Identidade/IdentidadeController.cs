@@ -1,7 +1,5 @@
-﻿using GestaoProduto.Dominio.Model._Identidade;
-using GestaoProduto.Dominio.IServico._Identidade;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using GestaoProduto.Compartilhado.Model._Identidade;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Identidade;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.IdentityModel.Tokens.Jwt;
@@ -46,7 +44,6 @@ namespace GestaoProduto.API.Controllers.Identidade
             if (ResponsePossuiErros(resposta.responseResult)) return BadRequest(ModelState); // retorno erro nao deu certo
 
             RealizarLogin(resposta);
-            string json = JsonConvert.SerializeObject(resposta);
 
             return Ok(resposta);
         }

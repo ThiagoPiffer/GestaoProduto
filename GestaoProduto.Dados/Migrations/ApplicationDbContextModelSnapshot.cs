@@ -102,6 +102,40 @@ namespace GestaoProduto.Dados.Migrations
                     b.ToTable("ArquivoProcessotemplate");
                 });
 
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ControlePessoaExterna.ControlePessoaExterna", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Expiracao")
+                        .HasColumnType("datetime");
+
+                    b.Property<Guid>("IdUrl")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("ControlePessoaExterna");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._Empresa.Empresa", b =>
                 {
                     b.Property<int>("Id")
@@ -129,6 +163,53 @@ namespace GestaoProduto.Dados.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Empresa");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._Endereco.Endereco", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CEP")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Municipio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Rua")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Endereco");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._GrupoProcesso.GrupoProcesso", b =>
@@ -172,8 +253,14 @@ namespace GestaoProduto.Dados.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("CadastroExterno")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Celular")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ControlePessoaExternaId")
+                        .HasColumnType("int");
 
                     b.Property<string>("DDDCelular")
                         .HasColumnType("nvarchar(max)");
@@ -193,12 +280,24 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EnderecoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EstadoCivil")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Identidade")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Nacionalidade")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Profissao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
@@ -206,7 +305,11 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ControlePessoaExternaId");
+
                     b.HasIndex("EmpresaId");
+
+                    b.HasIndex("EnderecoId");
 
                     b.ToTable("Pessoa");
                 });
@@ -605,7 +708,7 @@ namespace GestaoProduto.Dados.Migrations
                     b.Navigation("Empresa");
                 });
 
-            modelBuilder.Entity("GestaoProduto.Dominio.Entity._Pessoa.Pessoa", b =>
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ControlePessoaExterna.ControlePessoaExterna", b =>
                 {
                     b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
                         .WithMany()
@@ -614,6 +717,29 @@ namespace GestaoProduto.Dados.Migrations
                         .IsRequired();
 
                     b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._Pessoa.Pessoa", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity._ControlePessoaExterna.ControlePessoaExterna", "ControlePessoaExterna")
+                        .WithMany()
+                        .HasForeignKey("ControlePessoaExternaId");
+
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestaoProduto.Dominio.Entity._Endereco.Endereco", "Endereco")
+                        .WithMany()
+                        .HasForeignKey("EnderecoId");
+
+                    b.Navigation("ControlePessoaExterna");
+
+                    b.Navigation("Empresa");
+
+                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._PessoaProcesso.PessoaProcesso", b =>
