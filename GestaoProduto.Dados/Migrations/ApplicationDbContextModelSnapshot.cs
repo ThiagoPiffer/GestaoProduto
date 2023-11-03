@@ -212,6 +212,46 @@ namespace GestaoProduto.Dados.Migrations
                     b.ToTable("Endereco");
                 });
 
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._Evento.Evento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("DataFinal")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProcessoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.HasIndex("ProcessoId");
+
+                    b.ToTable("Evento");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._GrupoProcesso.GrupoProcesso", b =>
                 {
                     b.Property<int>("Id")
@@ -717,6 +757,25 @@ namespace GestaoProduto.Dados.Migrations
                         .IsRequired();
 
                     b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._Evento.Evento", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GestaoProduto.Dominio.Entity._Processo.Processo", "Processo")
+                        .WithMany()
+                        .HasForeignKey("ProcessoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+
+                    b.Navigation("Processo");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._Pessoa.Pessoa", b =>

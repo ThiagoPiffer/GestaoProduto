@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using GestaoProduto.API.Configuracao;
 using Microsoft.EntityFrameworkCore.Internal;
 using GestaoProduto.Ioc;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace GestaoProduto.API
 {
@@ -42,14 +44,24 @@ namespace GestaoProduto.API
             services.AddIdentityConfiguration(Configuration);
             services.AddMvcConfiguration(Configuration);
             services.AddEndpointsApiExplorer();
-            services.AddSwaggerConfiguration();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddSwaggerConfiguration();            
             services.AddCorsExtensions(Configuration);
 
-            services.AddCustomAutoMapping(Configuration);
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddCustomAutoMapping(Configuration);            
             services.RegisterServicesInternal(Configuration); // Injeção de dependencia            
             services.RegisterServicesCompartilhado(Configuration); // Injeção de dependencia            
             services.AddResponseCompression();
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new List<CultureInfo> { new CultureInfo("pt-BR") };
+                options.DefaultRequestCulture = new RequestCulture("pt-BR", "pt-BR");
+                options.SupportedCultures = supportedCultures;
+                options.SupportedUICultures = supportedCultures;
+
+                // Opcional: Adicione aqui outras culturas que seu aplicativo suporta.
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -58,6 +70,8 @@ namespace GestaoProduto.API
             app.AddCorsConfig(); 
             app.UseMvcConfiguration(env);
             app.UseResponseCompression();
+            app.UseRequestLocalization(); // localização de data
+
         }
     }
 }

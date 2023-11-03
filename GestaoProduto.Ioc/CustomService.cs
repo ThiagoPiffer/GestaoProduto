@@ -3,6 +3,7 @@ using GestaoProduto.Compartilhado.Interfaces.Repositorio._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._ArquivoProcessoTemplate;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Empresa;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._Evento;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._GrupoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._IdentidadeCurrent;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Notificacao;
@@ -15,6 +16,7 @@ using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcessoTemplate;
 using GestaoProduto.Compartilhado.Interfaces.Servico._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Evento;
 using GestaoProduto.Compartilhado.Interfaces.Servico._GrupoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Identidade;
 using GestaoProduto.Compartilhado.Interfaces.Servico._IdentidadeCurrent;
@@ -30,6 +32,7 @@ using GestaoProduto.Dados.Repositorio._ArquivoProcesso;
 using GestaoProduto.Dados.Repositorio._ArquivoProcessoTemplateRepositorio;
 using GestaoProduto.Dados.Repositorio._ControlePessoaExterna;
 using GestaoProduto.Dados.Repositorio._Empresa;
+using GestaoProduto.Dados.Repositorio._Evento;
 using GestaoProduto.Dados.Repositorio._GrupoProcesso;
 using GestaoProduto.Dados.Repositorio._Notificaao;
 using GestaoProduto.Dados.Repositorio._Pessoa;
@@ -44,6 +47,7 @@ using GestaoProduto.Servico._ArquivoProcesso;
 using GestaoProduto.Servico._ArquivoProcessoTemplate;
 using GestaoProduto.Servico._ControlePessoaExterna;
 using GestaoProduto.Servico._Empresa;
+using GestaoProduto.Servico._Evento;
 using GestaoProduto.Servico._GrupoProcesso;
 using GestaoProduto.Servico._Identidade;
 using GestaoProduto.Servico._IdentidadeCurrent;
@@ -114,6 +118,9 @@ namespace GestaoProduto.Ioc
 
             services.AddScoped<INotificacaoServico, NotificacaoServico>();
             services.AddScoped<INotificacaoRepositorio, NotificacaoRepositorio>();
+
+            services.AddScoped<IEventoServico, EventoServico>();
+            services.AddScoped<IEventoRepositorio, EventoRepositorio>();
 
             services.AddScoped<IUser, UserService>();
 
