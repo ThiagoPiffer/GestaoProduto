@@ -2,6 +2,7 @@
 using GestaoProduto.Compartilhado.Model._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Model._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Model._Empresa;
+using GestaoProduto.Compartilhado.Model._Evento;
 using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
 using GestaoProduto.Compartilhado.Model._Pessoa;
 using GestaoProduto.Compartilhado.Model._PessoaProcesso;
@@ -11,6 +12,7 @@ using GestaoProduto.Compartilhado.Model._Usuario;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using GestaoProduto.Dominio.Entity._ControlePessoaExterna;
 using GestaoProduto.Dominio.Entity._Empresa;
+using GestaoProduto.Dominio.Entity._Evento;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
 using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Dominio.Entity._Processo;
@@ -62,6 +64,11 @@ namespace GestaoProduto.Ioc
             CreateMap<GrupoProcesso, GrupoProcessoDto>().ReverseMap();
             CreateMap<EmpresaModel, Empresa>().ReverseMap();
             CreateMap<ControlePessoaExternaModel, ControlePessoaExterna>().ReverseMap();
+            CreateMap<EventoModel, Evento>()
+                .ForMember(dest => dest.Processo, opt => opt.Ignore())  // Ignora o mapeamento do Processo
+                .ForMember(dest => dest.Empresa, opt => opt.Ignore())   // Ignora o mapeamento da Empresa
+                .ReverseMap();
+
 
         }
     }
