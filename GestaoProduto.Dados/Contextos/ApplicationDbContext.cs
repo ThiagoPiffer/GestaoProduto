@@ -15,6 +15,7 @@ using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using GestaoProduto.Dominio.Entity._Endereco;
 using GestaoProduto.Dominio.Entity._Evento;
+using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
 
 namespace GestaoProduto.Dados.Contextos
 {
@@ -37,6 +38,8 @@ namespace GestaoProduto.Dados.Contextos
         public DbSet<TipoPessoaTemplate> TipoPessoaTemplate { get; set; }
         public DbSet<Endereco> Endereco { get; set; }
         public DbSet<Evento> Evento { get; set; }
+        public DbSet<EventoStatusPersonalizado> EventoStatusPersonalizado { get; set; }
+        public DbSet<ProcessoStatusPersonalizado> ProcessoStatusPersonalizado { get; set; }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
         {

@@ -35,26 +35,14 @@ namespace GestaoProduto.API.Controllers
         [Route("Listar")]
         public async Task<IActionResult> Listar()
         {
-            //var userId = _user.ObterUserId();
-            //var userEmail = _user.ObterUserEmail();
-
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-            var sub = User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
-
-
-            var userId1 = _user.ObterUserId();
-            var userEmail2 = _user.ObterUserEmail();
-
-
             return Ok(await _grupoProcessoServico.Listar());
         }
 
         [HttpGet]
         [Route("criaGrupoInicial")]
-        public async Task<IActionResult> criaGrupoInicial()
+        public IActionResult criaGrupoInicial()
         {
-            await _grupoProcessoServico.CriaGrupoInicial();
+            _grupoProcessoServico.CriaGrupoInicial();
             return Ok("OK");
         }
 

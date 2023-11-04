@@ -9,6 +9,6 @@ namespace GestaoProduto.Compartilhado.Interfaces.Repositorio._Processo
         Task<List<Processo>> BuscaPorTermo(string termo);
         Task Armazenar(Processo processo);  
         void Update(Processo processo);
-        Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel();
+        Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel(int empresaId);
     }
 }

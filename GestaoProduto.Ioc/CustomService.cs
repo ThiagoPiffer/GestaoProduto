@@ -4,11 +4,14 @@ using GestaoProduto.Compartilhado.Interfaces.Repositorio._ArquivoProcessoTemplat
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Empresa;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Evento;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._GrupoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._IdentidadeCurrent;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Notificacao;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Pessoa;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._PessoaProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Processo;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._ProcessoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._TipoPessoa;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._TipoPessoaTemplateRepositorio;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Usuario;
@@ -17,12 +20,14 @@ using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcessoTemplate;
 using GestaoProduto.Compartilhado.Interfaces.Servico._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Evento;
+using GestaoProduto.Compartilhado.Interfaces.Servico._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Interfaces.Servico._GrupoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Identidade;
 using GestaoProduto.Compartilhado.Interfaces.Servico._IdentidadeCurrent;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Notificacao;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Processo;
+using GestaoProduto.Compartilhado.Interfaces.Servico._ProcessoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoaTemplateServico;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Usuario;
@@ -48,11 +53,13 @@ using GestaoProduto.Servico._ArquivoProcessoTemplate;
 using GestaoProduto.Servico._ControlePessoaExterna;
 using GestaoProduto.Servico._Empresa;
 using GestaoProduto.Servico._Evento;
+using GestaoProduto.Servico._EventoStatusPersonalizado;
 using GestaoProduto.Servico._GrupoProcesso;
 using GestaoProduto.Servico._Identidade;
 using GestaoProduto.Servico._IdentidadeCurrent;
 using GestaoProduto.Servico._Notificacao;
 using GestaoProduto.Servico._Processo;
+using GestaoProduto.Servico._ProcessoStatusPersonalizado;
 using GestaoProduto.Servico._TipoPessoa;
 using GestaoProduto.Servico._TipoPessoaTemplate;
 using GestaoProduto.Servico._User;
@@ -121,6 +128,14 @@ namespace GestaoProduto.Ioc
 
             services.AddScoped<IEventoServico, EventoServico>();
             services.AddScoped<IEventoRepositorio, EventoRepositorio>();
+
+            services.AddScoped<IPessoaProcessoRepositorio, PessoaProcessoRepositorio>();
+
+            services.AddScoped<IEventoStatusPersonalizadoServico, EventoStatusPersonalizadoServico>();
+            //services.AddScoped<IEventoStatusPersonalizadoRepositorio, EventoStatusPersonalizadoRepositorio>();
+
+            services.AddScoped<IProcessoStatusPersonalizadoServico, ProcessoStatusPersonalizadoServico>();
+            //services.AddScoped<IProcessoStatusPersonalizadoRepositorio, ProcessoStatusPersonalizadoRepositorio>();
 
             services.AddScoped<IUser, UserService>();
 
