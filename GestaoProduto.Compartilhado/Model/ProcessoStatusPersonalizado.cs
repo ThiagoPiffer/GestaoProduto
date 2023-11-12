@@ -12,10 +12,11 @@ namespace GestaoProduto.Compartilhado.Model._ProcessoStatusPersonalizado
         public bool MaiorQue { get; set; }
         public bool MenorQue { get; set; }
         public bool IgualA { get; set; }
-        public DateTime? DataControle { get; set; }
+        public int? ValorControle { get; set; }
         public string Cor { get; set; } = string.Empty;
+        public string Icone { get; set; } = string.Empty;
         public int EmpresaId { get; set; }
-        public EmpresaModel Empresa { get; set; } = null!;
+        //public EmpresaModel Empresa { get; set; } = null!;
     }
 }
 

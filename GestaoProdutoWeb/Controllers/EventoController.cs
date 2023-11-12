@@ -26,6 +26,13 @@ namespace GestaoProduto.API.Controllers
         }
 
         [HttpGet]
+        [Route("BuscarEventoStatus")]
+        public async Task<IActionResult> BuscarEventoStatus(int eventoId)
+        {
+            return Ok(await _eventoServico.BuscarEventoStatus(eventoId));
+        }
+
+        [HttpGet]
         [Route("ObterPorId")]
         public async Task<IActionResult> ObterPorId([FromQuery] int id)
         {

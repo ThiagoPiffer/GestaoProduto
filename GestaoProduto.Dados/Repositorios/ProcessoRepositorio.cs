@@ -49,6 +49,8 @@ namespace GestaoProduto.Dados.Repositorio._Processo
                 .Where(p => idsGrupos.Contains(p.GrupoProcessoId))
                 .ToListAsync();
 
+            var dataAtual = DateTime.Now;
+
             // Mapeia a lista de grupos para a lista de GrupoProcessoModel
             var listaGrupos = grupoProcessos.GroupBy(p => p.GrupoProcesso) // Agrupa os processos por Grupo
                             .Select(g => new GrupoProcessoModel
@@ -64,7 +66,7 @@ namespace GestaoProduto.Dados.Repositorio._Processo
                                     Descricao = p.Descricao ?? string.Empty,
                                     //DataCadastro = p.DataCadastro.HasValue ? p.DataCadastro.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     DataInicio = p.DataInicio.HasValue ? p.DataInicio.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
-                                    Prazo = p.DataInicio.HasValue && p.DataPrevista.HasValue ? (int?)p.DataPrevista.Value.Subtract(p.DataInicio.Value).TotalDays : null,
+                                    Prazo = p.DataPrevista.HasValue ? (int?)p.DataPrevista.Value.Subtract(dataAtual).TotalDays : null,
                                     //Prazo = 0,
                                     DataPrevista = p.DataPrevista.HasValue ? p.DataPrevista.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     DataFinal = p.DataFinal.HasValue ? p.DataFinal.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null

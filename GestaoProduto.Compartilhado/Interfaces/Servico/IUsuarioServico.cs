@@ -5,6 +5,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._Usuario
 {
     public interface IUsuarioServico
     {
+        Usuario UsuarioCurrent();
         Task<List<Usuario>> Listar();
         Task<UsuarioModel> ObterPorId(int id);        
         Task<List<Usuario>> BuscaPorTermo(string termo);

@@ -38,10 +38,12 @@ using GestaoProduto.Dados.Repositorio._ArquivoProcessoTemplateRepositorio;
 using GestaoProduto.Dados.Repositorio._ControlePessoaExterna;
 using GestaoProduto.Dados.Repositorio._Empresa;
 using GestaoProduto.Dados.Repositorio._Evento;
+using GestaoProduto.Dados.Repositorio._EventoStatusPersonalizado;
 using GestaoProduto.Dados.Repositorio._GrupoProcesso;
 using GestaoProduto.Dados.Repositorio._Notificaao;
 using GestaoProduto.Dados.Repositorio._Pessoa;
 using GestaoProduto.Dados.Repositorio._Processo;
+using GestaoProduto.Dados.Repositorio._ProcessoStatusPersonalizado;
 using GestaoProduto.Dados.Repositorio._RepositorioBase;
 using GestaoProduto.Dados.Repositorio._TipoPessoa;
 using GestaoProduto.Dados.Repositorio._Usuario;
@@ -132,10 +134,10 @@ namespace GestaoProduto.Ioc
             services.AddScoped<IPessoaProcessoRepositorio, PessoaProcessoRepositorio>();
 
             services.AddScoped<IEventoStatusPersonalizadoServico, EventoStatusPersonalizadoServico>();
-            //services.AddScoped<IEventoStatusPersonalizadoRepositorio, EventoStatusPersonalizadoRepositorio>();
+            services.AddScoped<IEventoStatusPersonalizadoRepositorio, EventoStatusPersonalizadoRepositorio>();
 
             services.AddScoped<IProcessoStatusPersonalizadoServico, ProcessoStatusPersonalizadoServico>();
-            //services.AddScoped<IProcessoStatusPersonalizadoRepositorio, ProcessoStatusPersonalizadoRepositorio>();
+            services.AddScoped<IProcessoStatusPersonalizadoRepositorio, ProcessoStatusPersonalizadoRepositorio>();
 
             services.AddScoped<IUser, UserService>();
 

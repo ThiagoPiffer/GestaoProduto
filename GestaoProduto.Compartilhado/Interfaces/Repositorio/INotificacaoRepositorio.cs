@@ -7,6 +7,6 @@ namespace GestaoProduto.Compartilhado.Interfaces.Repositorio._Notificacao
 {
     public interface INotificacaoRepositorio 
     {
-        Task<int> Quantidade();
+        Task<int> Quantidade(int empresaId);
     }
 }

@@ -15,9 +15,9 @@ namespace GestaoProduto.Dados.Repositorio._Notificaao
 
         }
 
-        public async Task<int> Quantidade()
+        public async Task<int> Quantidade(int empresaId)
         {
-            var lista = await Context.Pessoa.Where(o => o.CadastroExterno).ToListAsync();
+            var lista = await Context.Pessoa.Where(o => o.CadastroExterno && o.EmpresaId == empresaId).ToListAsync();
             return lista.Count();
         }
     }

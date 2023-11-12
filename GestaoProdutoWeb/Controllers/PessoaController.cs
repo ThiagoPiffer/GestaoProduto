@@ -79,8 +79,8 @@ namespace GestaoProduto.API.Controllers
         [Route("Associar")]
         public async Task<IActionResult> Associar([FromBody] PessoaProcessoModel pessoaModel, [FromQuery] int idProcesso)
         {
-            PessoaProcessoModel pessoa = await _pessoaServico.Associar(pessoaModel, idProcesso);
-            return Ok(pessoa);
+            var result = await _pessoaServico.Associar(pessoaModel, idProcesso);
+            return Ok( result );
         }
 
         [HttpPost]

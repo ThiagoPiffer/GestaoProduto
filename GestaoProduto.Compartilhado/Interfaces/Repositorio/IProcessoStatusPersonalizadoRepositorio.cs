@@ -6,6 +6,6 @@ namespace GestaoProduto.Compartilhado.Interfaces.Repositorio._ProcessoStatusPers
 {
     public interface IProcessoStatusPersonalizadoRepositorio : IRepositorio<ProcessoStatusPersonalizado>
     {
-
+        Task<ProcessoStatusPersonalizado> BuscarProcessoStatus(int processoId, int empresaId);
     }
 }

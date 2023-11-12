@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoProduto.Dados.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231104121241_evento-processo-status-personalizado")]
-    partial class eventoprocessostatuspersonalizado
+    [Migration("20231104172452_status-icone")]
+    partial class statusicone
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -462,14 +462,15 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DataControle")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IgualA")
                         .HasColumnType("bit");
@@ -489,6 +490,9 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<bool>("ValidaCondicao")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -515,14 +519,15 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DataControle")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IgualA")
                         .HasColumnType("bit");
@@ -542,6 +547,9 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<bool>("ValidaCondicao")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

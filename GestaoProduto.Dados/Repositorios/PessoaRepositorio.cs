@@ -71,19 +71,19 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
             return pessoaProcesssoModel;
         }
 
-        public async Task<List<PessoaProcessoModel>> ListarPessoasArquivoTemplate(int idArquivoTemplate, int idProcesso, int empresaId, List<int> idsTiposPessoa)
+        public async Task<List<PessoaProcessoModel>> ListarPessoasArquivoTemplate(int idArquivoTemplate, int idProcesso, int empresaId, List<int> idsTiposPessoaTemplate)
         {            
             //Tipos Pessoa
             var tiposPessoa = await Context.TipoPessoa.Where(tp => tp.Ativo &&
-                                                                    tp.EmpresaId == empresaId && 
-                                                                   idsTiposPessoa.Contains( tp.Id)
+                                                                    tp.EmpresaId == empresaId &&
+                                                                   idsTiposPessoaTemplate.Contains( tp.Id)
             ).ToListAsync();
 
             var trazerTodos = tiposPessoa.Count == 0; //se for igual a 0 traz todas as pessoas
 
             //Tipos Pessoa Template
             var idsTipoPessoatemplate = await Context.TipoPessoaTemplate.Where(pp => pp.Ativo &&
-                idsTiposPessoa.Contains(pp.TipoPessoaId)
+                idsTiposPessoaTemplate.Contains(pp.TipoPessoaId)
                 ).Select(pp => pp.TipoPessoaId).ToListAsync();
 
             //Pessoas Processo
@@ -133,6 +133,8 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                 .Include(p => p.GrupoProcesso) // Inclui os processos associados ao grupo
                 .ToListAsync();
 
+            var dataAtual = DateTime.Now;
+
             // Mapeia a lista de grupos para a lista de GrupoProcessoModel
             var listaGrupos = grupos.GroupBy(p => p.GrupoProcesso) // Agrupa os processos por Grupo
                             .Select(g => new GrupoProcessoModel
@@ -148,7 +150,7 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                                     Descricao = p.Descricao ?? string.Empty,
                                     //DataCadastro = p.DataCadastro.HasValue ? p.DataCadastro.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     DataInicio = p.DataInicio.HasValue ? p.DataInicio.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
-                                    Prazo = p.DataInicio.HasValue && p.DataPrevista.HasValue ? (int?)p.DataPrevista.Value.Subtract(p.DataInicio.Value).TotalDays : null,
+                                    Prazo = p.DataPrevista.HasValue ? (int?)p.DataPrevista.Value.Subtract(dataAtual).TotalDays : null,
                                     //Prazo = 0,
                                     DataPrevista = p.DataPrevista.HasValue ? p.DataPrevista.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null
                                     DataFinal = p.DataFinal.HasValue ? p.DataFinal.Value.ToShortDateString() : null, // Se for nulo ou vazio retorna null

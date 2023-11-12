@@ -35,8 +35,10 @@ namespace GestaoProduto.Servico._ArquivoProcessoTemplate
 
         public async Task<List<ArquivoProcessoTemplate>> Listar()
         {
-            var listaObj = await _repositorio.ObterListaAsync();
-            var x = _mapper.Map<List<ArquivoProcessoTemplate>>(listaObj);
+            var empresa = _user.EmpresaCurrent;
+            var listaObj = await _repositorio.
+                ObterListaFiltroAsync(o => o.EmpresaId == empresa.Id);
+
             return listaObj;
         }
 

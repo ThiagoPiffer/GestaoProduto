@@ -52,9 +52,6 @@ namespace GestaoProduto.API.Controllers.Identidade
         [Route("sair")]
         public IActionResult Logout()
         {
-            // Você pode adicionar a lógica necessária para revogar o token aqui, se necessário.
-
-            // Para efetuar o logout no lado do cliente, você pode apenas retornar um OkResult.
             return Ok(new { message = "Logout bem-sucedido" });
         }
 

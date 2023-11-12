@@ -6,6 +6,9 @@ using GestaoProduto.Compartilhado.Interfaces.Servico._Evento;
 using GestaoProduto.Compartilhado.Model._Evento;
 using Newtonsoft.Json;
 using GestaoProduto.Compartilhado.Interfaces._User;
+using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._EventoStatusPersonalizado;
+using System.Collections.Generic;
 
 namespace GestaoProduto.Servico._Evento
 {
@@ -13,27 +16,34 @@ namespace GestaoProduto.Servico._Evento
     {
         private readonly IRepositorio<Evento> _repositorio;
         private readonly IEventoRepositorio _eventoRepositorio;
+        private readonly IEventoStatusPersonalizadoRepositorio _eventoStatusPersonalizadoRepositorio;
         private readonly IMapper _mapper;
         private readonly IUser _user;
 
         public EventoServico(IRepositorio<Evento> repositorio,
                                         IEventoRepositorio eventoRepositorio,
+                                        IEventoStatusPersonalizadoRepositorio eventoStatusPersonalizadoRepositorio,
                                         IMapper mapper,
                                         IUser user)
         {
             _repositorio = repositorio;
             _eventoRepositorio = eventoRepositorio;
+            _eventoStatusPersonalizadoRepositorio= eventoStatusPersonalizadoRepositorio;
             _mapper = mapper;
             _user = user;
         }
 
-        public async Task<List<Evento>> Listar(int processoId)
+        public async Task<EventoStatusPersonalizado> BuscarEventoStatus(int eventoId)
         {
             var empresaId = _user.EmpresaCurrent.Id;
-            var listaObj = await _repositorio
-                .ObterListaFiltroAsync(o => o.EmpresaId == empresaId &&
-                                                     o.ProcessoId == processoId);
-            return listaObj;
+            var status = await _eventoStatusPersonalizadoRepositorio.BuscarEventoStatus(eventoId, empresaId);
+            return status;
+        }
+
+        public async Task<List<EventoModel>> Listar(int processoId)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            return await _eventoStatusPersonalizadoRepositorio.ListarEventos(processoId, empresaId);
         }
 
         public async Task<EventoModel> ObterPorId(int id)

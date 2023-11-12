@@ -84,10 +84,10 @@ namespace GestaoProduto.Servico._TipoPessoaTemplate
 
         public async Task<List<PessoaProcessoModel>> ListarPessoaTemplate(int idArquivoTemplate, int idProcesso)
         {
+            var empresa = _user.EmpresaCurrent;
             //busca tipos de pessoa do template
-            var listaTiposPessoa = _repositorio.ObterListaFiltroAsync(t => t.ArquivoProcessoTemplateId == idArquivoTemplate && t.Ativo).Result.ToList();
-            var listaIdsTiposPessoa = listaTiposPessoa.Select(l => l.TipoPessoaId).ToList();
-            var listaModel = _mapper.Map<List<TipoPessoaTemplateModel>>(listaTiposPessoa);
+            var listaTiposPessoaTemplate = _repositorio.ObterListaFiltroAsync(t => t.ArquivoProcessoTemplateId == idArquivoTemplate && t.Ativo).Result.ToList();
+            var listaIdsTiposPessoa = listaTiposPessoaTemplate.Select(l => l.TipoPessoaId).ToList();            
             var empresaId = _user.EmpresaCurrent.Id;
 
             var PessoasProcessoModel = await _pessoaRepositorio.ListarPessoasArquivoTemplate(idArquivoTemplate, idProcesso, empresaId, listaIdsTiposPessoa);

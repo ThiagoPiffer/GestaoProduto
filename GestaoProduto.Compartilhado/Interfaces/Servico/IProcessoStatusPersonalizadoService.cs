@@ -8,6 +8,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._ProcessoStatusPersonal
         Task<List<ProcessoStatusPersonalizado>> Listar();
         Task<ProcessoStatusPersonalizadoModel> ObterPorId(int id);
         Task<ProcessoStatusPersonalizado> Adicionar(ProcessoStatusPersonalizadoModel processoStatusPersonalizadoModel);        
+        Task AdicionarStatusPadraoProcesso();
         Task<ProcessoStatusPersonalizado> Editar(ProcessoStatusPersonalizadoModel processoStatusPersonalizadoModel);
         Task<string> Delete(int id);
     }

@@ -32,7 +32,13 @@ namespace GestaoProduto.API.Controllers
         {
             return Ok(await _tipoPessoaServico.listarTipoPessoasCompleta());
         }
-        
+
+        [HttpGet]
+        [Route("listarTipoPessoasProcesso")]
+        public async Task<IActionResult> listarTipoPessoasProcesso(int processoId)
+        {
+            return Ok(await _tipoPessoaServico.listarTipoPessoasProcesso(processoId));
+        }
 
         [HttpGet]
         [Route("ObterPorId")]
