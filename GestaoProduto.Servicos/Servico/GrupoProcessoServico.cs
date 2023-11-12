@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using GestaoProduto.Compartilhado.Interfaces.Servico._GrupoProcesso;
 using GestaoProduto.Compartilhado.Model._GrupoProcesso;
 using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
+using GestaoProduto.Compartilhado.Interfaces._User;
 
 namespace GestaoProduto.Servico._GrupoProcesso
 {
@@ -21,46 +22,55 @@ namespace GestaoProduto.Servico._GrupoProcesso
         private readonly IGrupoProcessoRepositorio _grupoProcessoRepositorio;
         private readonly IProcessoRepositorio _processoRepositorio;
         private readonly IMapper _mapper;
+        private readonly IUser _user;
 
         public GrupoProcessoServico(IRepositorio<GrupoProcesso> repositorioGrupoProcesso,
                                         IRepositorio<Processo> repositorioProcesso,
                                         IGrupoProcessoRepositorio grupoProcessoRepositorio,
                                         IProcessoRepositorio processoRepositorio,
-                                        IMapper mapper)
+                                        IMapper mapper,
+                                        IUser user)
         {
             _repositorioGrupoProcesso = repositorioGrupoProcesso;
             _repositorioProcesso = repositorioProcesso;
             _grupoProcessoRepositorio = grupoProcessoRepositorio;
             _processoRepositorio = processoRepositorio;
             _mapper = mapper;
+            _user = user;
         }
 
         public async Task<List<GrupoProcessoModel>> Listar()
         {
-            var listaGrupos = await _processoRepositorio.ListarGrupoProcessoModel();
+            var empresa = _user.EmpresaCurrent;
+            var listaGrupos = await _processoRepositorio.ListarGrupoProcessoModel(empresa.Id);
            
             return listaGrupos;
         }
 
-        public async void CriaGrupoPadrao(string nome, string posicao, GrupoProcesso grupoProcesso) {
+        public void CriaGrupoPadrao(string nome, string posicao, GrupoProcesso grupoProcesso) {
             var processo = new Processo();
             processo.Numero = nome;
             processo.Descricao = posicao;
             processo.GrupoProcesso = grupoProcesso;
             processo.Ativo = true;
+            processo.EmpresaId = grupoProcesso.EmpresaId;
 
-            await _repositorioProcesso.AdicionarAsync(processo);
+            _repositorioProcesso.AdicionarAsync(processo);
         }
 
-        public async Task CriaGrupoInicial()
+        public void CriaGrupoInicial()
         {
+            var empresaId = _user.EmpresaCurrent.Id;
+
             #region grupo 1
             var grupoProcesso = new GrupoProcesso();
             grupoProcesso.Nome = "Grupo 1";
             grupoProcesso.Posicao = 1;
             grupoProcesso.Ativo = true;
+            grupoProcesso.EmpresaId = empresaId;
 
-            await _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
+
+            _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
 
             CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso);
             CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso);
@@ -73,8 +83,9 @@ namespace GestaoProduto.Servico._GrupoProcesso
             grupoProcesso.Nome = "Grupo 2";
             grupoProcesso.Posicao = 1;
             grupoProcesso.Ativo = true;
+            grupoProcesso.EmpresaId = empresaId;
 
-            await _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
+            _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
 
             CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso);
             CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso);

@@ -266,6 +266,9 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -274,6 +277,8 @@ namespace GestaoProduto.Dados.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
 
                     b.ToTable("GrupoProcesso");
                 });
@@ -414,6 +419,9 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("GrupoProcessoId")
                         .HasColumnType("int");
 
@@ -426,9 +434,125 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmpresaId");
+
                     b.HasIndex("GrupoProcessoId");
 
                     b.ToTable("Processo");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado.EventoStatusPersonalizado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IgualA")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MaiorQue")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MenorQue")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MensagemNotificacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ValidaCondicao")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("EventoStatusPersonalizado");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado.ProcessoStatusPersonalizado", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Cor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DataCadastro")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IgualA")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MaiorQue")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MenorQue")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MensagemNotificacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ValidaCondicao")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("ProcessoStatusPersonalizado");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._TipoPessoa.TipoPessoa", b =>
@@ -778,6 +902,17 @@ namespace GestaoProduto.Dados.Migrations
                     b.Navigation("Processo");
                 });
 
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._GrupoProcesso.GrupoProcesso", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._Pessoa.Pessoa", b =>
                 {
                     b.HasOne("GestaoProduto.Dominio.Entity._ControlePessoaExterna.ControlePessoaExterna", "ControlePessoaExterna")
@@ -828,13 +963,43 @@ namespace GestaoProduto.Dados.Migrations
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._Processo.Processo", b =>
                 {
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("GestaoProduto.Dominio.Entity._GrupoProcesso.GrupoProcesso", "GrupoProcesso")
                         .WithMany()
                         .HasForeignKey("GrupoProcessoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Empresa");
+
                     b.Navigation("GrupoProcesso");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado.EventoStatusPersonalizado", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+                });
+
+            modelBuilder.Entity("GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado.ProcessoStatusPersonalizado", b =>
+                {
+                    b.HasOne("GestaoProduto.Dominio.Entity._Empresa.Empresa", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
                 });
 
             modelBuilder.Entity("GestaoProduto.Dominio.Entity._TipoPessoa.TipoPessoa", b =>

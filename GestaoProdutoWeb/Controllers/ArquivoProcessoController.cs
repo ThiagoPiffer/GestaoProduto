@@ -81,6 +81,28 @@ namespace GestaoProduto.API.Controllers
             return File(memory, GetContentType(extensao), arquivo.NomeArquivo);
         }
 
+        //[HttpGet("DownloadArquivo/{id}")]
+        //public IActionResult DownloadArquivo(int id)
+        //{
+        //    // 1. Busque o arquivo pelo ID
+        //    var result = _arquivoProcesso.ObterPorId(id);
+        //    var arquivo = result.Result;
+        //    if (arquivo == null) return NotFound();
+
+        //    // 2. Leia o arquivo do sistema de arquivos
+        //    var path = arquivo.CaminhoArquivo;
+        //    var memory = new MemoryStream();
+        //    using (var stream = new FileStream(path, FileMode.Open))
+        //    {
+        //        stream.CopyToAsync(memory);
+        //    }
+        //    memory.Position = 0;
+
+        //    // 3. Retorne o arquivo para download
+        //    var extensao = Path.GetExtension(path).ToLowerInvariant();
+        //    return File(memory, GetContentType(extensao), arquivo.NomeArquivo);
+        //}
+
         private static string GetContentType(string fileExtension)
         {
             // TODO: Mapeie mais extensões se necessário.
@@ -90,10 +112,20 @@ namespace GestaoProduto.API.Controllers
                 {".doc", "application/msword"},
                 {".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
                 {".png", "image/png"},
+                {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
                 // ... outros tipos de arquivo se necessário
             };
-            return types[fileExtension];
+
+            if (types.TryGetValue(fileExtension, out string contentType))
+            {
+                return contentType;
+            }
+
+            return "application/octet-stream"; // Tipo genérico para dados binários desconhecidos
         }
+
+
+
 
 
 

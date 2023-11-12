@@ -105,23 +105,29 @@ namespace GestaoProduto.Servico_Pessoa
 
         protected async Task<PessoaProcesso> AssociarPessoaProcesso(int idProcesso, int pessoaId)
         {
-            var pessoasProcesso = new PessoaProcesso();
-            pessoasProcesso.ProcessoId = idProcesso;
-            pessoasProcesso.PessoaId = pessoaId;
-            pessoasProcesso.Ativo = true;
+            try
+            {
+                var pessoasProcesso = new PessoaProcesso();
+                pessoasProcesso.ProcessoId = idProcesso;
+                pessoasProcesso.PessoaId = pessoaId;
+                pessoasProcesso.Ativo = true;
 
-            await _repositorioPessoaProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);
-            return pessoasProcesso;
+                await _repositorioPessoaProcesso.AdicionarAsyncSaveChanges(pessoasProcesso);
+                return pessoasProcesso;
+            }catch (Exception ex)
+            {
+                return null;
+            }
         }
 
-        public async Task<PessoaProcessoModel> Associar(PessoaProcessoModel pessoaModel, int idProcesso)
+        public async Task<PessoaProcesso> Associar(PessoaProcessoModel pessoaModel, int idProcesso)
         {
             var pessoa = _mapper.Map<Pessoa>(pessoaModel);
             //salva pessoa processo com o id adiquirido do banco apos salvar
             var result = AssociarPessoaProcesso(idProcesso, pessoa.Id);
-            var pessoaProcessomodel = _mapper.Map<PessoaProcessoModel>(result);
+            //var pessoaProcesso = result.Result;                       
 
-            return pessoaProcessomodel;
+            return result.Result;
         }
 
         public async Task<Pessoa> AdicionarCadastroExterno(PessoaModel pessoaModel)

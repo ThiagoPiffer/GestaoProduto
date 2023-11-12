@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa;
 using GestaoProduto.Compartilhado.Model._TipoPessoa;
+using GestaoProduto.Dominio.Entity._PessoaProcesso;
 
 namespace GestaoProduto.API.Controllers
 {
@@ -26,6 +27,20 @@ namespace GestaoProduto.API.Controllers
         }
 
         [HttpGet]
+        [Route("listarTipoPessoasCompleta")]
+        public async Task<IActionResult> listarTipoPessoasCompleta()
+        {
+            return Ok(await _tipoPessoaServico.listarTipoPessoasCompleta());
+        }
+
+        [HttpGet]
+        [Route("listarTipoPessoasProcesso")]
+        public async Task<IActionResult> listarTipoPessoasProcesso(int processoId)
+        {
+            return Ok(await _tipoPessoaServico.listarTipoPessoasProcesso(processoId));
+        }
+
+        [HttpGet]
         [Route("ObterPorId")]
         public async Task<IActionResult> ObterPorId([FromQuery] int id)
         {
@@ -37,6 +52,14 @@ namespace GestaoProduto.API.Controllers
         public async Task<IActionResult> Adicionar([FromBody] TipoPessoaModel tipoPessoaModel)
         {
             TipoPessoa tipoPessoa = await _tipoPessoaServico.Adicionar(tipoPessoaModel);
+            return Ok(tipoPessoa);
+        }
+
+        [HttpPost]
+        [Route("Associar")]
+        public async Task<IActionResult> Associar([FromBody] TipoPessoaModel tipoPessoaModel, int processoId, int pessoaId)
+        {
+            PessoaProcesso tipoPessoa = await _tipoPessoaServico.Associar(tipoPessoaModel, processoId, pessoaId);
             return Ok(tipoPessoa);
         }
 

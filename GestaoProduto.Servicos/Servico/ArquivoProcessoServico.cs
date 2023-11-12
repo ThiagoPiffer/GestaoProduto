@@ -3,9 +3,8 @@ using AutoMapper;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Model._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Interfaces.Servico._ArquivoProcesso;
-using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
-using GestaoProduto.Compartilhado.Model._ArquivoProcesso;
+using GestaoProduto.Compartilhado.Interfaces.Servico._Usuario;
 
 namespace GestaoProduto.Servico._ArquivoProcesso
 {
@@ -13,14 +12,17 @@ namespace GestaoProduto.Servico._ArquivoProcesso
     {
         private readonly IRepositorio<ArquivoProcesso> _repositorio;
         private readonly IArquivoProcessoRepositorio _arquivoProcessoRepositorio;
+        private readonly IUsuarioServico _usuarioServico;
         private readonly IMapper _mapper;
 
         public ArquivoProcessoServico(IRepositorio<ArquivoProcesso> repositorio,
                                       IArquivoProcessoRepositorio arquivoProcessoRepositorio,
+                                      IUsuarioServico usuarioServico,
                                       IMapper mapper)
         {
             _repositorio = repositorio;
             _arquivoProcessoRepositorio = arquivoProcessoRepositorio;
+            _usuarioServico = usuarioServico;
             _mapper = mapper;
         }
 
@@ -52,8 +54,9 @@ namespace GestaoProduto.Servico._ArquivoProcesso
             var arquivoProcesso = _mapper.Map<ArquivoProcesso>(arquivoProcessoModel);
 
             // Defina o ID do usuário como 1 (por enquanto)
-            int idUsuario = 1;
-            int idEmpresa = 1;
+            var usuario = _usuarioServico.UsuarioCurrent();
+            int idUsuario =  usuario.Id;
+            int idEmpresa = usuario.EmpresaId;
             string pathBase = Path.Combine("Arquivos", $"folderEmpresa_{idEmpresa}", $"folderUsuario_{idUsuario}", $"folderProcesso_{arquivoProcessoModel.ProcessoId}");
 
             // Verifique se o diretório existe; se não, crie-o
@@ -97,6 +100,37 @@ namespace GestaoProduto.Servico._ArquivoProcesso
         public async Task<string> Delete(int id)
         {
             var arquivoProcesso = await _repositorio.ObterPorIdAsync(id);
+
+            if (arquivoProcesso == null)
+            {
+                return "Arquivo não encontrado";
+            }
+
+            // Caminho completo do arquivo
+            var caminhoCompleto = Path.Combine(Directory.GetCurrentDirectory(), arquivoProcesso.CaminhoArquivo);
+
+            // Verifica se o arquivo existe antes de tentar excluí-lo
+            if (File.Exists(caminhoCompleto))
+            {
+                try
+                {
+                    // Exclui o arquivo físico
+                    File.Delete(caminhoCompleto);
+                }
+                catch (Exception ex) // Captura a exceção para tratamento de erros
+                {
+                    // Aqui você pode logar o erro ou retornar uma mensagem específica
+                    // Por exemplo, se você estiver usando um logger, poderia ser algo como:
+                    // _logger.LogError("Ocorreu um erro ao tentar excluir o arquivo: {ex}", ex);
+                    return "Não foi possível excluir o arquivo físico: " + ex.Message;
+                }
+            }
+            else
+            {
+                return "Arquivo não encontrado no sistema de arquivos";
+            }
+
+            // Após a exclusão do arquivo físico, exclui a entrada no banco de dados
             await _repositorio.ExcluirAsync(arquivoProcesso);
 
             return "Excluído com sucesso";

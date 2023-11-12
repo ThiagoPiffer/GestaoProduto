@@ -4,6 +4,9 @@ using GestaoProduto.Dominio.Entity._Processo;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Processo;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Processo;
 using GestaoProduto.Compartilhado.Model._Processo;
+using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
+using GestaoProduto.Compartilhado.Interfaces.Repositorio._ProcessoStatusPersonalizado;
+using GestaoProduto.Compartilhado.Interfaces._User;
 
 namespace GestaoProduto.Servico._Processo
 {
@@ -11,21 +14,34 @@ namespace GestaoProduto.Servico._Processo
     {
         private readonly IRepositorio<Processo> _repositorio;
         private readonly IProcessoRepositorio _processoRepositorio;
+        private readonly IProcessoStatusPersonalizadoRepositorio _processoStatusPersonalizadoRepositorio;
         private readonly IMapper _mapper;
+        private readonly IUser _user;
 
         public ProcessoServico(IRepositorio<Processo> repositorio,
                                         IProcessoRepositorio processoRepositorio,
-                                        IMapper mapper)
+                                        IProcessoStatusPersonalizadoRepositorio processoStatusPersonalizadoRepositorio,
+                                        IMapper mapper,
+                                        IUser user)
         {
             _repositorio = repositorio;
             _processoRepositorio = processoRepositorio;
+            _processoStatusPersonalizadoRepositorio = processoStatusPersonalizadoRepositorio;
             _mapper = mapper;
+            _user=user;
         }
+
+        public async Task<ProcessoStatusPersonalizado> BuscarProcessoStatus(int processoId)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            var status = await _processoStatusPersonalizadoRepositorio.BuscarProcessoStatus(processoId, empresaId);
+            return status;
+        }
+
 
         public async Task<List<Processo>> Listar()
         {
             var listaProcessos = await _repositorio.ObterListaAsync();
-            var x = _mapper.Map<List<Processo>>(listaProcessos);
             return listaProcessos;
         }
 
@@ -52,7 +68,9 @@ namespace GestaoProduto.Servico._Processo
         }
 
         public async Task<Processo> Editar(ProcessoModel processoModel)
-        {            
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            processoModel.EmpresaId = empresaId;
             var processo = _mapper.Map<Processo>(processoModel);
             await _processoRepositorio.EditarAsync(processo);
 
