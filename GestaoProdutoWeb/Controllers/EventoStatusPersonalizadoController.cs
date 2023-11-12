@@ -2,6 +2,7 @@
 using GestaoProduto.Compartilhado.Interfaces.Servico._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Model._EventoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
+using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
 
 namespace GestaoProduto.API.Controllers
 {
@@ -36,6 +37,14 @@ namespace GestaoProduto.API.Controllers
         {
             EventoStatusPersonalizado eventoStatusPersonalizado = await _eventoStatusPersonalizadoServico.Adicionar(eventoStatusPersonalizadoModel);
             return Ok(eventoStatusPersonalizado);
+        }
+
+        [HttpGet]
+        [Route("AdicionarStatusPadraoEvento")]
+        public async Task<IActionResult> AdicionarStatusPadraoEvento()
+        {
+            await _eventoStatusPersonalizadoServico.AdicionarStatusPadraoEvento();
+            return Ok(new { message = "Status criado" });
         }
 
         [HttpPut]

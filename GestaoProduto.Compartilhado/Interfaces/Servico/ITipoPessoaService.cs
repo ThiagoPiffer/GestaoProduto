@@ -10,6 +10,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa
     {
         Task<List<TipoPessoa>> Listar();
         Task<List<TipoPessoa>> listarTipoPessoasCompleta();
+        Task<List<TipoPessoa>> listarTipoPessoasProcesso(int  processoId);
         Task<TipoPessoaModel> ObterPorId(int id);
         Task<List<TipoPessoa>> BuscaPorTermo(string termo);
         Task<TipoPessoa> Adicionar(TipoPessoaModel tipoPessoaModel);

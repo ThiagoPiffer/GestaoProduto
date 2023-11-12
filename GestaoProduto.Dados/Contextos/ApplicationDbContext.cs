@@ -16,6 +16,7 @@ using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using GestaoProduto.Dominio.Entity._Endereco;
 using GestaoProduto.Dominio.Entity._Evento;
 using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
+using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
 
 namespace GestaoProduto.Dados.Contextos
 {

@@ -38,6 +38,14 @@ namespace GestaoProduto.API.Controllers
             return Ok(processoStatusPersonalizado);
         }
 
+        [HttpGet]
+        [Route("AdicionarStatusPadraoProcesso")]
+        public async Task<IActionResult> AdicionarStatusPadraoProcesso()
+        {
+            await _processoStatusPersonalizadoServico.AdicionarStatusPadraoProcesso();
+            return Ok(new { message = "Status criado" });
+        }        
+
         [HttpPut]
         [Route("Editar")]
         public async Task<IActionResult> Editar([FromBody] ProcessoStatusPersonalizadoModel processoStatusPersonalizadoModel)

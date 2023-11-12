@@ -459,14 +459,15 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DataControle")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IgualA")
                         .HasColumnType("bit");
@@ -486,6 +487,9 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<bool>("ValidaCondicao")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -512,14 +516,15 @@ namespace GestaoProduto.Dados.Migrations
                     b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime?>("DataControle")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpresaId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Icone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IgualA")
                         .HasColumnType("bit");
@@ -539,6 +544,9 @@ namespace GestaoProduto.Dados.Migrations
 
                     b.Property<bool>("ValidaCondicao")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("ValorControle")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

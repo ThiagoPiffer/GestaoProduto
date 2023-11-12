@@ -1,6 +1,7 @@
 ﻿using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Compartilhado.Model._Pessoa;
 using GestaoProduto.Compartilhado.Model._PessoaProcesso;
+using GestaoProduto.Dominio.Entity._PessoaProcesso;
 
 namespace GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa
 {
@@ -13,7 +14,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa
         Task<List<PessoaProcessoModel>> listarPessoasExterna();
         Task<PessoaModel> ObterPorId(int id);
         Task<Pessoa> Adicionar(PessoaModel pessoaModel, int idProcesso);
-        Task<PessoaProcessoModel> Associar(PessoaProcessoModel pessoaModel, int idProcesso);
+        Task<PessoaProcesso> Associar(PessoaProcessoModel pessoaModel, int idProcesso);
         Task<Pessoa> AdicionarCadastroExterno(PessoaModel pessoaModel);
         Task<Pessoa> Editar(PessoaModel pessoaModel);
         Task<string> Delete(int id);

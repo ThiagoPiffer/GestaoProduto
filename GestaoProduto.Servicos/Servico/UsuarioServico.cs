@@ -4,6 +4,7 @@ using GestaoProduto.Dominio.Entity._Usuario;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._Usuario;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Usuario;
 using GestaoProduto.Compartilhado.Model._Usuario;
+using GestaoProduto.Compartilhado.Interfaces._User;
 
 namespace GestaoProduto.Servico._Usuario
 {
@@ -11,15 +12,23 @@ namespace GestaoProduto.Servico._Usuario
     {
         private readonly IRepositorio<Usuario> _repositorio;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IUser _user;
         private readonly IMapper _mapper;
 
         public UsuarioServico(IRepositorio<Usuario> repositorio,
                                         IUsuarioRepositorio usuarioRepositorio,
+                                        IUser user,
                                         IMapper mapper)
         {
             _repositorio = repositorio;
             _usuarioRepositorio = usuarioRepositorio;
+            _user = user;
             _mapper = mapper;
+        }
+
+        public Usuario UsuarioCurrent()
+        {
+            return _user.UsuarioCurrent;
         }
 
         public async Task<List<Usuario>> Listar()
@@ -46,7 +55,7 @@ namespace GestaoProduto.Servico._Usuario
         public async Task<Usuario> Adicionar(UsuarioModel model)
         {
             var obj = _mapper.Map<Usuario>(model);
-            obj.Empresa = null;
+            obj.Empresa = null!;
             await _repositorio.AdicionarAsync(obj);
 
             return obj;

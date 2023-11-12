@@ -27,6 +27,13 @@ namespace GestaoProduto.API.Controllers
         }
 
         [HttpGet]
+        [Route("BuscarProcessoStatus")]
+        public async Task<IActionResult> BuscarProcessoStatus(int processoId)
+        {
+            return Ok(await _processoServico.BuscarProcessoStatus(processoId));
+        }
+
+        [HttpGet]
         [Route("ObterPorId")]
         public async Task<IActionResult> ObterPorId([FromQuery] int id)
         {
@@ -55,5 +62,7 @@ namespace GestaoProduto.API.Controllers
         {
             return Ok( new { mensagem = await _processoServico.Delete(id) });            
         }
+
+
     }
 }

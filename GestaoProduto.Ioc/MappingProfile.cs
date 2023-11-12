@@ -15,6 +15,7 @@ using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using GestaoProduto.Dominio.Entity._ControlePessoaExterna;
 using GestaoProduto.Dominio.Entity._Empresa;
 using GestaoProduto.Dominio.Entity._Evento;
+using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
 using GestaoProduto.Dominio.Entity._Pessoa;
 using GestaoProduto.Dominio.Entity._Processo;
@@ -72,11 +73,11 @@ namespace GestaoProduto.Ioc
                 .ForMember(dest => dest.Empresa, opt => opt.Ignore())   // Ignora o mapeamento da Empresa
                 .ReverseMap();
 
-            CreateMap<EventoStatusPersonalizado, EventoStatusPersonalizadoModel>()
+            CreateMap<EventoStatusPersonalizadoModel, EventoStatusPersonalizado>()
                 .ForMember(dest => dest.Empresa, opt => opt.Ignore())
                 .ReverseMap();
 
-            CreateMap<ProcessoStatusPersonalizado, ProcessoStatusPersonalizadoModel>()
+            CreateMap<ProcessoStatusPersonalizadoModel, ProcessoStatusPersonalizado>()
                 .ForMember(dest => dest.Empresa, opt => opt.Ignore())
                 .ReverseMap();
 

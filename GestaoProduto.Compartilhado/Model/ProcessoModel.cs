@@ -12,5 +12,6 @@
         public Double? ValorCausa { get; set; } = 0;
         public int GrupoProcessoId { get; set; }
         public bool Ativo { get; set; }
+        public int EmpresaId { get; set; }
     }
 }
