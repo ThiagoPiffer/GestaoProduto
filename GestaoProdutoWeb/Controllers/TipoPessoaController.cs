@@ -5,11 +5,13 @@ using GestaoProduto.Dominio.Entity._TipoPessoa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._TipoPessoa;
 using GestaoProduto.Compartilhado.Model._TipoPessoa;
 using GestaoProduto.Dominio.Entity._PessoaProcesso;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class TipoPessoaController : ControllerBase
     {
         private readonly ITipoPessoaServico _tipoPessoaServico;

@@ -12,6 +12,8 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._Processo
         Task<List<Processo>> BuscaPorTermo(string termo);
         Task<Processo> Adicionar(ProcessoModel processoModel);
         Task<Processo> Editar(ProcessoModel processoModel);
+        Task<Processo> ReabrirProcesso(ProcessoModel processoModel);        
+        Task<Processo> Finalizar(ProcessoModel processoModel);
         Task<string> Delete(int id);
     }
 }

@@ -9,13 +9,17 @@ using Xceed.Words.NET;
 using GestaoProduto.Compartilhado.Model._PessoaProcesso;
 using GestaoProduto.Dominio.Model._TipoPessoaTemplate;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
+using GestaoProduto.Compartilhado._ConfiguracaoTemplateModel;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
+
     public class ArquivoProcessoTemplateController : Controller
     {
-        private readonly IRepositorio<ArquivoProcessoTemplate> _repositorio;
+        private readonly IRepositorio<ArquivoProcessoTemplate> _repositorio;        
         private readonly IArquivoProcessoTemplateServico _arquivoProcessoTemplateServico;
         private readonly ITipoPessoaTemplateServico _tipoPessoaTemplateServico;
         private readonly IPessoaServico _pessoaServico;
@@ -71,40 +75,6 @@ namespace GestaoProduto.API.Controllers
             return Ok();
         }
 
-        public class Pessoa
-        {
-            public int Id { get; set; }
-            public string Nome { get; set; }
-            public string DataNascimento { get; set; } // Considere usar DateTime se a data for necessária.
-            public int? Idade { get; set; } // Nullable, já que parece que pode ser null
-            public string Email { get; set; }
-            public string Cpfcnpj { get; set; }
-            public string Identidade { get; set; }
-            public string DddTelefone { get; set; }
-            public string Telefone { get; set; }
-            public string DddCelular { get; set; }
-            public string Celular { get; set; }
-            public string TipoPessoaDescricao { get; set; }
-            public bool Ativo { get; set; }
-        }
-
-        public class Tipo
-        {
-            public int IdTipoPessoa { get; set; }
-            public int IdArquivoProcessoTemplate { get; set; }
-            public string CampoChave { get; set; }
-            public int Id { get; set; }
-            public bool Ativo { get; set; }
-            public string DataCadastro { get; set; } // Considere usar DateTime se a data for necessária.
-        }
-
-        public class ConfiguracaoTemplateModel
-        {
-            public Dictionary<int, Pessoa> ListaPessoa { get; set; }
-            public List<Tipo> ListaTipos { get; set; }
-            public int IdArquivoTemplate { get; set; }
-        }
-
         [HttpPost("DownloadArquivoTemplate")]
         public async Task<IActionResult> DownloadArquivo([FromBody] ConfiguracaoTemplateModel configuracaoTemplate)
         {
@@ -124,16 +94,32 @@ namespace GestaoProduto.API.Controllers
                 {
                     if (pessoa.Value == null) return NotFound();
 
+                    var Pessoa = await _pessoaServico.ObterPorId(pessoa.Value.Id);
+
                     var chave = configuracaoTemplate.ListaTipos.First(l => l.Id == pessoa.Key).CampoChave;
 
                     // Use o método ReplaceText com o objeto StringReplaceTextOptions
-                    document.ReplaceText("{{nome" + chave + "}}", pessoa.Value.Nome ?? "");
-                    document.ReplaceText("{{cpf" + chave + "}}", pessoa.Value.Cpfcnpj);
-                    document.ReplaceText("{{email" + chave + "}}", pessoa.Value.Email);
-                    document.ReplaceText("{{identidade" + chave + "}}", pessoa.Value.Identidade);
-                    document.ReplaceText("{{dataNascimento" + chave + "}}", pessoa.Value.DataNascimento);
-                    document.ReplaceText("{{telefone" + chave + "}}", pessoa.Value.Telefone);
-                    document.ReplaceText("{{celular" + chave + "}}", pessoa.Value.Celular);
+                    document.ReplaceText("{{nome" + chave + "}}", Pessoa.Nome ?? "");
+                    document.ReplaceText("{{cpfcnpj" + chave + "}}", Pessoa.CPFCNPJ ?? "");
+                    document.ReplaceText("{{email" + chave + "}}", Pessoa.Email ?? "");
+                    document.ReplaceText("{{identidade" + chave + "}}", Pessoa.Identidade ?? "");
+                    document.ReplaceText("{{dataNascimento" + chave + "}}", Pessoa.DataNascimento ?? "");
+                    document.ReplaceText("{{telefone" + chave + "}}", Pessoa.Telefone ?? "");
+                    document.ReplaceText("{{celular" + chave + "}}", Pessoa.Celular ?? "");                    
+
+                    document.ReplaceText("{{profissao" + chave + "}}", Pessoa.Profissao ?? "");
+                    document.ReplaceText("{{nacionalidade" + chave + "}}", Pessoa.Nacionalidade ?? "");
+                    document.ReplaceText("{{estadocivil" + chave + "}}", Pessoa.EstadoCivil ?? "");
+
+                    if (Pessoa.Endereco != null)
+                    { 
+                        document.ReplaceText("{{numero" + chave + "}}", Pessoa.Endereco.Numero ?? "");
+                        document.ReplaceText("{{rua" + chave + "}}", Pessoa.Endereco.Rua ?? "");
+                        document.ReplaceText("{{bairro" + chave + "}}", Pessoa.Endereco.Bairro ?? "");
+                        document.ReplaceText("{{cidade" + chave + "}}", Pessoa.Endereco.Cidade ?? "");
+                        document.ReplaceText("{{estado" + chave + "}}", Pessoa.Endereco.Estado ?? "");
+                        document.ReplaceText("{{cep" + chave + "}}", Pessoa.Endereco.CEP ?? "");
+                    }
                 }
 
                 // Salve o documento em um MemoryStream após todas as substituições terem sido feitas

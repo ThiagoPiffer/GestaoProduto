@@ -11,6 +11,8 @@ using GestaoProduto.Compartilhado.Interfaces._User;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._ControlePessoaExterna;
 using GestaoProduto.Dominio.Entity._ControlePessoaExterna;
 using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Entity._Endereco;
+using GestaoProduto.Compartilhado.Model._Endereco;
 
 namespace GestaoProduto.Servico_Pessoa
 {
@@ -18,6 +20,7 @@ namespace GestaoProduto.Servico_Pessoa
     {
         private readonly IRepositorio<Pessoa> _repositorio;
         private readonly IRepositorio<PessoaProcesso> _repositorioPessoaProcesso;
+        private readonly IRepositorio<Endereco> _repositorioEndereco;
         private readonly IPessoaRepositorio _pessoaRepositorio;
         private readonly IProcessoRepositorio _processoRepositorio;
         private readonly IControlePessoaExternaRepositorio _controlePessoaExternaRepositorio;
@@ -26,6 +29,7 @@ namespace GestaoProduto.Servico_Pessoa
 
         public PessoaServico(IRepositorio<Pessoa> repositorio,
                              IRepositorio<PessoaProcesso> repositorioPessoasProcesso,
+                             IRepositorio<Endereco> repositorioEndereco,
                              IPessoaRepositorio pessoaRepositorio,
                              IProcessoRepositorio processoRepositorio,
                              IControlePessoaExternaRepositorio controlePessoaExternaRepositorio,
@@ -34,6 +38,7 @@ namespace GestaoProduto.Servico_Pessoa
         {
             _repositorio = repositorio;
             _repositorioPessoaProcesso = repositorioPessoasProcesso;
+            _repositorioEndereco = repositorioEndereco;
             _pessoaRepositorio = pessoaRepositorio;
             _processoRepositorio = processoRepositorio;
             _controlePessoaExternaRepositorio=controlePessoaExternaRepositorio;
@@ -86,19 +91,34 @@ namespace GestaoProduto.Servico_Pessoa
             var pessoa = await _repositorio.ObterPorIdAsync(id);
             var pessoaModel = _mapper.Map<PessoaModel>(pessoa);
 
+            if (pessoa.EnderecoId.HasValue)
+            {
+                var endereco = _mapper.Map<EnderecoModel>(await _repositorioEndereco.ObterPorIdAsync(pessoa.EnderecoId.Value));
+                pessoaModel.Endereco = endereco;
+            }
+
             return pessoaModel;
         }
 
-        public async Task<Pessoa> Adicionar(PessoaModel pessoaModel, int idProcesso)
+        public async Task<Pessoa> Adicionar(PessoaModel pessoaModel)
         {
+            var enderecoModel = pessoaModel.Endereco;
+            pessoaModel.Endereco = null;
+            pessoaModel.EmpresaId = _user.EmpresaCurrent.Id;
 
             //adiciona primeiro a pessoa para obter o id do banco
             var pessoa = _mapper.Map<Pessoa>(pessoaModel);
             pessoa.EmpresaId = _user.EmpresaCurrent.Id;
             pessoa = await _pessoaRepositorio.AdicionarAsyncSaveChanges(pessoa);
 
-            //salva pessoa processo com o id adiquirido do banco apos salvar
-            var pessoasProcesso = AssociarPessoaProcesso(idProcesso, pessoa.Id);            
+            if (enderecoModel != null)
+            {
+                var endereco = _mapper.Map<Endereco>(enderecoModel);
+                endereco = await _repositorioEndereco.AdicionarAsyncSaveChanges(endereco);
+
+                pessoa.Endereco = endereco;
+                pessoa = await _pessoaRepositorio.EditarAsync(pessoa);
+            }            
 
             return pessoa;
         }
@@ -153,14 +173,30 @@ namespace GestaoProduto.Servico_Pessoa
             }            
         }
 
-        public async Task<Pessoa> Editar(PessoaModel pessoaDto)
+        public async Task<Pessoa> Editar(PessoaModel pessoaModel)
         {
             try
             {
-                var pessoa = _mapper.Map<Pessoa>(pessoaDto);
-                await _pessoaRepositorio.EditarAsync(pessoa);
+                var enderecoModel = pessoaModel.Endereco;
+                pessoaModel.Endereco = null;
+
+                var pessoa = _mapper.Map<Pessoa>(pessoaModel);
+                await _pessoaRepositorio.EditarAsync(pessoa);                              
+
+                if (enderecoModel != null)
+                {
+                    var endereco = _mapper.Map<Endereco>(enderecoModel);
+                    if (endereco.Id == 0)
+                        endereco = await _repositorioEndereco.AdicionarAsyncSaveChanges(endereco);
+                    else
+                        endereco = await _repositorioEndereco.EditarAsync(endereco);
+
+                    pessoa.Endereco = endereco;
+                    pessoa = await _pessoaRepositorio.EditarAsync(pessoa);
+                }
 
                 return pessoa;
+
             }
             catch (ExcecaoDeDominio ex)
             {

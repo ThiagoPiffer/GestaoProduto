@@ -3,10 +3,13 @@ using GestaoProduto.Dominio.Entity._Processo;
 using GestaoProduto.Compartilhado.Model._Processo;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Processo;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
+
     public class ProcessoController : Controller
     {
         private readonly IRepositorio<Processo> _repositorio;
@@ -53,6 +56,22 @@ namespace GestaoProduto.API.Controllers
         public async Task<IActionResult> Editar([FromBody] ProcessoModel model)
         {
             Processo obj = await _processoServico.Editar(model);
+            return Ok(obj);
+        }
+
+        [HttpPut]
+        [Route("ReabrirProcesso")]
+        public async Task<IActionResult> ReabrirProcesso([FromBody] ProcessoModel model)
+        {
+            Processo obj = await _processoServico.ReabrirProcesso(model);
+            return Ok(obj);
+        }
+
+        [HttpPut]
+        [Route("Finalizar")]
+        public async Task<IActionResult> Finalizar([FromBody] ProcessoModel model)
+        {
+            Processo obj = await _processoServico.Finalizar(model);
             return Ok(obj);
         }
 

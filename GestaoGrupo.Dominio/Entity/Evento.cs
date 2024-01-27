@@ -11,6 +11,7 @@ namespace GestaoProduto.Dominio.Entity._Evento
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public DateTime  DataFinal { get; set; }
+        public bool Encerrado { get; set; }
         public int ProcessoId { get; set; }
         public virtual Processo Processo { get; set; }
         public int EmpresaId { get; set; }

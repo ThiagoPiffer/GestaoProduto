@@ -8,9 +8,10 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._GrupoProcesso
     public interface IGrupoProcessoServico
     {
         void CriaGrupoInicial();
-        Task<List<GrupoProcessoModel>> Listar();
+        Task<List<GrupoProcessoModel>> Listar(bool exibeFinalizados = false);
         Task<GrupoProcesso> Adicionar(GrupoProcessoDto grupoProcessoDto);
         Task<GrupoProcesso> Editar(GrupoProcessoDto grupoProcessoDto);
+        Task<string> Delete(int id);
     }
 }
 

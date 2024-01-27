@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using GestaoProduto.Dados.Repositorio._RepositorioBase;
 using GestaoProduto.Dominio.Entity._PessoaProcesso;
 using GestaoProduto.Dominio.Entity._TipoPessoa;
+using System.Linq;
+using GestaoProduto.Compartilhado.Model._Endereco;
 
 namespace GestaoProduto.Dados.Repositorio._Pessoa
 {
@@ -44,11 +46,14 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                 tiposPessoa = await Context.TipoPessoa.Where(tp => tp.EmpresaId == empresaId).ToListAsync();
             }
 
+            var enderecos = Context.Endereco.Where(e => pessoas.Select(p => p.EnderecoId).Contains(e.Id)).ToList();
+
             //PessoasProcessoModel
             var pessoaProcesssoModel = pessoas.Select(p =>
             {
                 var pessoaProcesso = pessoasProcesso.FirstOrDefault(pp => pp.PessoaId == p.Id); // pega a pessoa no processo
                 var tipoPessoa = pessoaProcesso != null ? tiposPessoa.FirstOrDefault(t => t.Id == pessoaProcesso.TipoPessoaId) : null; // tipo pessoa no processo
+                var endereco = enderecos.FirstOrDefault(e => e.Id == p.EnderecoId) ?? null;
 
                 return new PessoaProcessoModel
                 {
@@ -64,7 +69,23 @@ namespace GestaoProduto.Dados.Repositorio._Pessoa
                     DDDCelular = p.DDDCelular,
                     Celular = p.Celular,
                     TipoPessoaDescricao = tipoPessoa?.Descricao ?? "", // Se tipoPessoa for null, use um valor padrão
-                    Ativo = p.Ativo
+                    Ativo = p.Ativo,
+
+                    Nacionalidade = p.Nacionalidade,
+                    Profissao = p.Profissao,
+                    EstadoCivil = p.EstadoCivil,
+                    Endereco = endereco == null ? null : new EnderecoModel
+                    {
+                        Id = endereco!.Id,
+                        Numero = endereco.Numero,
+                        Rua = endereco.Rua,
+                        Bairro = endereco.Bairro,
+                        Municipio = endereco.Municipio,
+                        Cidade = endereco.Cidade,
+                        Estado = endereco.Estado,
+                        CEP = endereco.CEP
+                    }
+
                 };
             }).OrderBy(p => p.Nome).ToList();
 

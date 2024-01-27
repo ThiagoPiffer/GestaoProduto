@@ -2,6 +2,7 @@
 using GestaoProduto.Compartilhado.Model._ArquivoProcesso;
 using GestaoProduto.Compartilhado.Model._ControlePessoaExterna;
 using GestaoProduto.Compartilhado.Model._Empresa;
+using GestaoProduto.Compartilhado.Model._Endereco;
 using GestaoProduto.Compartilhado.Model._Evento;
 using GestaoProduto.Compartilhado.Model._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
@@ -14,6 +15,7 @@ using GestaoProduto.Compartilhado.Model._Usuario;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
 using GestaoProduto.Dominio.Entity._ControlePessoaExterna;
 using GestaoProduto.Dominio.Entity._Empresa;
+using GestaoProduto.Dominio.Entity._Endereco;
 using GestaoProduto.Dominio.Entity._Evento;
 using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._GrupoProcesso;
@@ -50,19 +52,24 @@ namespace GestaoProduto.Ioc
             .ForMember(dest => dest.ValorCausa, opt => opt.MapFrom(src => src.ValorCausa))
             .ReverseMap();
 
+            //CreateMap<Pessoa, PessoaModel>()
+            //    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            //    .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
+            //    .ForMember(dest => dest.DataNascimento, opt => opt.MapFrom(src => src.DataNascimento.HasValue ? src.DataNascimento.Value.ToString("dd/MM/yyyy") : null))
+            //    //.ForMember(dest => dest.Idade, opt => opt.MapFrom(src => src.Idade ?? 0))
+            //    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+            //    .ForMember(dest => dest.CPFCNPJ, opt => opt.MapFrom(src => src.CPFCNPJ))
+            //    .ForMember(dest => dest.Identidade, opt => opt.MapFrom(src => src.Identidade))
+            //    .ForMember(dest => dest.DDDTelefone, opt => opt.MapFrom(src => src.DDDTelefone))
+            //    .ForMember(dest => dest.Telefone, opt => opt.MapFrom(src => src.Telefone))
+            //    .ForMember(dest => dest.DDDCelular, opt => opt.MapFrom(src => src.DDDCelular))
+            //    .ForMember(dest => dest.Celular, opt => opt.MapFrom(src => src.Celular))
+            //    .ReverseMap();
+
             CreateMap<Pessoa, PessoaModel>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Nome, opt => opt.MapFrom(src => src.Nome))
                 .ForMember(dest => dest.DataNascimento, opt => opt.MapFrom(src => src.DataNascimento.HasValue ? src.DataNascimento.Value.ToString("dd/MM/yyyy") : null))
-                //.ForMember(dest => dest.Idade, opt => opt.MapFrom(src => src.Idade ?? 0))
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.CPFCNPJ, opt => opt.MapFrom(src => src.CPFCNPJ))
-                .ForMember(dest => dest.Identidade, opt => opt.MapFrom(src => src.Identidade))
-                .ForMember(dest => dest.DDDTelefone, opt => opt.MapFrom(src => src.DDDTelefone))
-                .ForMember(dest => dest.Telefone, opt => opt.MapFrom(src => src.Telefone))
-                .ForMember(dest => dest.DDDCelular, opt => opt.MapFrom(src => src.DDDCelular))
-                .ForMember(dest => dest.Celular, opt => opt.MapFrom(src => src.Celular))
                 .ReverseMap();
+            CreateMap<Endereco, EnderecoModel>().ReverseMap();
 
             CreateMap<Pessoa, PessoaProcessoModel>().ReverseMap();
             CreateMap<GrupoProcesso, GrupoProcessoDto>().ReverseMap();

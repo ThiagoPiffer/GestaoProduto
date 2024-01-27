@@ -9,6 +9,7 @@
         public int? Prazo { get; set; } = 0;
         public string? DataPrevista { get; set; } = string.Empty;
         public string? DataFinal { get; set; } = string.Empty;
+        public string? MotivoFinal { get; set; }
         public Double? ValorCausa { get; set; } = 0;
         public int GrupoProcessoId { get; set; }
         public bool Ativo { get; set; }
