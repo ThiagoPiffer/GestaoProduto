@@ -10,6 +10,7 @@ namespace GestaoProduto.Compartilhado.Model._Evento
         public string Nome { get; set; } = string.Empty;
         public string Descricao { get; set; } = string.Empty;
         public DateTime DataFinal { get; set; }
+        public bool Encerrado { get; set; }
         public int ProcessoId { get; set; }
         public virtual ProcessoModel? Processo { get; set; } = null;
         public int EmpresaId { get; set; }

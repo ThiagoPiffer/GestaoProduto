@@ -15,6 +15,8 @@ namespace GestaoProduto.Dominio.Entity._Processo
         public DateTime? DataInicio { get; set; }
         public DateTime? DataPrevista { get; set; }
         public DateTime? DataFinal { get; set; }
+        public string? MotivoFinal { get; set; }
+
         [DecimalPrecision(16, 2)]
         public Double? ValorCausa { get; set; }
         public int GrupoProcessoId { get; set; }

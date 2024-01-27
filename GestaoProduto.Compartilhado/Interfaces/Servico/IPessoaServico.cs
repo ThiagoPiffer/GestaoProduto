@@ -13,7 +13,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa
         Task<List<PessoaProcessoModel>> ListarPessoasCompleta();
         Task<List<PessoaProcessoModel>> listarPessoasExterna();
         Task<PessoaModel> ObterPorId(int id);
-        Task<Pessoa> Adicionar(PessoaModel pessoaModel, int idProcesso);
+        Task<Pessoa> Adicionar(PessoaModel pessoaModel);
         Task<PessoaProcesso> Associar(PessoaProcessoModel pessoaModel, int idProcesso);
         Task<Pessoa> AdicionarCadastroExterno(PessoaModel pessoaModel);
         Task<Pessoa> Editar(PessoaModel pessoaModel);

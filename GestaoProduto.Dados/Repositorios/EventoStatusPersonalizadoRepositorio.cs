@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using GestaoProduto.Compartilhado.Model._Evento;
 using GestaoProduto.Compartilhado.Model._EventoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._Processo;
+using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
+using System.Diagnostics;
 
 namespace GestaoProduto.Dados.Repositorio._EventoStatusPersonalizado
 {
@@ -24,6 +26,18 @@ namespace GestaoProduto.Dados.Repositorio._EventoStatusPersonalizado
             var statusRetorno = new EventoStatusPersonalizado();
             if (evento != null)
             {
+                if (evento.Encerrado)
+                {
+                    var status = new EventoStatusPersonalizado();
+                    status.Nome = "Finalizado";
+                    status.Descricao = "Evento finalizado";
+                    status.Icone = "fas fa-check-circle";
+                    status.Cor = "#000000";
+
+                    return status;
+                }
+
+
                 var statusEvento = await Context.EventoStatusPersonalizado.Where(o => o.EmpresaId == empresaId).ToListAsync();
                 var statusEventoMenor = statusEvento.Where(o => o.MenorQue).OrderByDescending(o => o.ValorControle).ToList();
                 var statusEventoIgual = statusEvento.Where(o => o.IgualA).ToList();
@@ -63,12 +77,13 @@ namespace GestaoProduto.Dados.Repositorio._EventoStatusPersonalizado
             return statusRetorno;
         }
 
-        public async Task<List<EventoModel>> ListarEventos(int processoId, int empresaId)
+        public async Task<List<EventoModel>> ListarEventos(int processoId, int empresaId, bool exibeEncerrados = false)
         {
 
             var listaEventos = Context.Evento
                 .Where(o => o.EmpresaId == empresaId &&
-                            o.ProcessoId == processoId).ToListAsync();
+                            o.ProcessoId == processoId &&
+                             ((exibeEncerrados && o.Encerrado) || (!exibeEncerrados && !o.Encerrado))).ToListAsync();
 
             var listaEventosModel = new List<EventoModel>();
             foreach (var evento in listaEventos.Result)
@@ -79,6 +94,7 @@ namespace GestaoProduto.Dados.Repositorio._EventoStatusPersonalizado
                     Nome = evento.Nome,
                     Descricao = evento.Descricao,
                     DataFinal = evento.DataFinal,
+                    Encerrado = evento.Encerrado,
                     ProcessoId = evento.ProcessoId,
                     EmpresaId = evento.EmpresaId,
                     // Se você precisar de informações do Processo, você pode descomentar e ajustar a linha abaixo:

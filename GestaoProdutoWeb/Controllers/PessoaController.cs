@@ -5,13 +5,13 @@ using GestaoProduto.Compartilhado.Interfaces.Servico._Pessoa;
 using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Compartilhado.Interfaces._User;
 using GestaoProduto.Compartilhado.Model._PessoaProcesso;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
-    
-    //[AllowAnonymous]
-    
+    [Authorize]
+
     public class PessoaController : Controller
     {        
         private readonly IPessoaServico _pessoaServico;
@@ -69,9 +69,9 @@ namespace GestaoProduto.API.Controllers
 
         [HttpPost]
         [Route("Adicionar")]
-        public async Task<IActionResult> Adicionar([FromBody] PessoaModel pessoaModel, [FromQuery] int idProcesso)
+        public async Task<IActionResult> Adicionar([FromBody] PessoaModel pessoaModel)
         {
-            Pessoa pessoa = await _pessoaServico.Adicionar(pessoaModel, idProcesso);
+            Pessoa pessoa = await _pessoaServico.Adicionar(pessoaModel);
             return Ok(pessoa);
         }
 
@@ -85,6 +85,7 @@ namespace GestaoProduto.API.Controllers
 
         [HttpPost]
         [Route("AdicionarCadastroExterno")]
+        [AllowAnonymous]
         public async Task<IActionResult> AdicionarCadastroExterno([FromBody] PessoaModel pessoaModel)
         {
             Pessoa pessoa = await _pessoaServico.AdicionarCadastroExterno(pessoaModel);

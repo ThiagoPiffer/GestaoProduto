@@ -5,10 +5,13 @@ using GestaoProduto.Servico;
 using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Entity;
 using GestaoProduto.Dominio.Entity._ArquivoProcesso;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
+
     public class ArquivoProcessoController : Controller
     {
         private readonly IRepositorio<ArquivoProcesso> _repositorio;

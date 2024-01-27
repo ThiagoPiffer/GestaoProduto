@@ -3,11 +3,12 @@ using GestaoProduto.Dominio.Entity._Empresa;
 using GestaoProduto.Compartilhado.Model._Empresa;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Empresa;
 using Microsoft.AspNetCore.Mvc;
-using GestaoProduto.Compartilhado.Model._Empresa;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class EmpresaController : Controller
     {
         private readonly IRepositorio<Empresa> _repositorio;

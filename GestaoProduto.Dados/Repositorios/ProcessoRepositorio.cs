@@ -41,12 +41,14 @@ namespace GestaoProduto.Dados.Repositorio._Processo
             Context.Update(processo);
         }
 
-        public async Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel(int empresaId)
+        public async Task<List<GrupoProcessoModel>> ListarGrupoProcessoModel(int empresaId, bool exibeFinalizados = false)
         {
             var idsGrupos = await Context.GrupoProcesso.Where(o => o.EmpresaId == empresaId).Select(o => o.Id).ToListAsync();
             var grupoProcessos = await Context.Processo                
                 .Include(p => p.GrupoProcesso) // Inclui os processos associados ao grupo
-                .Where(p => idsGrupos.Contains(p.GrupoProcessoId))
+                .Where(p => idsGrupos.Contains(p.GrupoProcessoId) &&
+                             ((exibeFinalizados && p.DataFinal.HasValue) || (!exibeFinalizados && !p.DataFinal.HasValue )) )
+                                    
                 .ToListAsync();
 
             var dataAtual = DateTime.Now;

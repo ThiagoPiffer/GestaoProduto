@@ -60,7 +60,8 @@ namespace GestaoProduto.Servico._Processo
         }
 
         public async Task<Processo> Adicionar(ProcessoModel processoModel)
-        {            
+        {        
+            processoModel.EmpresaId = _user.EmpresaCurrent.Id;
             var processo = _mapper.Map<Processo>(processoModel);                
             await _processoRepositorio.AdicionarAsync(processo);
 
@@ -71,6 +72,29 @@ namespace GestaoProduto.Servico._Processo
         {
             var empresaId = _user.EmpresaCurrent.Id;
             processoModel.EmpresaId = empresaId;
+            var processo = _mapper.Map<Processo>(processoModel);
+            await _processoRepositorio.EditarAsync(processo);
+
+            return processo;
+        }
+
+        public async Task<Processo> ReabrirProcesso(ProcessoModel processoModel)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            processoModel.EmpresaId = empresaId;
+            processoModel.DataFinal = null;
+            processoModel.MotivoFinal = null;
+            var processo = _mapper.Map<Processo>(processoModel);
+            await _processoRepositorio.EditarAsync(processo);
+
+            return processo;
+        }
+
+        public async Task<Processo> Finalizar(ProcessoModel processoModel)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            processoModel.EmpresaId = empresaId;
+            processoModel.DataFinal = DateTime.Now.ToString();
             var processo = _mapper.Map<Processo>(processoModel);
             await _processoRepositorio.EditarAsync(processo);
 

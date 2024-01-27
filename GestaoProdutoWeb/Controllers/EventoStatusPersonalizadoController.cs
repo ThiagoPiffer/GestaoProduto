@@ -3,11 +3,13 @@ using GestaoProduto.Compartilhado.Interfaces.Servico._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Model._EventoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class EventoStatusPersonalizadoController : ControllerBase
     {
         private readonly IEventoStatusPersonalizadoServico _eventoStatusPersonalizadoServico;

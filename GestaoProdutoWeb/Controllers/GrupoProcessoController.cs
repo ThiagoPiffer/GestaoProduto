@@ -12,7 +12,7 @@ using GestaoProduto.Compartilhado.Model._GrupoProcessoDto;
 namespace GestaoProduto.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
 
 
     public class GrupoProcessoController : Controller
@@ -33,9 +33,9 @@ namespace GestaoProduto.API.Controllers
 
         [HttpGet]
         [Route("Listar")]
-        public async Task<IActionResult> Listar()
+        public async Task<IActionResult> Listar(bool exibeEncerrados = false)
         {
-            return Ok(await _grupoProcessoServico.Listar());
+            return Ok(await _grupoProcessoServico.Listar(exibeEncerrados));
         }
 
         [HttpGet]
@@ -52,6 +52,7 @@ namespace GestaoProduto.API.Controllers
         {
             try
             {
+                grupoProcessoDto.EmpresaId = _user.EmpresaCurrent.Id;
                 GrupoProcesso processo = await _grupoProcessoServico.Adicionar(grupoProcessoDto);
                 return Ok(processo);
             }
@@ -68,6 +69,7 @@ namespace GestaoProduto.API.Controllers
         {
             try
             {
+                grupoProcessoDto.EmpresaId = _user.EmpresaCurrent.Id;
                 GrupoProcesso processo = await _grupoProcessoServico.Editar(grupoProcessoDto);
                 return Ok(processo);
             }
@@ -76,6 +78,13 @@ namespace GestaoProduto.API.Controllers
                 // Retorna um erro 500 e a mensagem da exceção.
                 return StatusCode(500, $"Um erro ocorreu: {ex.Message}");
             }
+        }
+
+        [HttpDelete]
+        [Route("Deletar")]
+        public async Task<IActionResult> Deletar([FromQuery] int id)
+        {
+            return Ok(new { mensagem = await _grupoProcessoServico.Delete(id) });
         }
     }
 }

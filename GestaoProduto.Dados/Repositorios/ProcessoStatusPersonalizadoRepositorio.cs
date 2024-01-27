@@ -21,6 +21,18 @@ namespace GestaoProduto.Dados.Repositorio._ProcessoStatusPersonalizado
             var statusRetorno = new ProcessoStatusPersonalizado();
             if (processo != null)
             {
+                if (processo.DataFinal.HasValue )
+                {
+                    var status = new ProcessoStatusPersonalizado();
+                    status.Nome = "Finalizado";
+                    status.Descricao = "Processo finalizado";
+                    status.Icone = "fas fa-check-circle";
+                    status.Cor = "#000000";
+
+                    return status;
+                }
+
+
                 var statusProcesso = await Context.ProcessoStatusPersonalizado.Where(o => o.EmpresaId == empresaId).ToListAsync();                
                 var statusProcessoMenor = statusProcesso.Where(o => o.MenorQue).OrderByDescending(o => o.ValorControle).ToList();
                 var statusProcessoIgual = statusProcesso.Where(o => o.IgualA).ToList();

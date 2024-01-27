@@ -39,15 +39,15 @@ namespace GestaoProduto.Servico._GrupoProcesso
             _user = user;
         }
 
-        public async Task<List<GrupoProcessoModel>> Listar()
+        public async Task<List<GrupoProcessoModel>> Listar(bool exibeFinalizados = false)
         {
             var empresa = _user.EmpresaCurrent;
-            var listaGrupos = await _processoRepositorio.ListarGrupoProcessoModel(empresa.Id);
+            var listaGrupos = await _processoRepositorio.ListarGrupoProcessoModel(empresa.Id, exibeFinalizados);
            
             return listaGrupos;
         }
 
-        public void CriaGrupoPadrao(string nome, string posicao, GrupoProcesso grupoProcesso) {
+        public Processo CriaGrupoPadrao(string nome, string posicao, GrupoProcesso grupoProcesso) {
             var processo = new Processo();
             processo.Numero = nome;
             processo.Descricao = posicao;
@@ -55,12 +55,13 @@ namespace GestaoProduto.Servico._GrupoProcesso
             processo.Ativo = true;
             processo.EmpresaId = grupoProcesso.EmpresaId;
 
-            _repositorioProcesso.AdicionarAsync(processo);
+            return processo;
         }
 
         public void CriaGrupoInicial()
         {
             var empresaId = _user.EmpresaCurrent.Id;
+            var listaProcessos = new List<Processo>();
 
             #region grupo 1
             var grupoProcesso = new GrupoProcesso();
@@ -72,9 +73,9 @@ namespace GestaoProduto.Servico._GrupoProcesso
 
             _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
 
-            CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso);
-            CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso);
-            CriaGrupoPadrao("333.333", "Processo 3", grupoProcesso);           
+            listaProcessos.Add(CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso));
+            listaProcessos.Add(CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso));
+            listaProcessos.Add(CriaGrupoPadrao("333.333", "Processo 3", grupoProcesso));           
             
             #endregion
 
@@ -87,9 +88,11 @@ namespace GestaoProduto.Servico._GrupoProcesso
 
             _repositorioGrupoProcesso.AdicionarAsync(grupoProcesso);
 
-            CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso);
-            CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso);
-            CriaGrupoPadrao("333.333", "Processo 3", grupoProcesso);
+            listaProcessos.Add(CriaGrupoPadrao("111.111", "Processo 1", grupoProcesso));
+            listaProcessos.Add(CriaGrupoPadrao("222.222", "Processo 2", grupoProcesso));
+            listaProcessos.Add(CriaGrupoPadrao("333.333", "Processo 3", grupoProcesso));
+
+            _repositorioProcesso.AdicionarListaAsync(listaProcessos);
             #endregion
         }
 
@@ -123,6 +126,14 @@ namespace GestaoProduto.Servico._GrupoProcesso
             {
                 throw new Exception(ex.MensagensDeErro.First());
             }
+        }
+
+        public async Task<string> Delete(int id)
+        {
+            var obj = await _repositorioGrupoProcesso.ObterPorIdAsync(id);
+            await _repositorioGrupoProcesso.ExcluirAsync(obj);
+
+            return "Excluído com sucesso";
         }
     }
 }

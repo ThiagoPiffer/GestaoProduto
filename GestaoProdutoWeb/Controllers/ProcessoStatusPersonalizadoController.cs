@@ -2,11 +2,13 @@
 using GestaoProduto.Compartilhado.Interfaces.Servico._ProcessoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Model._ProcessoStatusPersonalizado;
 using GestaoProduto.Dominio.Entity._ProcessoStatusPersonalizado;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ProcessoStatusPersonalizadoController : ControllerBase
     {
         private readonly IProcessoStatusPersonalizadoServico _processoStatusPersonalizadoServico;

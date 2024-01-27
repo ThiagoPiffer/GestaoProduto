@@ -9,7 +9,7 @@ namespace GestaoProduto.Compartilhado.Interfaces.Repositorio._EventoStatusPerson
     public interface IEventoStatusPersonalizadoRepositorio : IRepositorio<EventoStatusPersonalizado>
     {
         Task<EventoStatusPersonalizado> BuscarEventoStatus(int eventoId, int empresaId);
-        Task<List<EventoModel>> ListarEventos(int processoId, int empresaId);
+        Task<List<EventoModel>> ListarEventos(int processoId, int empresaId, bool exibeEncerrados = false);
 
     }
 }

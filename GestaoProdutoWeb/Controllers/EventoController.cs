@@ -4,11 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using GestaoProduto.Dominio.Entity._Evento;
 using GestaoProduto.Compartilhado.Interfaces.Servico._Evento;
 using GestaoProduto.Compartilhado.Model._Evento;
+using GestaoProduto.Compartilhado.Model._Processo;
+using GestaoProduto.Dominio.Entity._Processo;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestaoProduto.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class EventoController : ControllerBase
     {
         private readonly IEventoServico _eventoServico;
@@ -20,9 +24,9 @@ namespace GestaoProduto.API.Controllers
 
         [HttpGet]
         [Route("Listar")]
-        public async Task<IActionResult> Listar([FromQuery] int processoId)
+        public async Task<IActionResult> Listar([FromQuery] int processoId, bool exibeEncerrados = false)
         {
-            return Ok(await _eventoServico.Listar(processoId));
+            return Ok(await _eventoServico.Listar(processoId, exibeEncerrados));
         }
 
         [HttpGet]
@@ -53,6 +57,22 @@ namespace GestaoProduto.API.Controllers
         {
             Evento evento = await _eventoServico.Editar(eventoModel);
             return Ok(evento);
+        }
+
+        [HttpPut]
+        [Route("ReabrirEvento")]
+        public async Task<IActionResult> ReabrirEvento([FromBody] EventoModel model)
+        {
+            Evento obj = await _eventoServico.ReabrirEvento(model);
+            return Ok(obj);
+        }
+
+        [HttpPut]
+        [Route("FinalizarEvento")]
+        public async Task<IActionResult> FinalizarEvento([FromBody] EventoModel model)
+        {
+            Evento obj = await _eventoServico.FinalizarEvento(model);
+            return Ok(obj);
         }
 
         [HttpDelete]

@@ -9,6 +9,8 @@ using GestaoProduto.Compartilhado.Interfaces._User;
 using GestaoProduto.Dominio.Entity._EventoStatusPersonalizado;
 using GestaoProduto.Compartilhado.Interfaces.Repositorio._EventoStatusPersonalizado;
 using System.Collections.Generic;
+using GestaoProduto.Compartilhado.Model._Processo;
+using GestaoProduto.Dominio.Entity._Processo;
 
 namespace GestaoProduto.Servico._Evento
 {
@@ -40,10 +42,10 @@ namespace GestaoProduto.Servico._Evento
             return status;
         }
 
-        public async Task<List<EventoModel>> Listar(int processoId)
+        public async Task<List<EventoModel>> Listar(int processoId, bool exibeEncerrados = false)
         {
             var empresaId = _user.EmpresaCurrent.Id;
-            return await _eventoStatusPersonalizadoRepositorio.ListarEventos(processoId, empresaId);
+            return await _eventoStatusPersonalizadoRepositorio.ListarEventos(processoId, empresaId, exibeEncerrados);
         }
 
         public async Task<EventoModel> ObterPorId(int id)
@@ -77,6 +79,28 @@ namespace GestaoProduto.Servico._Evento
             await _eventoRepositorio.EditarAsync(obj);
 
             return obj;
+        }
+
+        public async Task<Evento> ReabrirEvento(EventoModel eventoModel)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            eventoModel.EmpresaId = empresaId;            
+            eventoModel.Encerrado = false;
+            var evento = _mapper.Map<Evento>(eventoModel);
+            await _eventoRepositorio.EditarAsync(evento);
+
+            return evento;
+        }
+
+        public async Task<Evento> FinalizarEvento(EventoModel eventoModel)
+        {
+            var empresaId = _user.EmpresaCurrent.Id;
+            eventoModel.EmpresaId = empresaId;
+            eventoModel.Encerrado = true;
+            var evento = _mapper.Map<Evento>(eventoModel);
+            await _eventoRepositorio.EditarAsync(evento);
+
+            return evento;
         }
 
         public async Task<string> Delete(int id)
